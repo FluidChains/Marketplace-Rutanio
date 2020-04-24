@@ -16,8 +16,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap');
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
 @import url('https://fonts.googleapis.com/css?family=Bitter|Spicy+Rice');
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
 
 
 
@@ -30,21 +32,17 @@ body{
 nav{
   background: none !important;
   box-shadow: none !important;
+  line-height: 40px !important;
 }
-.cabezote{
-  right: 0;
-  position: fixed;
-  width: 99%;
-  top: 0;
-  margin-bottom: 5%;
-  }
+
 .menu_inicio{
-color: #222222 !important;
+color: #222222 ;
 }
 .menu_inicio:hover{
 color: #ff4863 !important;
 }
 
 .logo{
-  width: 5%;
+  margin: 2%;
+  width: 50%;
 }

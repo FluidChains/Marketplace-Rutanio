@@ -1,15 +1,48 @@
-<header class="cabezote">
+
     <nav>
-      <div class="nav-wrapper">
-        <a href="#!" class="brand-logo"><img src="images/logo.png" class="logo"></a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-          <li class="red-text"><a class="menu_inicio" href="sass.html">Sass</a></li>
-          <li><a class="menu_inicio" href="badges.html">Components</a></li>
-          <li><a class="menu_inicio" href="collapsible.html">Javascript</a></li>
-          <li><a class="menu_inicio" href="mobile.html">Mobile</a></li>
-        </ul>
+
+      <div class="row">
+        <div class="nav-wrapper">
+
+        <div class="col s4 m4 l2">
+          <img src="images/logo.png" class="logo">
+        </div>
+
+
+
+        <div class="col s8 m8 l10 ">
+          <ul class="right hide-on-med-and-down">
+            <li><a class="menu_inicio" href="">Home</a></li>
+            <li><a class="menu_inicio" href="">Herramientas</a></li>
+            <li><a class="menu_inicio" href="">Mercado</a></li>
+            <li><a class="menu_inicio" href="">Novedades</a></li>
+            <li><a class="menu_inicio" href="">Nosotros</a></li>
+            <% if user_signed_in? %>
+              <li> <%= link_to destroy_user_session_path, method: :delete, class:"  box black-text" do  %>
+                <i class="material-icons black-text ">close</i>
+
+              <% end %>
+              </li>
+              <% else %>
+              <li> <%= link_to new_user_session_path, class:" box black-text" do  %>
+                <i class="material-icons">person</i>
+              <% end %>
+          <% end %>
+              </li>
+
+          </ul>
+          <div class="right">
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
+          </div>
+
+
+        </div>
+
+
+        </div>
       </div>
+
+
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
@@ -18,5 +51,3 @@
       <li><a class="menu_inicio" href="collapsible.html">Javascript</a></li>
       <li><a class="menu_inicio" href="mobile.html">Mobile</a></li>
     </ul>
-
-</header>
