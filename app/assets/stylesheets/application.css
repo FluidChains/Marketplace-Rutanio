@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap');
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import url('https://fonts.googleapis.com/css?family=Bitter|Spicy+Rice');
+
+
+
+h1,h2,h3{
+  font-family: 'DM Sans', sans-serif;
+}
+body{
+  font-family: 'Work Sans', sans-serif;
+}
+nav{
+  background: none !important;
+  box-shadow: none !important;
+}
+.cabezote{
+  right: 0;
+  position: fixed;
+  width: 99%;
+  top: 0;
+  margin-bottom: 5%;
+  }
+.menu_inicio{
+color: #222222 !important;
+}
+.menu_inicio:hover{
+color: #ff4863 !important;
+}
+
+.logo{
+  width: 5%;
+}

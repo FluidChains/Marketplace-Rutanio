@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  information: MyText
+  skills: MyText
+  precio: 1
+  valid_until: 2020-04-24
+  aditional_info: MyText
+
+two:
+  name: MyString
+  information: MyText
+  skills: MyText
+  precio: 1
+  valid_until: 2020-04-24
+  aditional_info: MyText

@@ -1,0 +1,47 @@
+<%= form_with(model: service, local: true) do |form| %>
+  <% if service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
+
+      <ul>
+      <% service.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :information %>
+    <%= form.text_area :information %>
+  </div>
+
+  <div class="field">
+    <%= form.label :skills %>
+    <%= form.text_area :skills %>
+  </div>
+
+  <div class="field">
+    <%= form.label :precio %>
+    <%= form.number_field :precio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :valid_until %>
+    <%= form.date_select :valid_until %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aditional_info %>
+    <%= form.text_area :aditional_info %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
