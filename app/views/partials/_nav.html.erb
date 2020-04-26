@@ -5,14 +5,14 @@
         <div class="nav-wrapper">
 
         <div class="col s4 m4 l2">
-          <img src="images/logo.png" class="logo">
+          <img src="/images/logo.png" class="logo">
         </div>
 
 
 
         <div class="col s8 m8 l10 ">
           <ul class="right hide-on-med-and-down">
-            <li><a class="menu_inicio" href="">Home</a></li>
+            <li><%= link_to "Home", root_path ,class:"menu_inicio"%></li>
             <li><a class="menu_inicio" href="">Herramientas</a></li>
             <li><a class="menu_inicio" href="">Mercado</a></li>
             <li><a class="menu_inicio" href="">Novedades</a></li>
@@ -46,8 +46,9 @@
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-      <li><a class="menu_inicio" href="sass.html">Sass</a></li>
-      <li><a class="menu_inicio" href="badges.html">Components</a></li>
-      <li><a class="menu_inicio" href="collapsible.html">Javascript</a></li>
-      <li><a class="menu_inicio" href="mobile.html">Mobile</a></li>
+      <li><%= link_to "Home", root_path ,class:"menu_inicio"%></li>
+      <li><a class="menu_inicio" href="">Herramientas</a></li>
+      <li><a class="menu_inicio" href="">Mercado</a></li>
+      <li><a class="menu_inicio" href="">Novedades</a></li>
+      <li><a class="menu_inicio" href="">Nosotros</a></li>
     </ul>

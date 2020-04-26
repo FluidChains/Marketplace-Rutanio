@@ -1,0 +1,93 @@
+
+<div class="container">
+  <div class="row">
+
+    <div class="center">
+      <h2>Mercado</h2>
+       <p>Encuentra servicios profesionales en diversas areas  con oportunidades de transformación únicas</p>
+       <br>
+       <%= link_to 'Crea Nuevo', new_service_path ,class:"btn fucsia_ruta"%>
+    </div>
+     <br>
+     <div class="container">
+       <div class="row center">
+         <div class="col s12 m12 l12">
+           <ul class="listado_card center">
+             <li class="fucsia_font">Todos</li>
+             <% @categories.each do |category| %>
+               <li><%= link_to category.nombre_categoria, category , class:"morado_font "%></li>
+             <% end %>
+           </ul>
+
+         </div>
+
+       </div>
+
+
+     </div>
+
+
+
+
+
+
+    <% @services.each do |service| %>
+
+      <div class="col s12 m6 l4">
+          <%= link_to service  do  %>
+        <div class="card">
+          <div class="card-content black-text">
+            <span class="card-title "><%= service.name  %></span>
+            <p><%= service.information.truncate(150)  %> </p>
+            <div class="container">
+              <div class="row">
+                <i class="material-icons">update</i>
+                <%= service.valid_until.strftime("%d-%m-%Y ")  %>
+                <span>vencimiento</span>
+              </div>
+              <div class="row">
+                <a href="#"><img src="images/ruta.png" alt=""  class="iconos_market"> <%= number_with_delimiter(service.precio.round, :delimiter => ',') %></a>
+                <span>Rutas</span>
+              </div>
+              <div class="row">
+                <a href="#"><img src="images/exos.png" alt=""  class="iconos_market"> <%= number_with_delimiter(service.precio.round, :delimiter => ',') %></a>
+                <span>Rutas</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-action">
+
+            <div class="col s3 m3 l3 bage ">
+              <span class="new badge morado_ruta">Desarrollador</span>
+            </div>
+            <div class="col s3 m3 l3 bage">
+              <span class="new badge morado_ruta">Desarrollador</span>
+            </div>
+            <div class="col s3 m3 l3 bage">
+              <span class="new badge morado_ruta">Desarrollador</span>
+            </div>
+            <div class="col s3 m3 l3 bage">
+              <span class="new badge morado_ruta">Desarrollador</span>
+            </div>
+            <div class="col s3 m3 l3 bage">
+              <span class="new badge morado_ruta">Desarrollador</span>
+            </div>
+
+
+          </div>
+          <br>
+        </div>
+             <% end %>
+      </div>
+
+
+    <% end %>
+
+  </div>
+  <br>
+
+  <div class="row center">
+    <%= will_paginate @services ,class:"flickr_pagination" %>
+
+  </div>
+</div>

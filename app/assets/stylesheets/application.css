@@ -20,6 +20,21 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Spicy+Rice');
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
+.fucsia_ruta{
+  background: #ff4664 !important;
+
+}
+.fucsia_font{
+  color: #ff4664 !important;
+  font-size: 2em;
+}
+.morado_ruta{
+  background: #331138 !important;
+}
+.morado_font{
+  color: #331138 !important;
+  font-size: 2em;
+}
 
 
 
@@ -45,4 +60,77 @@ color: #ff4863 !important;
 .logo{
   margin: 2%;
   width: 50%;
+}
+.card{
+  height: 100% !important;
+  overflow: hidden;
+}
+.card-title{
+  color: #ff4664 !important;
+}
+
+.card-action a:hover{
+  color: #ff4664 !important;
+}
+.card-content a{
+
+  color: #331138 !important;
+}
+.card-content a:hover{
+  color: #ff4664 !important;
+}
+.iconos_market{
+  height:  25px;
+}
+.listado_card{
+  display: inline-flex;
+}
+
+.listado_card li{
+  margin-left: 5%;
+}
+.bage{
+  margin-top: 7px;
+}
+.flickr_pagination {
+  justify-content: center;
+  text-align: center;
+  padding: 0.3em;
+  cursor: default;
+
+}
+.flickr_pagination a, .flickr_pagination span, .flickr_pagination em {
+    padding: 0.2em 0.5em;
+}
+.flickr_pagination .disabled{
+  color: #331138;
+}
+.flickr_pagination .disabled:hover{
+  color: #ff4664;
+}
+
+.flickr_pagination .current{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2em;
+  color: #ff4664;
+}
+.flickr_pagination a {
+  color: #331138;
+  text-decoration: none;
+ }
+.flickr_pagination a:hover, .flickr_pagination a:focus {
+  color: #ff4664;
+ }
+ .logo_pie{
+   width: 54px;
+ }
+footer{
+  position: absolute;
+  margin-top: 15%;
+  width: 100%;
+  height: 500px;
+}
+.primera_sesion{
+  border-bottom: solid 2px white;
 }
