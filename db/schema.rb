@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_101158) do
+ActiveRecord::Schema.define(version: 2020_04_27_074422) do
 
   create_table "categories", force: :cascade do |t|
     t.string "nombre_categoria"
@@ -38,6 +38,12 @@ ActiveRecord::Schema.define(version: 2020_04_24_101158) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.text "lenguaje"
+    t.integer "exos_amount"
+    t.string "mail_servicio"
+    t.integer "horas"
+    t.string "wpp"
+    t.text "web"
     t.index ["user_id"], name: "index_services_on_user_id"
   end
 

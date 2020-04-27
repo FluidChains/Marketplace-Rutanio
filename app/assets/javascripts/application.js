@@ -14,7 +14,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 
 
@@ -26,4 +25,7 @@
 // jquery para inicializar funciones de materializae
   $(document).ready(function(){
     $('.sidenav').sidenav();
+  });
+  $(document).ready(function(){
+    $('.modal').modal();
   });

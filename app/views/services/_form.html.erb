@@ -1,7 +1,7 @@
-<%= form_with(model: service, local: true) do |form| %>
-  <% if service.errors.any? %>
+<%= form_with(model: @service, local: true) do |form| %>
+  <% if @service.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
+      <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
 
       <ul>
       <% service.errors.full_messages.each do |message| %>
@@ -21,14 +21,51 @@
     <%= form.text_area :information %>
   </div>
 
+
   <div class="field">
     <%= form.label :skills %>
     <%= form.text_area :skills %>
   </div>
 
   <div class="field">
-    <%= form.label "Cantidad de Rutas," %>
+    <%= form.label "Cantidad de Rutas" %>
     <%= form.number_field :precio %>
+    <br>
+    <p>RUTAs are the native currency of the Rutanio economy </p>
+  </div>
+  <div class="field">
+    <%= form.label "lenguaje" %>
+    <%= form.text_area :lenguaje %>
+    <br>
+    <p>RUTAs are the native currency of the Rutanio economy </p>
+  </div>
+  <div class="field">
+    <%= form.label "Cantidad de Exos" %>
+    <%= form.number_field :exos_amount %>
+    <br>
+    <p>RUTAs are the native currency of the Rutanio economy </p>
+  </div>
+  <div class="field">
+    <%= form.label "Mail servicio" %>
+    <%= form.text_area :mail_servicio %>
+    <br>
+    <p>RUTAs are the native currency of the Rutanio economy </p>
+  </div>
+  <div class="field">
+    <%= form.label "Horas" %>
+    <%= form.text_area :horas %>
+    <br>
+    <p>RUTAs are the native currency of the Rutanio economy </p>
+  </div>
+  <div class="field">
+    <%= form.label "Whatsapp" %>
+    <%= form.text_area :wpp %>
+    <br>
+    <p>RUTAs are the native currency of the Rutanio economy </p>
+  </div>
+  <div class="field">
+    <%= form.label "Link web" %>
+    <%= form.text_area :web %>
     <br>
     <p>RUTAs are the native currency of the Rutanio economy </p>
   </div>
@@ -63,6 +100,7 @@
 
 
 </div>
+
 
 
   <div class="actions">

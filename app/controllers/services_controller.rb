@@ -1,10 +1,11 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only:[:edit,:create]
 
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
+    @services = current_user.services
   end
 
   # GET /services/1
@@ -68,9 +69,8 @@ class ServicesController < ApplicationController
     def set_service
       @service = Service.find(params[:id])
     end
-
     # Only allow a list of trusted parameters through.
     def service_params
-      params.require(:service).permit(:name, :information, :skills, :precio, :valid_until, :aditional_info, :user_id)
+      params.require(:service).permit(:name, :information, :skills, :precio, :valid_until, :aditional_info, :user_id, :lenguaje, :exos_amount, :mail_servicio, :horas, :wpp, :web)
     end
 end

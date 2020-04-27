@@ -4,16 +4,23 @@
 
     <div class="center">
       <h2>Mercado</h2>
-       <p>Encuentra servicios profesionales en diversas areas  con oportunidades de transformación únicas</p>
+       <p>Encuentra profesionales en diversas areas o postula tus servicios </p>
        <br>
-       <%= link_to 'Crea Nuevo', new_service_path ,class:"btn fucsia_ruta"%>
+       <% if user_signed_in? %>
+       <a class="waves-effect waves-light  btn modal-trigger white-text fucsia_ruta" href="#renderModal">Crea Nuevo</a>
+       <% else %>
+       <%= link_to "Crea Nuevo", new_user_session_path,  class:"waves-effect waves-light  btn modal-trigger white-text fucsia_ruta"  %>
+
+       <% end %>
+
+
     </div>
      <br>
      <div class="container">
        <div class="row center">
          <div class="col s12 m12 l12">
            <ul class="listado_card center">
-             <li class="fucsia_font">Todos</li>
+             <li><%= link_to "Todos", root_path , class:"fucsia_font " %></li>
              <% @categories.each do |category| %>
                <li><%= link_to category.nombre_categoria, category , class:"morado_font "%></li>
              <% end %>
@@ -25,7 +32,6 @@
 
 
      </div>
-
 
 
 
@@ -85,6 +91,19 @@
 
   </div>
   <br>
+
+
+   <!-- Modal Structure -->
+   <div id="renderModal" class="modal modal-fixed-footer">
+     <div class="modal-content">
+     <%= render 'services/form', service: @service %>
+
+     </div>
+     <div class="modal-footer">
+       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir / Esc</a>
+     </div>
+   </div>
+
 
   <div class="row center">
     <%= will_paginate @services ,class:"flickr_pagination" %>
