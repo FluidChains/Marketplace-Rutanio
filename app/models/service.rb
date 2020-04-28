@@ -7,6 +7,7 @@ class Service < ApplicationRecord
   has_many  :requests, :dependent => :destroy
   after_create :save_categories
   validate :valide_categories
+  validates :name, :information,  :precio, :valid_until,  :mail_servicio, :horas, presence: true, length: {minimum: 2, too_short: "Minimo son %{count} caracteres." }
 
   def categories=(value)
     @categories = value
