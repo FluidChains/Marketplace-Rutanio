@@ -17,18 +17,7 @@
             <li><a class="menu_inicio" href="">Mercado</a></li>
             <li><a class="menu_inicio" href="">Novedades</a></li>
             <li><a class="menu_inicio" href="">Nosotros</a></li>
-            <% if user_signed_in? %>
-              <li> <%= link_to destroy_user_session_path, method: :delete, class:"  box black-text" do  %>
-                <i class="material-icons black-text ">close</i>
 
-              <% end %>
-              </li>
-              <% else %>
-              <li> <%= link_to new_user_session_path, class:" box black-text" do  %>
-                <i class="material-icons">person</i>
-              <% end %>
-          <% end %>
-              </li>
 
           </ul>
           <div class="right">
@@ -61,9 +50,33 @@
 
   </a>
   <ul>
-    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-    <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+
+
+    <li><%= link_to  root_path , class:"btn-floating fucsia_ruta"  do  %>
+    <i class="material-icons">store</i>
+    <% end %>
+    </li>
+    <% if user_signed_in? %>
+    <li> <%= link_to destroy_user_session_path, method: :delete, class:" btn-floating morado_ruta" do  %>
+      <i class="material-icons white-text ">close</i>
+    <% end %>
+    </li>
+    <li><%= link_to  services_path , class:"btn-floating fucsia_ruta"  do  %>
+    <i class="material-icons">insert_chart</i>
+    <% end %>
+    </li>
+    <li><%= link_to  services_path , class:"btn-floating morado_ruta"  do  %>
+    <i class="material-icons">mail_outline</i>
+    <% end %>
+    </li>
+
+    <% else %>
+    <li> <%= link_to new_user_session_path, class:" btn-floating morado_ruta" do  %>
+      <i class="material-icons">person</i>
+      <% end %>
+    </li>
+    <% end %>
+
+
   </ul>
 </div>

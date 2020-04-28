@@ -6,6 +6,7 @@ class ServicesController < ApplicationController
   # GET /services.json
   def index
     @services = current_user.services
+    @requests = current_user.requests
   end
 
   # GET /services/1
@@ -72,6 +73,6 @@ class ServicesController < ApplicationController
     end
     # Only allow a list of trusted parameters through.
     def service_params
-      params.require(:service).permit(:name, :information, :skills, :precio, :valid_until, :aditional_info, :user_id, :lenguaje, :exos_amount, :mail_servicio, :horas, :wpp, :web)
+       params.require(:service).permit(:name, :information, :skills, :precio, :valid_until, :aditional_info, :user_id, :lenguaje, :exos_amount, :mail_servicio, :horas, :wpp, :web)
     end
 end

@@ -5,15 +5,14 @@
 
       <h1 class="fucsia_font">Mis Publicaciones</h1>
 
-      <table>
+      <table class="striped responsive-table">
         <thead>
           <tr>
             <th>Name</th>
             <th>Information</th>
-            <th>Skills</th>
             <th>Precio</th>
             <th>Valid until</th>
-            <th>Aditional info</th>
+            <th>Postulaciones</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -23,10 +22,9 @@
             <tr>
               <td><%= service.name %></td>
               <td><%= service.information %></td>
-              <td><%= service.skills %></td>
               <td><%= service.precio %></td>
               <td><%= service.valid_until %></td>
-              <td><%= service.aditional_info %></td>
+              <td><%= service.requests.count %></td>
               <td><%= link_to 'Show', service %></td>
               <td><%= link_to 'Edit', edit_service_path(service) %></td>
               <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,6 +39,24 @@
 
 
     </div>
+  </div>
+  <div class="row">
+    <h1 class="fucsia_font">Mis Postulaciones</h1>
+    <ul class="collection">
+
+
+        <% @requests.each do |request| %>
+       <li class="collection-item avatar">
+         <span class="title"><%= request.user.email %></span>
+         <p><%= request.mensaje %>
+         </p>
+        <h4 class=" secondary-content "></h4>
+
+
+       </li>
+    <% end %>
+     </ul>
+
   </div>
 </div>
 <div class="container">
