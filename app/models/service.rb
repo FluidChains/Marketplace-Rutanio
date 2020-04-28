@@ -4,6 +4,7 @@ class Service < ApplicationRecord
 
   has_many :has_categories, :dependent => :destroy
   has_many :categories, through: :has_categories, :dependent => :destroy
+  has_many  :requests, :dependent => :destroy
   after_create :save_categories
   validate :valide_categories
 

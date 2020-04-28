@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mensaje</th>
+      <th>Contacto mail</th>
+      <th>User</th>
+      <th>Service</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.mensaje %></td>
+        <td><%= request.contacto_mail %></td>
+        <td><%= request.user.email %></td>
+        <td><%= request.service.name %></td>
+        <td><%= link_to 'Show', @service_request %></td>
+        <td><%= link_to 'Destroy Comment', [request.service, request], method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

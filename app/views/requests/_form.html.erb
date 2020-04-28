@@ -1,0 +1,37 @@
+<%= form_with(model: [@service, @request], local: true) do |form| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this @request from being saved:</h2>
+
+      <ul>
+      <% request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :mensaje %>
+    <%= form.text_area :mensaje %>
+  </div>
+
+  <div class="field">
+
+
+  </div>
+
+ <div class="col s12">
+    This is an inline input field:
+    <div class="input-field inline">
+      <%= form.text_field :contacto_mail ,id:"email_inline" ,class:"validate" ,type:"email"%>
+      <label for="email_inline">Email</label>
+      <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+    </div>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -11,6 +11,8 @@ class ServicesController < ApplicationController
   # GET /services/1
   # GET /services/1.json
   def show
+    @request = Request.new
+    @requests = Request.all
   end
 
   # GET /services/new
@@ -25,7 +27,6 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.json
   def create
-
     @service = current_user.services.new(service_params)
     @service.categories = params[:categories]
 

@@ -57,3 +57,46 @@
   <strong>Link Adicional:</strong>
   <%= @service.web %>
 </p>
+
+<div class=" col s12 m12 l12">
+  <ul class="collection">
+
+      <% @service.requests.each do |request| %>
+     <li class="collection-item avatar">
+       <span class="title"><%= request.user.email %></span>
+       <p><%= request.mensaje %>
+       </p>
+      <h4 class=" secondary-content "></h4>
+
+
+       <% if user_signed_in? && current_user == request.user %>
+       <%= link_to "Editar ", edit_service_request_url(@service, request),  class:"btn btn-outline-warning"%>
+
+       <%= link_to "Eliminar ", [@service, request], data:{confirm: "Estas seguro que deseas eliminar? ", :method => :delete}, class:"btn btn-outline-danger"%>
+       <% end %>
+
+
+
+     </li>
+  <% end %>
+   </ul>
+   <br>
+   <!-- Modal Trigger -->
+   <div class="center">
+    <a class="waves-effect waves-light btn modal-trigger " href="#cajaComentar">Comentar</a>
+   </div>
+
+              <!-- Modal Structure -->
+              <div id="cajaComentar" class="modal">
+                <div class="modal-content center">
+                  <h4>Realiza tu comentario</h4>
+                 <%= render "requests/form"%>
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+                </div>
+              </div>
+
+
+
+</div>
