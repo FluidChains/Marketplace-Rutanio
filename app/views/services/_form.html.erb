@@ -1,110 +1,123 @@
-<%= form_with(model: @service, local: true) do |form| %>
-  <% if @service.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+<div class="container">
+  <div class="row">
+    <%= form_with(model: @service, local: true) do |form| %>
+      <% if @service.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
 
-      <ul>
-      <% service.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% service.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+      <div class="row center card">
+      <span>Selecciona Categoria</span>
+      <br>
+      <br>
+
+        <% Category.all.each  do |category| %>
+
+                 <label class="col s3 m3 l3">
+                   <%= radio_button_tag "categories[]", category.id , id:"category_id"%>
+                   <span>
+                       <%= "#{category.nombre_categoria.truncate(30)} "%>
+
+                   </span>
+                 </label>
+
+        <% end %>
+
+
+
     </div>
-  <% end %>
-  <div class="row center card">
-  <span>Selecciona Categoria</span>
-  <br>
-  <br>
 
-    <% Category.all.each  do |category| %>
+      <div class="input-field col s12 m12 l12">
+        <%= form.label "Titulo del servicio" %>
+        <%= form.text_field :name %>
+      </div>
 
-             <label class="col s3 m3 l3">
-               <%= radio_button_tag "categories[]", category.id , id:"category_id"%>
-               <span>
-                   <%= "#{category.nombre_categoria.truncate(30)} "%>
+      <div class="input-field col s12 m12 l12">
+        <%= form.label :information %>
+        <%= form.text_area :information %>
+        <br>
+        <p>Describe tu servicio </p>
+      </div>
 
-               </span>
-             </label>
+
+      <div class="input-field col s12 m12 l12">
+        <%= form.label :skills %>
+        <%= form.text_area :skills %>
+      </div>
+      <div class="input-field col s12 m12 l12">
+        <%= form.label "Horas" %>
+        <%= form.text_area :horas %>
+        <br>
+        <p>Cantidad de horas estimadas </p>
+      </div>
+
+      <div class="input-field col s12 m12 l12">
+        <%= form.label "Cantidad de Rutas" %>
+        <%= form.number_field :precio %>
+        <br>
+        <p>RUTAs are the native currency of the Rutanio economy </p>
+      </div>
+      <div class="input-field col s12 m12 l12">
+        <%= form.label "Cantidad de Exos" %>
+        <%= form.number_field :exos_amount %>
+        <br>
+        <p>Exos are the native currency of the OpenExo economy </p>
+      </div>
+      <div class="input-field col s12 m12 l12">
+        <%= form.label "lenguaje" %>
+        <%= form.text_area :lenguaje %>
+        <br>
+        <p>Debe ser en un lenguaje en particular</p>
+      </div>
+
+      <div class="input-field col s12 m12 l12">
+        <%= form.label "Mail servicio" %>
+        <%= form.text_area :mail_servicio %>
+        <br>
+        <p>Correo electronico publico</p>
+      </div>
+
+      <div class="input-field col s12 m12 l12">
+        <%= form.label "Whatsapp" %>
+        <%= form.text_area :wpp %>
+        <br>
+        <p>Numero de Whatsapp publico </p>
+      </div>
+      <div class="input-field col s12 m12 l12">
+        <%= form.label "Link web" %>
+        <%= form.text_area :web %>
+        <br>
+        <p>Link de pagina web del servicio</p>
+      </div>
+
+      <div class="input-field col s12 m12 l12">
+        <%= form.label :valid_until %>
+        <%= form.date_select :valid_until %>
+        <br>
+        <p>Fecha de vencimiento</p>
+      </div>
+
+      <div class="input-field col s12 m12 l12">
+        <%= form.label :aditional_info %>
+        <%= form.text_area :aditional_info %>
+        <br>
+        <p>Informacion adicional</p>
+      </div>
+      <div class="center">
+        <div class="actions">
+          <%= form.submit "Crear" , class:"btn fucsia_ruta" %>
+        </div>
+
+      </div>
 
     <% end %>
 
 
-
+  </div>
 </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :information %>
-    <%= form.text_area :information %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :skills %>
-    <%= form.text_area :skills %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Cantidad de Rutas" %>
-    <%= form.number_field :precio %>
-    <br>
-    <p>RUTAs are the native currency of the Rutanio economy </p>
-  </div>
-  <div class="field">
-    <%= form.label "lenguaje" %>
-    <%= form.text_area :lenguaje %>
-    <br>
-    <p>RUTAs are the native currency of the Rutanio economy </p>
-  </div>
-  <div class="field">
-    <%= form.label "Cantidad de Exos" %>
-    <%= form.number_field :exos_amount %>
-    <br>
-    <p>RUTAs are the native currency of the Rutanio economy </p>
-  </div>
-  <div class="field">
-    <%= form.label "Mail servicio" %>
-    <%= form.text_area :mail_servicio %>
-    <br>
-    <p>RUTAs are the native currency of the Rutanio economy </p>
-  </div>
-  <div class="field">
-    <%= form.label "Horas" %>
-    <%= form.text_area :horas %>
-    <br>
-    <p>RUTAs are the native currency of the Rutanio economy </p>
-  </div>
-  <div class="field">
-    <%= form.label "Whatsapp" %>
-    <%= form.text_area :wpp %>
-    <br>
-    <p>RUTAs are the native currency of the Rutanio economy </p>
-  </div>
-  <div class="field">
-    <%= form.label "Link web" %>
-    <%= form.text_area :web %>
-    <br>
-    <p>RUTAs are the native currency of the Rutanio economy </p>
-  </div>
-
-  <div class="field">
-    <%= form.label :valid_until %>
-    <%= form.date_select :valid_until %>
-  </div>
-
-  <div class="field">
-    <%= form.label :aditional_info %>
-    <%= form.text_area :aditional_info %>
-  </div>
-
-
-
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
