@@ -134,3 +134,13 @@ footer{
 .primera_sesion{
   border-bottom: solid 2px white;
 }
+
+.logo_c {
+  height: inherit;
+  width: inherit;
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  padding: 20%;    
+
+}

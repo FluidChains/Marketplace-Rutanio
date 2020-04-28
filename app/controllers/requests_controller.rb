@@ -33,6 +33,7 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
+        RequestsMailer.formulariorequest(@request).deliver
         format.html { redirect_to @request.service, notice: 'Request was successfully created.' }
         format.json { render :show, status: :created, location: @request.service}
       else
@@ -59,9 +60,11 @@ class RequestsController < ApplicationController
   # DELETE /requests/1
   # DELETE /requests/1.json
   def destroy
+    @service = Service.find(params[:service_id])
+    @request = @service.requests.find(params[:id])
     @request.destroy
     respond_to do |format|
-      format.html { redirect_to @service, notice: 'Request was successfully destroyed.' }
+      format.html { redirect_to @request.service, notice: 'Request was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
