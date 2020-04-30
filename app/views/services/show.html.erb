@@ -1,3 +1,4 @@
+
 <div class="container">
   <p id="notice"><%= notice %></p>
   <!-- Modal Trigger -->
@@ -17,16 +18,24 @@
           <%= @service.information %>
         </p>
 
-        <p>
-          <strong>Skills:</strong>
-          <%= @service.skills %>
-        </p>
+        <div class=" col s12 m12 l12">
+          <h5>Skills</h5>
+            <% @service.skills.each do |skill| %>
+            <span><%=  skill.name%></span>|
+            <% end %>
+        </div>
+
+
 
         <p>
           <strong>Precio:</strong>
           <%= @service.precio %>
         </p>
 
+        <p>
+          <strong>Precio:</strong>
+          <%= @service.currency_sugest %>
+        </p>
         <p>
           <strong>Valid until:</strong>
           <%= @service.valid_until %>

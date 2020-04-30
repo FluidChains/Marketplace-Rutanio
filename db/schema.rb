@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_051200) do
+ActiveRecord::Schema.define(version: 2020_04_30_072341) do
 
   create_table "categories", force: :cascade do |t|
     t.string "nombre_categoria"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "color"
   end
 
   create_table "has_categories", force: :cascade do |t|
@@ -26,6 +27,15 @@ ActiveRecord::Schema.define(version: 2020_04_28_051200) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_has_categories_on_category_id"
     t.index ["service_id"], name: "index_has_categories_on_service_id"
+  end
+
+  create_table "has_skills", force: :cascade do |t|
+    t.integer "service_id"
+    t.integer "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_has_skills_on_service_id"
+    t.index ["skill_id"], name: "index_has_skills_on_skill_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -55,7 +65,16 @@ ActiveRecord::Schema.define(version: 2020_04_28_051200) do
     t.integer "horas"
     t.string "wpp"
     t.text "web"
+    t.string "color"
+    t.string "currency_sugest"
     t.index ["user_id"], name: "index_services_on_user_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "color_tag"
   end
 
   create_table "users", force: :cascade do |t|

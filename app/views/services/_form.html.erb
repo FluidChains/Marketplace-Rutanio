@@ -4,7 +4,6 @@
       <% if @service.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
-
           <ul>
           <% service.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -16,22 +15,47 @@
       <span>Selecciona Categoria</span>
       <br>
       <br>
-
         <% Category.all.each  do |category| %>
-
                  <label class="col s3 m3 l3">
                    <%= radio_button_tag "categories[]", category.id , id:"category_id"%>
                    <span>
                        <%= "#{category.nombre_categoria.truncate(30)} "%>
-
                    </span>
                  </label>
-
         <% end %>
-
-
-
     </div>
+
+    <div class="row">
+
+    <div class="input-field col s12 m12 l12">
+
+
+
+            <ul class="collection with-header">
+              <li class="collection-header"><h4>Selecciona especialidades</h4></li>
+                <% Skill.all.each  do |skill| %>
+                 <li class="collection-item ">
+                   <div>
+                     <label>
+                        <%= check_box_tag "skills[]", skill.id , id:"skill_id"%>
+                          <span>
+                              <%= "#{skill.name.truncate(30)} "%>
+                          </span>
+                      </label>
+
+                   </div>
+
+                 </li>
+               <% end %>
+
+            </ul>
+
+
+  </div>
+
+
+</div>
+
 
       <div class="input-field col s12 m12 l12">
         <%= form.label "Titulo del servicio" %>
@@ -46,10 +70,6 @@
       </div>
 
 
-      <div class="input-field col s12 m12 l12">
-        <%= form.label :skills %>
-        <%= form.text_area :skills %>
-      </div>
       <div class="input-field col s12 m12 l12">
         <%= form.label "Horas" %>
         <%= form.text_area :horas %>
@@ -68,6 +88,12 @@
         <%= form.number_field :exos_amount %>
         <br>
         <p>Exos are the native currency of the OpenExo economy </p>
+      </div>
+      <div class="input-field col s12 m12 l12">
+        <%= form.label "Otro medio de pago" %>
+        <%= form.text_area :currency_sugest %>
+        <br>
+        <p>Puedes sugerir otro metodo de intercambio </p>
       </div>
       <div class="input-field col s12 m12 l12">
         <%= form.label "lenguaje" %>
@@ -113,11 +139,8 @@
         <div class="actions">
           <%= form.submit "Crear" , class:"btn fucsia_ruta" %>
         </div>
-
       </div>
-
     <% end %>
-
 
   </div>
 </div>

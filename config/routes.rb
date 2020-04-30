@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :skills
   resources :categories
   resources :services do
     resources :requests

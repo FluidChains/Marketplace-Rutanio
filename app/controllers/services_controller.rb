@@ -14,6 +14,7 @@ class ServicesController < ApplicationController
   def show
     @request = Request.new
     @requests = Request.all
+    @skills = Skill.all
   end
 
   # GET /services/new
@@ -23,6 +24,7 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
+      @skills = Skill.all
   end
 
   # POST /services
@@ -30,6 +32,7 @@ class ServicesController < ApplicationController
   def create
     @service = current_user.services.new(service_params)
     @service.categories = params[:categories]
+    @service.skills = params[:skills]
 
     respond_to do |format|
       if @service.save
@@ -73,6 +76,6 @@ class ServicesController < ApplicationController
     end
     # Only allow a list of trusted parameters through.
     def service_params
-       params.require(:service).permit(:name, :information, :skills, :precio, :valid_until, :aditional_info, :user_id, :lenguaje, :exos_amount, :mail_servicio, :horas, :wpp, :web)
+       params.require(:service).permit(:name, :information,  :precio, :valid_until, :aditional_info, :user_id, :lenguaje, :exos_amount, :mail_servicio, :horas, :wpp, :web, :color , :currency_sugest)
     end
 end
