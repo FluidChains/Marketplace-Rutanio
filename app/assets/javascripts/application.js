@@ -29,8 +29,14 @@
   $(document).ready(function(){
     $('.modal').modal();
   });
+  $(document).ready(function(){
+  $('.timepicker').timepicker();
+});
+       
 
-
+  $(document).ready(function(){
+     $('.datepicker').datepicker();
+   });
   $(document).ready(function(){
     $('.fixed-action-btn').floatingActionButton();
   });

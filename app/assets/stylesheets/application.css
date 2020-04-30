@@ -151,3 +151,6 @@ footer{
 .listado_pie li{
   margin-left: 15%;
 }
+.carta{
+  height: 420px !important;
+}

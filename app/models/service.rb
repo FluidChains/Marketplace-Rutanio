@@ -7,12 +7,13 @@ class Service < ApplicationRecord
   has_many :has_skills
   has_many :skills, through: :has_skills
 
+
   has_many  :requests, :dependent => :destroy
   after_create :save_categories
   validate :valide_categories
   after_create :save_skills
   validate :valide_skills
-  validates :name, :information,  :precio, :valid_until,  :mail_servicio, :horas , :currency_sugest,  presence: true, length: {minimum: 2, too_short: "Minimo son %{count} caracteres." }
+  validates :name, :information,  :precio, :valid_until,  :mail_servicio,  presence: true, length: {minimum: 1, too_short: "Minimo son %{count} caracteres." }
 
   def categories=(value)
     @categories = value

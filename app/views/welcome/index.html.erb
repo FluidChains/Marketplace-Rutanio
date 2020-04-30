@@ -37,11 +37,14 @@
 
 
 
+  </div>
+  <br>
+  
+  <div class="row">
     <% @services.each do |service| %>
-
       <div class="col s12 m6 l4">
           <%= link_to service  do  %>
-        <div class="card hoverable">
+        <div class="card hoverable carta">
           <div class="card-content black-text">
             <span class="card-title "><%= service.name  %></span>
             <p><%= service.information.truncate(150)  %> </p>
@@ -55,30 +58,20 @@
                 <a href="#"><img src="images/ruta.png" alt=""  class="iconos_market"> <%= number_with_delimiter(service.precio.round, :delimiter => ',') %></a>
                 <span>Rutas</span>
               </div>
+              <% if !service.exos_amount.nil? %>
               <div class="row">
-                <a href="#"><img src="images/exos.png" alt=""  class="iconos_market"> <%= number_with_delimiter(service.precio.round, :delimiter => ',') %></a>
+                <a href="#"><img src="images/exos.png" alt=""  class="iconos_market"> <%= number_with_delimiter(service.exos_amount.round, :delimiter => ',') %></a>
                 <span>Rutas</span>
               </div>
+              <% end %>
             </div>
           </div>
           <div class="card-action">
-
-            <div class="col s3 m3 l3 bage ">
-              <span class="new badge morado_ruta">Desarrollador</span>
-            </div>
-            <div class="col s3 m3 l3 bage">
-              <span class="new badge morado_ruta">Desarrollador</span>
-            </div>
-            <div class="col s3 m3 l3 bage">
-              <span class="new badge morado_ruta">Desarrollador</span>
-            </div>
-            <div class="col s3 m3 l3 bage">
-              <span class="new badge morado_ruta">Desarrollador</span>
-            </div>
-            <div class="col s3 m3 l3 bage">
-              <span class="new badge morado_ruta">Desarrollador</span>
-            </div>
-
+          <% service.skills.each do |skill| %>
+          <div class="col s3 m3 l3 bage ">
+            <span class="new badge morado_ruta"><%=  skill.name%></span>
+          </div>
+          <% end %>
 
           </div>
           <br>
@@ -89,8 +82,10 @@
 
     <% end %>
 
+
   </div>
-  <br>
+
+
 
 
    <!-- Modal Structure -->

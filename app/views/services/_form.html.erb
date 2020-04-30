@@ -29,10 +29,18 @@
 
     <div class="input-field col s12 m12 l12">
 
+            <div class="input-field col s12 m12 l12">
+              
+              <%= form.date_field :valid_until%>
+              <br>
+              <p>Fecha de vencimiento</p>
+            </div>
+
+
 
 
             <ul class="collection with-header">
-              <li class="collection-header"><h4>Selecciona especialidades</h4></li>
+              <li class="collection-header"><h4>Selecciona Skills</h4></li>
                 <% Skill.all.each  do |skill| %>
                  <li class="collection-item ">
                    <div>
@@ -72,7 +80,7 @@
 
       <div class="input-field col s12 m12 l12">
         <%= form.label "Horas" %>
-        <%= form.text_area :horas %>
+        <%= form.number_field :horas %>
         <br>
         <p>Cantidad de horas estimadas </p>
       </div>
@@ -122,12 +130,6 @@
         <p>Link de pagina web del servicio</p>
       </div>
 
-      <div class="input-field col s12 m12 l12">
-        <%= form.label :valid_until %>
-        <%= form.date_select :valid_until %>
-        <br>
-        <p>Fecha de vencimiento</p>
-      </div>
 
       <div class="input-field col s12 m12 l12">
         <%= form.label :aditional_info %>
