@@ -152,5 +152,14 @@ footer{
   margin-left: 15%;
 }
 .carta{
-  height: 420px !important;
+  height: 435px !important;
+}
+.badge{
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: #ff4663;
+  background-color: #ffffff00;
+  border-radius: 2px;
+  border: solid 1px #ff4663;
+
 }

@@ -30,7 +30,7 @@
     <div class="input-field col s12 m12 l12">
 
             <div class="input-field col s12 m12 l12">
-              
+
               <%= form.date_field :valid_until%>
               <br>
               <p>Fecha de vencimiento</p>
@@ -110,12 +110,16 @@
         <p>Debe ser en un lenguaje en particular</p>
       </div>
 
-      <div class="input-field col s12 m12 l12">
-        <%= form.label "Mail servicio" %>
-        <%= form.text_area :mail_servicio %>
-        <br>
-        <p>Correo electronico publico</p>
-      </div>
+      <div class="col s12">
+         This is an inline input field:
+         <div class="input-field inline">
+           <%= form.text_field :mail_servicio ,id:"email_inline" ,class:"validate" ,type:"email"%>
+           <label for="email_inline">Mail servicio</label>
+           <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+         </div>
+       </div>
+
+
 
       <div class="input-field col s12 m12 l12">
         <%= form.label "Whatsapp" %>
@@ -123,6 +127,7 @@
         <br>
         <p>Numero de Whatsapp publico </p>
       </div>
+
       <div class="input-field col s12 m12 l12">
         <%= form.label "Link web" %>
         <%= form.text_area :web %>
