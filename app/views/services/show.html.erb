@@ -2,32 +2,50 @@
 <div class="container z-depth-2">
 
   <!-- Modal Trigger -->
-  <div class="center">
-   <a class="waves-effect waves-light btn modal-trigger fucsia_ruta pulse" href="#cajaComentar">Aplica</a>
+  <div class="row">
+<a class="waves-effect waves-light btn morado_ruta modal-trigger" href="#modalAplicacion">Registros</a>
+<a class="waves-effect waves-light btn modal-trigger fucsia_ruta pulse" href="#cajaComentar">Aplicar</a>
+
   </div>
 
   <div class="row">
-    <div class="col s12 m12 l12 left">
+    <div class="col s4 m4 l4 left">
         <h2 class="fucsia_font"><%= @service.name %></h2>
         <ul>
-          <li>  <%= @service.lenguaje %></li>
+          <li>Lenguaje:  <%= @service.lenguaje %></li>
           <li>Horas estimadas:  <%= @service.horas %></li>
         </ul>
     </div>
+    <div class="col s8 m8 l8 right">
+      <img src="/images/cel.jpg" alt=""  class="cel_show">
+    </div>
+
+      <div class="col s12 m12 l12 center">
+          <h2 class="morado_font">Informacion</h2>
+          <%= @service.information %>
+      </div>
+
+    
   </div>
+
   <div class="row">
     <div class="col s12 m12 l12 center">
-      <% @service.skills.each do |skill| %>
-        <span class=" "><%=  skill.name%>/<span>
+        <% @service.skills.each do |skill| %>
+          <div class="chip black-text">
+            <%=  skill.name.truncate(20) %>
+          </div>
       <% end %>
+
+
     </div>
   </div>
 
-  <div class="col s12 m12 l12 right">
+  <div class="col s12 m12 l12 center">
     <i class="material-icons">update</i>
     <%= @service.valid_until.strftime("%d-%m-%Y ")  %>
     <span>vencimiento</span>
   </div>
+  <br>
 
 
 <div class="row">
@@ -46,41 +64,58 @@
 
   </div>
 </div>
-  <div class="row">
-      <div class="col s12 m12 l12 left">
-         <%= @service.information %>
+
+
+  <div class="row ">
+    <div>
+      <div class="col s12 m7 l7 ">
+       <blockquote>
+        <h2 class="fucsia_font">Informacion de Adicional</h2>
+        <p>
+            <%= @service.aditional_info %>
+        </p>
+       </blockquote>
+
       </div>
 
+    <div class="col s12 m5 l5">
+      <h2 class="morado_font center">Informacion de Contacto</h2>
+     <ul class="collapsible">
+         <li>
+           <div class="collapsible-header"><i class="material-icons morado_font">contact_mail</i>Email</div>
+           <div class="collapsible-body">
+             <div class="input-field">
+               <%= @service.mail_servicio %>
+
+             </div>
+           </div>
+         </li>
+
+
+         <li>
+           <div class="collapsible-header"><i class="material-icons morado_font">phone</i>Whatsapp</div>
+           <div class="collapsible-body">
+             <div class="input-field">
+                <%= @service.wpp %>
+             </div>
+           </div>
+         </li>
+         <li>
+           <div class="collapsible-header"><i class="material-icons morado_font">router</i>Sitio Web</div>
+           <div class="collapsible-body">
+             <div class="input-field">
+                  <%= @service.web %>
+             </div>
+           </div>
+         </li>
+
+
+
+      </ul>
+
+    </div>
   </div>
-
-
-
-  <div class="row">
-    <div class="col s12 m6 l6">
-
-        <p>
-          <strong>Aditional info:</strong>
-          <%= @service.aditional_info %>
-        </p>
-
-        <p>
-          <strong>Mail de servicio:</strong>
-          <%= @service.mail_servicio %>
-        </p>
-
-        <p>
-          <strong>Whatsapp del servicio:</strong>
-          <%= @service.wpp %>
-        </p>
-        <p>
-          <strong>Mail de servicio:</strong>
-          <%= @service.mail_servicio %>
-        </p>
-        <p>
-          <strong>Link Adicional:</strong>
-          <%= @service.web %>
-        </p>
-
+</div>
 
   <!-- Modal Structure -->
   <div id="modalAplicacion" class="modal bottom-sheet">
@@ -113,15 +148,18 @@
 
 
 
-      </div>
-      <div class="row">
-        <div class="col s12 m12 l12">
-          <h1 class="fucsia_font">Quienes aplicaron a esta oferta?</h1>
-              <!-- Modal Trigger -->
-        <a class="waves-effect waves-light btn morado_ruta modal-trigger" href="#modalAplicacion">Ver</a>
+      <div class=" col s12 m12 l12">
+         <br>
+                    <!-- Modal Structure -->
+                    <div id="cajaComentar" class="modal">
+                      <div class="modal-content center">
+                       <%= render "requests/form"%>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat ">Salir</a>
+                      </div>
+                    </div>
 
-
-        </div>
 
 
       </div>
@@ -129,21 +167,3 @@
 
 
     </div>
-
-            <div class=" col s12 m12 l12">
-               <br>
-                          <!-- Modal Structure -->
-                          <div id="cajaComentar" class="modal">
-                            <div class="modal-content center">
-                              <h4>Aplica</h4>
-                             <%= render "requests/form"%>
-                            </div>
-                            <div class="modal-footer">
-                              <a href="#!" class="modal-close waves-effect waves-green btn-flat ">Salir</a>
-                            </div>
-                          </div>
-
-
-
-            </div>
-  </div>

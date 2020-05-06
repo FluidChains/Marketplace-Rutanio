@@ -197,5 +197,9 @@ textarea {
 }
 .fondo-ruta{
   width: 100%;
-  
+
+}
+.cel_show{  
+  float: right;
+  height: 250px;
 }
