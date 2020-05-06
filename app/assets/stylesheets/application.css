@@ -157,6 +157,7 @@ footer{
 }
 .carta{
   height: 390px !important;
+  border-radius: 10px !important;
 }
 .badge{
   width: 90% !important;
@@ -178,4 +179,23 @@ footer{
     -o-transition: all .2s ease;
     transition: all .2s ease
 
+}
+textarea {
+    height: 200px !important;
+
+}
+[type="checkbox"]:checked+span:not(.lever):before {
+    border-right: 2px solid #ff4664 !important;
+    border-bottom: 2px solid #ff4664 !important;
+
+}
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color: #ff4664 !important;
+}
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
+    border: 2px solid #d3a4ff !important;
+}
+.fondo-ruta{
+  width: 100%;
+  
 }
