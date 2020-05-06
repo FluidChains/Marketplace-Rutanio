@@ -13,19 +13,7 @@
           </ul>
         </div>
       <% end %>
-      <div class="row center card">
-      <h4 class="fucsia_font">Selecciona Categoria</h4>
-      <br>
-      <br>
-        <% Category.all.each  do |category| %>
-                 <label class="col s3 m3 l3">
-                   <%= radio_button_tag "categories[]", category.id , id:"category_id"%>
-                   <span>
-                       <%= "#{category.nombre_categoria.truncate(30)} "%>
-                   </span>
-                 </label>
-        <% end %>
-    </div>
+
 <br>
     <div class="row">
     <div class="input-field col s12 m12 l12 center">
@@ -34,6 +22,20 @@
       <%= form.text_field :name %>
     </div>
 
+</div>
+
+<div class="row center card">
+<h4 class="fucsia_font">Selecciona Categoria</h4>
+<br>
+<br>
+  <% Category.all.each  do |category| %>
+           <label class="col s3 m3 l3">
+             <%= radio_button_tag "categories[]", category.id , id:"category_id"%>
+             <span>
+                 <%= "#{category.nombre_categoria.truncate(30)} "%>
+             </span>
+           </label>
+  <% end %>
 </div>
 
 
