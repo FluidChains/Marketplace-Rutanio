@@ -53,20 +53,25 @@
 
 
     <li><%= link_to  root_path , class:"btn-floating fucsia_ruta"  do  %>
-    <i class="material-icons">store</i>
+      <i class="material-icons tooltipped" data-position="left" data-tooltip="Mercado">store</i>
     <% end %>
+
     </li>
     <% if user_signed_in? %>
-    <li> <%= link_to destroy_user_session_path, method: :delete, class:" btn-floating morado_ruta" do  %>
-      <i class="material-icons white-text ">close</i>
-    <% end %>
+    <li> <%= link_to edit_user_registration_path, class:" btn-floating morado_ruta" do  %>
+      <i class="material-icons tooltipped" data-position="left" data-tooltip="Mi Perfil"">person</i>
+      <% end %>
     </li>
-    <li><%= link_to  services_path , class:"btn-floating fucsia_ruta"  do  %>
-    <i class="material-icons">insert_chart</i>
+    <li> <%= link_to destroy_user_session_path, method: :delete, class:" btn-floating fucsia_ruta" do  %>
+      <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Cerrar sesion" ">close</i>
     <% end %>
     </li>
     <li><%= link_to  services_path , class:"btn-floating morado_ruta"  do  %>
-    <i class="material-icons">mail_outline</i>
+    <i class="material-icons tooltipped" data-position="left" data-tooltip="Mis Servicios"">insert_chart</i>
+    <% end %>
+    </li>
+    <li><%= link_to  services_path , class:"btn-floating fucsia_ruta"  do  %>
+    <i class="material-icons tooltipped" data-position="left" data-tooltip="Mis Postulaciones"">mail_outline</i>
     <% end %>
     </li>
 

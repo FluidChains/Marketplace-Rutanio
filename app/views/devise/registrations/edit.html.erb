@@ -1,43 +1,207 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="container z-depth-2 ">
+    <div class="row">
+      <div class="col s12 m12 l12 valign-wrapper">
+        <div class="col s12 m4 l4 ">
+          <h2 class="fucsia_font">Informacion Personal</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptas officia magni laboriosam quaerat ipsum molestias possimus nihil unde mollitia, adipisci quibusdam autem distinctio consectetur voluptatum ullam facere, recusandae atque..
+          </p>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+          <div class="col s12 m8 l8">
+           <ul class="collapsible">
+               <li>
+                 <div class="collapsible-header"><i class="material-icons morado_font">contact_mail</i>Email</div>
+                 <div class="collapsible-body">
+                   <div class="input-field">
+                     <%= f.label :email %><br />
+                     <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
+                   </div>
+                 </div>
+               </li>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+               <li>
+                 <div class="collapsible-header"><i class="material-icons morado_font">assignment_ind</i>Nombres</div>
+                 <div class="collapsible-body">
+                   <div class="input-field">
+                     <%= f.label "Nombres" %><br />
+                     <%= f.text_field :last_name, autofocus: true, autocomplete: "Nombres" %>
+                   </div>
+                 </div>
+               </li>
+               <li>
+                 <div class="collapsible-header"><i class="material-icons morado_font">work</i>Profesión</div>
+                 <div class="collapsible-body">
+                   <div class="input-field">
+                     <%= f.label "Profesión" %><br />
+                     <%= f.text_field :skill, autofocus: true, autocomplete: "Profesión" %>
+                   </div>
+                 </div>
+               </li>
+               <li>
+                 <div class="collapsible-header"><i class="material-icons morado_font">g_translate</i>Lenguaje</div>
+                 <div class="collapsible-body">
+                   <div class="input-field">
+                     <%= f.label "Lenguaje" %><br />
+                     <%= f.text_field :lenguage, autofocus: true, autocomplete: "Lenguaje" %>
+                   </div>
+                 </div>
+               </li>
+
+
+
+            </ul>
+
+          </div>
+
+        </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col s12 m12 l12 valign-wrapper">
+        <div class="col s12 m4 l4 ">
+          <h2 class="morado_font">Informacion Publica</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptas officia magni laboriosam quaerat ipsum molestias possimus nihil unde mollitia, adipisci quibusdam autem distinctio consectetur voluptatum ullam facere, recusandae atque..
+          </p>
+
+        </div>
+          <div class="col s12 m8 l8">
+           <ul class="collapsible">
+               <li>
+                 <div class="collapsible-header"><i class="material-icons fucsia_font">email</i>Email Publico</div>
+                 <div class="collapsible-body">
+                   <div class="input-field">
+                     <%= f.label :mail %><br/>
+                     <%= f.text_field :mail, autofocus: true, autocomplete: "Apellido" %>
+                   </div>
+
+                 </div>
+               </li>
+
+               <li>
+                 <div class="collapsible-header"><i class="material-icons fucsia_font">business_center</i>Compañia</div>
+                 <div class="collapsible-body">
+                   <div class="input-field">
+                     <%= f.label :company %><br/>
+                     <%= f.text_field :company, autofocus: true, autocomplete: "Compañia" %>
+                   </div>
+                 </div>
+               </li>
+               <li>
+                 <div class="collapsible-header"><i class="material-icons fucsia_font">router</i>Pagina Web</div>
+                 <div class="collapsible-body">
+                   <div class="input-field">
+                     <%= f.label :web_site %><br/>
+                     <%= f.text_field :web_site, autofocus: true, autocomplete: "Compañia" %>
+                   </div>
+                 </div>
+               </li>
+               <li>
+                 <div class="collapsible-header"><i class="material-icons fucsia_font">insert_comment</i>Usuario Discord</div>
+                 <div class="collapsible-body">
+                   <div class="input-field">
+                     <%= f.label "Discord" %><br/>
+                     <%= f.text_field :discord_user, autofocus: true, autocomplete: "Discord" %>
+                   </div>
+                 </div>
+               </li>
+
+
+            </ul>
+
+          </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="col s12 m12 l12 valign-wrapper">
+        <div class="col s4 m4 l4 ">
+          <h2 class="morado_font">Seguridad</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. In voluptas officia magni laboriosam quaerat ipsum molestias possimus nihil unde mollitia, adipisci quibusdam autem distinctio consectetur voluptatum ullam facere, recusandae atque..
+          </p>
+
+        </div>
+          <div class="col s8 m8 l8">
+           <ul class="collapsible">
+               <li>
+                 <div class="collapsible-header"><i class="material-icons morado_font">security</i>Cambiar Contraseña</div>
+                 <div class="collapsible-body">
+                       <div class="input-field">
+                         <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                         <%= f.password_field :password, autocomplete: "new-password" %>
+                         <% if @minimum_password_length %>
+                           <br />
+                           <em><%= @minimum_password_length %> characters minimum</em>
+                         <% end %>
+                       </div>
+
+
+                 </div>
+               </li>
+
+               <li>
+                 <div class="collapsible-header"><i class="material-icons morado_font">verified_user</i>Confirmar Nueva Contraseña</div>
+                 <div class="collapsible-body">
+                   <div class="input-field">
+                     <%= f.label :password_confirmation %><br />
+                     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+
+                   </div>
+
+                 </div>
+               </li>
+               <li>
+                 <div class="collapsible-header"><i class="material-icons morado_font">cancel</i>Cancelar Cuenta Rutanio</div>
+                 <div class="collapsible-body">
+                   <div class="input-field">
+                     <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Estas seguro?" }, method: :delete ,class:"btn fucsia_ruta"%>
+
+                   </div>
+
+                 </div>
+               </li>
+
+
+
+            </ul>
+
+          </div>
+
+        </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <div class="input-field">
+          <%= f.label :current_password %> <i>(Necesitas ingresas tu contraseña actual para confirmar tus cambios)</i><br />
+          <%= f.password_field :current_password, autocomplete: "current-password" %>
+
+        </div>
+        <div class="center">
+          <div class="actions ">
+            <%= f.submit "Actualizar" ,class:"waves-effect waves-light btn-large fucsia_ruta " %>
+          </div>
+
+
+      </div>
+
+
+      </div>
+
+    </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+  </div>

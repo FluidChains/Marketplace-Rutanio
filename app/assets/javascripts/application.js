@@ -32,7 +32,9 @@
   $(document).ready(function(){
   $('.timepicker').timepicker();
 });
-       
+$(document).ready(function(){
+   $('.collapsible').collapsible();
+ });
 
   $(document).ready(function(){
      $('.datepicker').datepicker();
@@ -40,3 +42,7 @@
   $(document).ready(function(){
     $('.fixed-action-btn').floatingActionButton();
   });
+  $(document).ready(function(){
+  $('.tooltipped').tooltip();
+});
+     
