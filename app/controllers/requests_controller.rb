@@ -34,7 +34,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
       if @request.save
         RequestsMailer.formulariorequest(@request).deliver
-        format.html { redirect_to @request.service, notice: 'Request was successfully created.' }
+        format.html { redirect_to welcome_postulaciones_path, notice: 'Request was successfully created.' }
         format.json { render :show, status: :created, location: @request.service}
       else
         format.html { render :new }

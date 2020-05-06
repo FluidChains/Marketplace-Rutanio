@@ -6,10 +6,19 @@
 
         <% @requests.each do |request| %>
        <li class="collection-item avatar">
-         <span class="title"><%= request.user.email %></span>
-         <p><%= request.mensaje %>
+         <img src="/images/ruta.png" alt="" class="circulo">
+         <span class="title"><%= request.service.mail_servicio %></span>
+         <br>Nombre servicio:
+         <%= request.service.name %> <br>
+         <p>Mensaje enviado:<%= request.mensaje %>
          </p>
-        <h4 class=" secondary-content "></h4>
+        <h4 class=" secondary-content morado_font">
+          Fecha Postulacion:
+          <%= request.created_at.strftime("%d-%m-%Y ")  %>
+
+
+
+        </h4>
 
 
        </li>

@@ -13,9 +13,14 @@
         </div>
       <% end %>
 
+      <div class="input-field col s12">
+            <%= form.text_area :mensaje, id:"textarea2", class:"materialize-textarea" ,data_length:"900" %>
+
+            <label for="textarea2">Maximo 900 caracteres</label>
+      </div>
       <div class="field">
         <h2 class="fucsia_font">Mensaje</h2>
-        <%= form.text_area :mensaje %>
+
       </div>
 
       <div class="field">
