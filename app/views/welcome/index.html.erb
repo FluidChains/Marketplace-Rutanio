@@ -47,7 +47,7 @@
         <div class="card hoverable carta">
           <div class="card-content black-text">
             <span class="card-title "><%= service.name  %></span>
-            <p><%= service.information.truncate(150)  %> </p>
+            <p><%= service.information.truncate(80)  %> </p>
             <div class="container">
               <div class="row">
                 <i class="material-icons">update</i>
@@ -67,10 +67,11 @@
             </div>
           </div>
           <div class="card-action">
-          <% service.skills.each do |skill| %>
-          <div class="col s3 m3 l4 bage  ">
-            <span class="new badge morado_ruta"><%=  skill.name.truncate(12)%></span>
-          </div>
+            <% service.skills.each do |skill| %>
+              <div class="chip">
+                <%=  skill.name.truncate(12)%>
+              </div>
+
           <% end %>
 
           </div>
