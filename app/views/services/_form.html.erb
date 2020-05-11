@@ -18,7 +18,7 @@
     <div class="row">
     <div class="input-field col s12 m12 l12 center">
       <h2 class="morado_font">Titulo del servicio</h2>
-
+      <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="I am a tooltip">help_outline</i>
       <%= form.text_field :name %>
     </div>
 
@@ -26,8 +26,8 @@
 
 <div class="row center card">
 <h4 class="fucsia_font">Selecciona Categoria</h4>
-<br>
-<br>
+  <br>
+  <br>
   <% Category.all.each  do |category| %>
            <label class="col s3 m3 l3">
              <%= radio_button_tag "categories[]", category.id , id:"category_id"%>
@@ -47,64 +47,77 @@
         <br>
 
       </div>
+      <div>
+        <h3 class="morado_font">Precio de tu oferta/servicio</h3>
+           <p>A continuación selecciona el precio de tu servicio y/o producto en RUTAs.
+              Si requieres pago parcial o total en una moneda como dolares (USD) o tu moneda local,
+              especificarlo en "Otro medio de pago"
+           </p>
+      </div>
 
 
       <div class="input-field col s12 m6 l6">
+        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Cantidad de horas estimadas">help_outline</i>
         <%= form.label "Horas" %>
         <%= form.number_field :horas %>
         <br>
-        <p>Cantidad de horas estimadas </p>
+
       </div>
 
       <div class="input-field col s12 m6 l6">
+        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Las RUTAS son el token de la economía de Rutanio.">help_outline</i>
         <%= form.label "Cantidad de Rutas" %>
         <%= form.number_field :precio %>
         <br>
-        <p>RUTAs are the native currency of the Rutanio economy </p>
+
       </div>
       <div class="input-field col s12 m6 l6">
+        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Los Exos son la moneda nativa de la economía OpenExo.">help_outline</i>
         <%= form.label "Cantidad de Exos" %>
         <%= form.number_field :exos_amount %>
         <br>
-        <p>Exos are the native currency of the OpenExo economy </p>
+
       </div>
       <div class="input-field col s12 m6 l6">
+        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="  Si requieres pago parcial o total en una moneda como dolares (USD) o tu moneda local,puedes especificarlo ">help_outline</i>
         <%= form.label "Otro medio de pago" %>
         <%= form.text_field :currency_sugest %>
-        <br>
-        <p>Puedes sugerir otro metodo de intercambio </p>
+
       </div>
       <br>
       <div class="input-field col s12 m12 l12">
-        <%= form.label "lenguaje" %>
-        <%= form.text_field :lenguaje %>
+        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Especifica si deben comunicarce contigo en algun idioma en particular">help_outline</i>
+        <%= form.label "Idioma" %>
         <br>
-        <p>Debe ser en un lenguaje en particular</p>
+        <%= form.text_field :lenguaje %>
+
       </div>
 
 
-      <div class="col s12 m12 l12">
+      <div class="col s12 m6 l6">
 
          <div class="input-field inline col s12 m12 l12">
+           <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Email publico para que te contacten">help_outline</i>
            <%= form.text_field :mail_servicio ,id:"email_inline" ,class:"validate" ,type:"email"%>
            <label for="email_inline">Mail servicio</label>
-           <span class="helper-text" data-error="wrong" data-success="right">Email-Publico</span>
          </div>
        </div>
-      <div class="input-field col s12 m12 l12">
+      <div class="input-field col s12 m6 l6">
+        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Indicador + Numero de Whatsapp del servicio ">help_outline</i>
+          <%= form.label "No Whatsapp" %>
         <%= form.text_field :wpp %>
-        <br>
-        <p>Numero de Whatsapp publico </p>
+
       </div>
 
       <div class="input-field col s12 m12 l12">
+        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Link de pagina web">help_outline</i>
         <%= form.label "Link web" %>
         <%= form.text_field :web %>
-        <br>
-        <p>Link de pagina web del servicio</p>
+
       </div>
       <div class="input-field col s12 m12 l12">
         <p>Fecha de vencimiento</p>
+
         <%= form.date_field :valid_until%>
       </div>
 
@@ -112,6 +125,7 @@
 
               <ul class="collection with-header">
                 <li class="collection-header center">
+
                   <h4 class="fucsia_font">Selecciona Skills</h4>
                 </li>
                   <% Skill.all.each  do |skill| %>
@@ -140,10 +154,10 @@
 
 
       <div class="input-field col s12 m12 l12">
-        <%= form.label :aditional_info %>
+        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Restricciones que aplican a tu oferta (p.e: oferta para un país específico, para determinadas fechas, otras restricciones)">help_outline</i>
+        <%= form.label "Restricciones o Condiciones" %>
         <%= form.text_area :aditional_info %>
-        <br>
-        <p>Informacion adicional</p>
+
       </div>
       <div class="center">
         <div class="actions">

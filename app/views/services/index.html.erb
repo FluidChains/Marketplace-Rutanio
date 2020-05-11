@@ -8,10 +8,10 @@
       <table class="striped responsive-table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Precio</th>
-            <th>Valid until</th>
-            <th>Postulaciones</th>
+            <th>Titulo</th>
+            <th>Precio Rutas</th>
+            <th>Fecha de vencimiento</th>
+            <th>Cantidad de Respuestas </th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -23,18 +23,13 @@
               <td><%= service.precio %></td>
               <td><%= service.valid_until %></td>
               <td><%= service.requests.count %></td>
-              <td><%= link_to 'Show', service %></td>
-              <td><%= link_to 'Edit', edit_service_path(service) %></td>
-              <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Mirar', service %></td>
+              <td><%= link_to 'Editar', edit_service_path(service) %></td>
+              <td><%= link_to 'Eliminar', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-
-      <br>
-
-      <%= link_to 'New Service', new_service_path %>
-
 
     </div>
   </div>

@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
 
@@ -10,19 +9,20 @@
        <a class="waves-effect waves-light  btn modal-trigger white-text fucsia_ruta" href="#renderModal">Crea Nuevo</a>
        <% else %>
        <%= link_to "Crea Nuevo", new_user_session_path,  class:"waves-effect waves-light  btn modal-trigger white-text fucsia_ruta"  %>
-
        <% end %>
-
-
     </div>
      <br>
      <div class="container">
        <div class="row center">
          <div class="col s12 m12 l12">
            <ul class="listado_card center">
-             <li><%= link_to "Todos", root_path , class:"fucsia_font " %></li>
+             <li><%= link_to "Todos", root_path , class:"fucsia_font" %></li>
              <% @categories.each do |category| %>
-               <li><%= link_to category.nombre_categoria, category , class:"morado_font "%></li>
+              <% if category.id == 1 %>
+               <li><%= link_to category.nombre_categoria, category , class:"morado_font"%></li>
+               <% else %>
+               <li><%= link_to category.nombre_categoria, category , class:"fucsia_font"%></li>
+               <% end %>
              <% end %>
            </ul>
 
@@ -46,7 +46,16 @@
           <%= link_to service  do  %>
         <div class="card hoverable carta">
           <div class="card-content black-text">
-            <span class="card-title "><%= service.name  %></span>
+            <% if @category.id == 1 %>
+            <div class="fucsia_font">
+              <%= service.name  %>
+             </div>
+             <% else %>
+             <div class="morado_font">
+               <%= service.name %>
+             </div>
+             <% end %>
+                    <span class="fucsia_font"></span>
             <p><%= service.information.truncate(150)  %> </p>
             <div class="container">
               <div class="row">
@@ -69,12 +78,11 @@
           <div class="card-action">
             <div class="card-action">
               <% service.skills.each do |skill| %>
-                <div class="chip">
-                  <%=  skill.name.truncate(12)%>
-                </div>
-
+              <%  skill.color_tag %>
+            <div class="chip black-text" style=" background: <%=  skill.color_tag %> !important;" >
+              <%=  skill.name.truncate(20) %>
+            </div>
             <% end %>
-
             </div>
           </div>
           <br>

@@ -4,15 +4,16 @@
   <!-- Modal Trigger -->
   <div class="row">
 <a class="waves-effect waves-light btn morado_ruta modal-trigger" href="#modalAplicacion">Registros</a>
-<a class="waves-effect waves-light btn modal-trigger fucsia_ruta pulse" href="#cajaComentar">Aplicar</a>
+<a class="waves-effect waves-light btn modal-trigger fucsia_ruta pulse" href="#cajaComentar">Contactar</a>
 
   </div>
+
 
   <div class="row">
     <div class="col s4 m4 l4 left">
         <h2 class="fucsia_font"><%= @service.name %></h2>
         <ul>
-          <li>Lenguaje:  <%= @service.lenguaje %></li>
+          <li>Idioma:  <%= @service.lenguaje %></li>
           <li>Horas estimadas:  <%= @service.horas %></li>
         </ul>
     </div>
@@ -25,13 +26,15 @@
           <%= @service.information %>
       </div>
 
-    
+
   </div>
 
   <div class="row">
     <div class="col s12 m12 l12 center">
         <% @service.skills.each do |skill| %>
-          <div class="chip black-text">
+            <%  skill.color_tag %>
+          <div class="chip black-text" style=" background: <%=  skill.color_tag %> !important;" >
+
             <%=  skill.name.truncate(20) %>
           </div>
       <% end %>
@@ -70,7 +73,7 @@
     <div>
       <div class="col s12 m7 l7 ">
        <blockquote>
-        <h2 class="fucsia_font">Informacion de Adicional</h2>
+        <h2 class="fucsia_font">Restricciones o Condiciones</h2>
         <p>
             <%= @service.aditional_info %>
         </p>
