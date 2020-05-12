@@ -45,6 +45,10 @@ $(document).ready(function(){
   $(document).ready(function(){
   $('.tooltipped').tooltip();
 });
+$(document).ready(function(){
+  $('select').formSelect();
+});
+    
 
 $(document).ready(function(){
   $('.parallax').parallax();
@@ -54,4 +58,3 @@ $(document).ready(function(){
 $(document).ready(function() {
 $('input#input_text, textarea#textarea2').characterCounter();
 });
- 

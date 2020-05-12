@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+#migrar bases de datos de sqlite a psotgres
+gem 'taps', '~> 0.3.24'
 
 gem 'will_paginate', '~> 3.3'
 
@@ -78,7 +80,7 @@ group :test do
 end
 group :production do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'pg', '~> 1.1', '>= 1.1.4'  
+  gem 'pg', '~> 1.1', '>= 1.1.4'
 end
 
 
