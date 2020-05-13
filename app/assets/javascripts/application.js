@@ -14,6 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require activestorage
+//= require social-share-button
 //= require_tree .
 
 
@@ -48,7 +49,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   $('select').formSelect();
 });
-    
+
 
 $(document).ready(function(){
   $('.parallax').parallax();

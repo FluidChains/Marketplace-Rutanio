@@ -15,6 +15,7 @@
         <ul>
           <li>Idioma:  <%= @service.lenguaje %></li>
           <li>Horas estimadas:  <%= @service.horas %></li>
+          <li>Comparte: <%= social_share_button_tag(@service.name) %></li>
         </ul>
     </div>
     <div class="col s8 m8 l8 right">
@@ -128,7 +129,7 @@
 
           <% @service.requests.each do |request| %>
          <li class="collection-item avatar">
-           <span class="title"><%= request.user.email %></span>
+           <span class="title"><%= request.contacto_mail %></span>
            <p><%= request.mensaje %>
            </p>
           <h4 class=" secondary-content ">

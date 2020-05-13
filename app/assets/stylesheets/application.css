@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require social-share-button
  */
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
@@ -156,7 +157,7 @@ footer{
   margin-left: 15%;
 }
 .carta{
-  height: 390px !important;
+  height: 405px !important;
   border-radius: 10px !important;
 }
 .badge{

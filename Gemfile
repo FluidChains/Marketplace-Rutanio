@@ -42,6 +42,8 @@ gem 'aasm'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 
 gem "pry-rails"
+#compartir en Redes
+gem 'social-share-button', '~> 1.2', '>= 1.2.1'
 
 #materialize
 
@@ -81,7 +83,8 @@ group :test do
 end
 group :production do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'pg', '~> 1.1', '>= 1.1.4'
+  #*****----se elimina del vps
+#  gem 'pg', '~> 1.1', '>= 1.1.4'
 end
 
 

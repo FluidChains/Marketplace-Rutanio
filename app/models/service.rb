@@ -13,7 +13,7 @@ class Service < ApplicationRecord
   validate :valide_categories
   after_create :save_skills
   validate :valide_skills
-  validates :name, :information,  :precio, :valid_until,  :mail_servicio,  presence: true, length: {minimum: 1, too_short: "Minimo son %{count} caracteres." }
+  validates :name, :information,  :precio, :mail_servicio,  presence: true, length: {minimum: 1, too_short: "Minimo son %{count} caracteres." }
 
   def categories=(value)
     @categories = value

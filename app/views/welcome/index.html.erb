@@ -51,13 +51,13 @@
         <div class="card hoverable carta">
           <div class="card-content black-text">
             <div class="fucsia_font">
-              <%= service.name  %>
+              <%= service.name.truncate(15)  %>
              </div>
 
 
 
 
-            <p><%= service.information.truncate(80)  %> </p>
+            <p><%= service.information.truncate(50)  %> </p>
             <div class="container">
               <div class="row">
                 <i class="material-icons">update</i>
