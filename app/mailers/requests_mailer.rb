@@ -2,9 +2,12 @@ class RequestsMailer < ApplicationMailer
 
   def formulariorequest(contacto)
     @contacto = contacto.mensaje
-    @greeting = "Hola  #{contacto.contacto_mail}"
-    mail(to: contacto.contacto_mail,
-      subject: "Acabas de aplicar con exito")
+    @greeting = "Felicidades  #{contacto.contacto_mail} te postulaste con exito a la publicacion de #{contacto.service.mail_servicio}"
+
+      @recipients =  contacto.contacto_mail, contacto.service.mail_servicio
+      emails = @recipients
+      mail(:to => emails, :subject => "A replacement clerk has been requested")
+
 
   end
 

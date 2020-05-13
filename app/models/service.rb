@@ -5,7 +5,7 @@ class Service < ApplicationRecord
   has_many :has_categories, :dependent => :destroy
   has_many :categories, through: :has_categories, :dependent => :destroy
   has_many :has_skills
-  has_many :skills, through: :has_skills
+  has_many :skills, through: :has_skills, :dependent => :destroy
 
 
   has_many  :requests, :dependent => :destroy
