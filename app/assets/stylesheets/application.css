@@ -207,3 +207,8 @@ textarea {
 .circulo{
   width: 3%;
 }
+.social-share-button  .ssb-icon  {
+    background-size: 40px !important;
+    height: 40px !important;
+    width: 40px !important;  
+}

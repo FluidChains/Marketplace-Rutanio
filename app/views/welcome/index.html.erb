@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
 
-
     <div class="center">
       <h2>Mercado</h2>
        <p>Encuentra profesionales en diversas areas o postula tus servicios </p>
@@ -30,6 +29,18 @@
                <% end %>
              <% end %>
            </ul>
+           <br>
+           <div class="container">
+             <div class="row">
+               <div class="col s12 m12 l12 center">
+                 <%= form_tag welcome_search_path, :method => :get do %>
+                   <%= text_field_tag   class:" black-text  input-field inline", placeholder:"Buscar"%>
+                   <%= submit_tag 'Buscar' ,class:"btn morado_ruta"%>
+                 <% end %>
+               </div>
+
+             </div>
+           </div>
          </div>
 
        </div>
@@ -52,6 +63,9 @@
           <div class="card-content black-text">
             <div class="fucsia_font">
               <%= service.name.truncate(15)  %>
+             </div>
+             <div>
+               
              </div>
 
 

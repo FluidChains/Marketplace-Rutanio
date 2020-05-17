@@ -1,0 +1,113 @@
+<br><br>
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="center">
+        <h2>Mercado</h2>
+         <p>Encuentra profesionales en diversas areas o postula tus servicios </p>
+         <br>
+         <% if user_signed_in? %>
+         <a class="waves-effect waves-light  btn modal-trigger white-text fucsia_ruta" href="#renderModal">Crea Nuevo</a>
+         <% else %>
+         <%= link_to "Crea Nuevo", new_user_session_path,  class:"waves-effect waves-light  btn modal-trigger white-text fucsia_ruta"  %>
+
+         <% end %>
+
+
+      </div>
+
+    </div>
+    <div class="row center">
+      <div class="col s12 m12 l12">
+        <ul class="listado_card center">
+          <li><%= link_to "Todos", root_path , class:"fucsia_font" %></li>
+          <% @categories.each do |category| %>
+           <% if category.id == 1 %>
+            <li><%= link_to category.nombre_categoria, category , class:"morado_font"%></li>
+            <% else %>
+            <li><%= link_to category.nombre_categoria, category , class:"fucsia_font"%></li>
+            <% end %>
+          <% end %>
+
+        </ul>
+        <br>
+        <div class="container">
+          <div class="row">
+            <%= form_tag welcome_search_path, :method => :get do %>
+              <%= text_field_tag "find", nil , html: {require:true},  class:" black-text  input-field inline", placeholder:"Buscar - Enter"%>
+            <% end %>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    </div>
+
+
+<div class="row">
+
+  <% if !@services.empty? %>
+      <% @services.each do |service| %>
+      <div class="col s12 m6 l6">
+          <%= link_to service  do  %>
+        <div class="card hoverable carta">
+          <div class="card-content black-text">
+            <div class="fucsia_font">
+              <%= service.name.truncate(15)  %>
+             </div>
+            <p><%= service.information.truncate(50)  %> </p>
+            <div class="container">
+              <div class="row">
+                <i class="material-icons">update</i>
+                <%= service.valid_until.strftime("%d-%m-%Y ")  %>
+                <span>vencimiento</span>
+              </div>
+              <div class="row">
+                <a href="#"><img src="images/ruta.png" alt=""  class="iconos_market"> <%= number_with_delimiter(service.precio.round, :delimiter => ',') %></a>
+                <span>Rutas</span>
+              </div>
+              <% if !service.exos_amount.nil? %>
+              <div class="row">
+                <a href="#"><img src="images/exos.png" alt=""  class="iconos_market"> <%= number_with_delimiter(service.exos_amount.round, :delimiter => ',') %></a>
+                <span>Rutas</span>
+              </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="card-action">
+            <% service.skills.each do |skill| %>
+
+            <%  skill.color_tag %>
+          <div class="chip black-text" style=" background: <%=  skill.color_tag %> !important;" >
+
+            <%=  skill.name.truncate(20) %>
+          </div>
+
+          <% end %>
+
+          </div>
+          <br>
+        </div>
+             <% end %>
+      </div>
+
+     <% end %>
+
+  <% else %>
+    <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="text-center">No existen coincidencias</h1>
+          </div>
+        </div>
+    </div>
+
+  <% end %>
+</div>

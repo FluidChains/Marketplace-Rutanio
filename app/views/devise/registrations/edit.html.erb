@@ -163,16 +163,6 @@
 
                  </div>
                </li>
-               <li>
-                 <div class="collapsible-header"><i class="material-icons morado_font">cancel</i>Cancelar Cuenta Rutanio</div>
-                 <div class="collapsible-body">
-                   <div class="input-field">
-                     <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Estas seguro?" }, method: :delete ,class:"btn fucsia_ruta"%>
-
-                   </div>
-
-                 </div>
-               </li>
 
 
 
@@ -187,8 +177,9 @@
         <div class="input-field">
           <%= f.label :current_password %> <i>(Necesitas ingresas tu contraseña actual para confirmar tus cambios)</i><br />
           <%= f.password_field :current_password, autocomplete: "current-password" %>
-
         </div>
+
+
         <div class="center">
           <div class="actions ">
             <%= f.submit "Actualizar" ,class:"waves-effect waves-light btn-large fucsia_ruta white-text" %>
@@ -201,6 +192,7 @@
       </div>
 
     </div>
-<% end %>
 
+<% end %>
+<%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Estas seguro?" }, method: :delete ,class:"btn fucsia_ruta"%>
   </div>
