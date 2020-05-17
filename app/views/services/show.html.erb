@@ -14,8 +14,8 @@
         <h2 class="fucsia_font"><%= @service.name %></h2>
         <ul>
           <li>Idioma:  <%= @service.lenguaje %></li>
-          <li>Horas estimadas:  <%= @service.horas %></li>          
-          <li>Comparte: <%= social_share_button_tag(@service, :url => service_url(@service), desc: @service)%></li>
+          <li>Horas estimadas:  <%= @service.horas %></li>
+          <li>Comparte: <%= social_share_button_tag(@service.name, :url => service_url(@service), desc: @service.name)%></li>
 
         </ul>
     </div>
