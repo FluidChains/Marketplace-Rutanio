@@ -1,35 +1,60 @@
 
     <nav>
-
-      <div class="row">
-        <div class="nav-wrapper">
-
-        <div class="col s4 m4 l2">
-          <img src="/images/logo.png" class="logo">
-        </div>
-
-
-    <div class="col s8 m8 l10 ">
-      <ul class="right hide-on-med-and-down">
-        <li><a class="menu_inicio" href="https://www.rutanio.com/">Home</a></li>
-        <li>
-          <a class="menu_inicio" href="https://www.rutanio.com/herramientas">Herramientas</a>
-        </li>
-        <li><%= link_to "Marketplace", root_path ,class:"menu_inicio"%></li>
-        <li><a class="menu_inicio" href="https://www.rutanio.com/novedades">Novedades</a></li>
-        <li><a class="menu_inicio" href="https://www.rutanio.com/nosotros">Nosotros</a></li>
-
-      </ul>
-      <div class="right">
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
+      <div class="container">
+        <div class="row">
+          <div class="nav-wrapper valign-wrapper">
+          <div class="col s5 m4 l2">
+            <img src="/images/logo.png" class="logo">
           </div>
 
 
+          <div class="col s7 m8 l10 ">
+            <ul class="navegacion hide-on-med-and-down valign-wrapper">
+                <li><a class="menu_inicio " href="https://www.rutanio.com/">Home</a></li>
+                <li>
+                  <div class="input-field col s12 valign-wrapper">
+                    <!-- Dropdown Trigger -->
+                    <a class='dropdown-trigger menu_inicio valign-wrapper' href='#' data-target='dropdown1'>Herramientas <i class="material-icons ">arrow_drop_down</i></a>
+                      <!-- Dropdown Structure -->
+                      <ul id='dropdown1' class='dropdown-content'>
+                        <li><a  value="1" target="_blank" href="https://www.rutanio.com/herramientas">Herramientas</a></li>
+                        <li><a target="_blank" href="https://www.rutanio.com/faq">Preguntas</a></li>
+                      </ul>
+
+                  </div>
+                </li>
+                <li><%= link_to "Mercado", root_path ,class:"menu_inicio"%></li>
+                <li><a class="menu_inicio" href="https://www.rutanio.com/novedades">Novedades</a></li>
+
+                <li>
+                  <div class="input-field col s12 valign-wrapper">
+                    <!-- Dropdown Trigger -->
+                    <a class='dropdown-trigger menu_inicio valign-wrapper' href='#' data-target='dropdown2'>Nosotros <i class="material-icons ">arrow_drop_down</i></a>
+                      <!-- Dropdown Structure -->
+                      <ul id='dropdown2' class='dropdown-content'>
+                        <li><a  value="1" target="_blank" href="https://www.rutanio.com/nosotros">Nosotros</a></li>
+                        <li><a target="_blank" href="https://www.rutanio.com/alianzas">Alianzas</a></li>
+                        <li><a target="_blank" href="https://www.rutanio.com/embajadores">Embajadores</a></li>
+                        <li><a target="_blank" href="https://www.rutanio.com/nuestro-equipo">Equipo</a></li>
+                      </ul>
+
+                  </div>
+                </li>
+
+            </ul>
+              <div class="right">
+                  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
+              </div>
+
+            </div>
+
+
+          </div>
         </div>
 
 
-        </div>
       </div>
+
 
 
     </nav>
@@ -46,6 +71,19 @@
 
 
 <div class="fixed-action-btn  valign-wrapper">
+  <% if user_signed_in? %>
+
+  <% else %>
+  <div class="midiv">
+      <h6 class="morado_font ">Registrate</h6>
+  </div>
+  <div class="midiv2" style="display:none;">
+      <h6 class="morado_font saludo">Registrate</h6>
+  </div>
+
+  <% end %>
+
+  <br>
   <a class="btn-floating btn-large fucsia_ruta">
     <img src="/images/rblanco.png" class="logo_c">
 
@@ -78,11 +116,12 @@
 
     <% else %>
     <li> <%= link_to new_user_session_path, class:" btn-floating morado_ruta" do  %>
-      <i class="material-icons">person</i>
+      <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Iniciar sesión">person</i>
       <% end %>
     </li>
     <% end %>
 
 
   </ul>
+
 </div>

@@ -27,20 +27,23 @@
 }
 .fucsia_font{
   color: #ff4664 !important;
-  font-size: 2.2em;
+  font-size: 1.9em;
+
 }
 .morado_ruta{
   background: #331138 !important;
 }
 .morado_font{
   color: #331138 !important;
-  font-size: 2em;
+  font-size: 1.9em;
+
 }
 
 
 
-h1,h2,h3{
+h1,h2,h3,h4{
   font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
 }
 body{
   font-family: 'Work Sans', sans-serif;
@@ -53,9 +56,11 @@ nav{
 
 .menu_inicio{
 color: #222222 ;
+display: inline-flex;
 }
 .menu_inicio:hover{
 color: #ff4863 !important;
+background: none;
 }
 
 .logo{
@@ -210,5 +215,35 @@ textarea {
 .social-share-button  .ssb-icon  {
     background-size: 40px !important;
     height: 40px !important;
-    width: 40px !important;  
+    width: 40px !important;
+}
+.fontX{
+  font-family: 'Quantico', sans-serif;
+}
+.parrafos_r{
+  font-size: 1.5em;
+  font-family: 'DM Sans', sans-serif;
+}
+.tituloMercado{
+  display: inline-flex;
+}
+.beta{
+  color: #ff4663 !important;
+    margin-left: 5%;
+}
+.buscador{
+  margin-top: 5%;
+}
+input[type=text]:not(.browser-default),
+ textarea.materialize-textarea {
+    border: 1px solid #9e9e9e !important;
+    border-radius: 10px !important;
+  }
+.navegacion{
+  margin-left: 20% !important;
+}
+
+
+.dropdown-content li>a {
+    color: #ff4664 !important;
 }

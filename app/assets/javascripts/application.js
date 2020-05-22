@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require activestorage
 //= require social-share-button
+//= require init
 //= require_tree .
 
 
@@ -46,16 +47,65 @@ $(document).ready(function(){
   $(document).ready(function(){
   $('.tooltipped').tooltip();
 });
-$(document).ready(function(){
-  $('select').formSelect();
-});
 
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
 
 $(document).ready(function(){
   $('.parallax').parallax();
 });
+$(document).ready(function(){
+  $('.dropdown-trigger').dropdown();
+});
+
+$(document).ready(function(){
+$('.chips').chips();
+$('.chips-initial').chips({
+  data: [{
+    tag: 'Apple',
+  }, {
+    tag: 'Microsoft',
+  }, {
+    tag: 'Google',
+  }],
+});
+$('.chips-placeholder').chips({
+  placeholder: 'Enter a tag',
+  secondaryPlaceholder: '+Tag',
+});
+$('.chips-autocomplete').chips({
+  autocompleteOptions: {
+    data: {
+      'Apple': null,
+      'Microsoft': null,
+      'Google': null
+    },
+    limit: Infinity,
+    minLength: 1
+  }
+});
+
+});
+
+
 
 
 $(document).ready(function() {
 $('input#input_text, textarea#textarea2').characterCounter();
+});
+
+$(document).ready(function() {
+    setTimeout(function() {
+		// Declaramos la capa mediante una clase para ocultarlo
+        $(".midiv").fadeOut(1500);
+    },4000);
+});
+
+$(document).ready(function() {
+	setTimeout(function() {
+		// Declaramos la capa  mediante una clase para ocultarlo
+        $(".midiv2").fadeIn(1500);
+		// Transcurridos 5 segundos aparecera la capa midiv2
+  },7000);
 });
