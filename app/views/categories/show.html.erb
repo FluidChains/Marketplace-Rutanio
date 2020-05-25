@@ -1,22 +1,26 @@
 <br><br><br><br>
 <div class="container">
   <div class="row">
-        <div class="center">
-          <div class="tituloMercado">
-            <h2>Mercado</h2>
-              <h3 class="beta ">Beta</h3>
-          </div>
-           <p class="parrafos_r"> <%= @category.description %> </p>
-           <br>
-           <% if user_signed_in? %>
-               <a class="waves-effect waves-light  btn modal-trigger white-text fucsia_ruta" href="#renderModal">Crea Nuevo <i class="material-icons right">add_circle_outline</i></a>
-               <% else %>
-               <%= link_to  new_user_session_path,  class:"waves-effect waves-light  btn modal-trigger white-text fucsia_ruta"  do %>
-                  Crear nuevo
-                 <i class="material-icons right">add_circle_outline</i>
-               <% end %>
+    <div class="center">
+
+      <div class="tituloMercado">
+        <h2>Mercado</h2>
+          <h4 class="beta ">beta</h4>
+      </div>
+       <p class="parrafos_r">Encuentra profesionales en diversas areas o postula tus servicios </p>
+       <br>
+       <% if user_signed_in? %>
+           <a class="waves-effect waves-light  btn modal-trigger white-text fucsia_ruta" href="#renderModal">Crea Nuevo <i class="material-icons right">add_circle_outline</i></a>
+           <% else %>
+           <%= link_to  new_user_session_path,  class:"waves-effect waves-light  btn modal-trigger white-text fucsia_ruta"  do %>
+              Crear nuevo
+             <i class="material-icons right">add_circle_outline</i>
            <% end %>
-        </div>
+
+       <% end %>
+
+
+    </div>
      <br>
      <div class="container">
        <div class="row center">
