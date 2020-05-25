@@ -153,7 +153,7 @@
       <ul class="collection">
           <% @service.requests.each do |request| %>
          <li class="collection-item avatar">
-           <span class="title"><%= request.contacto_mail %></span>
+           <span class="title"><%= request.user.email %></span>
            <p><%= request.mensaje %>
            </p>
           <h4 class=" secondary-content ">
@@ -173,6 +173,32 @@
     </div>
   </div>
   <br>
+  <div class=" col s12 m12 l12">
+
+   <br>
+
+              <!-- Modal Structure -->
+
+              <div id="cajaComentar" class="modal">
+
+                <div class="modal-content center">
+                 <%= render "requests/form"%>
+
+                </div>
+
+                <div class="modal-footer">
+
+                  <a href="#!" class="modal-close waves-effect waves-green btn-flat ">Salir</a>
+
+                </div>
+
+              </div>
+
+
+
+
+</div>
+
 
         <!-- Modal Trigger -->
       <div class="row center">
@@ -181,11 +207,11 @@
 
       <div class="row comparte valign-wrapper ">
         <h2 class="morado_font">Comparte: </h2>
-        <%= social_share_button_tag(@service, :url => service_url(@service), desc: @service)%>
+         <%= social_share_button_tag(@service.name, :url => service_url(@service), desc: @service.name)%>
       </div>
       <br>
 
-  
+
 
 
 
