@@ -7,7 +7,11 @@
         <h2>Mercado</h2>
           <h4 class="beta ">beta</h4>
       </div>
-       <p class="parrafos_r">Encuentra profesionales en diversas areas o postula tus servicios </p>
+      <br>
+      <p class="parrafos_r"> <%= @category.description %> </p>
+     <br>
+
+
        <br>
        <% if user_signed_in? %>
            <a class="waves-effect waves-light  btn modal-trigger white-text fucsia_ruta" href="#renderModal">Crea Nuevo <i class="material-icons right">add_circle_outline</i></a>
