@@ -1,41 +1,22 @@
+<br><br>
 
 <div class="container z-depth-2">
-
-  <!-- Modal Trigger -->
   <div class="row">
-<a class="waves-effect waves-light btn morado_ruta modal-trigger" href="#modalAplicacion">Respuestas</a>
-<a class="waves-effect waves-light btn modal-trigger fucsia_ruta pulse" href="#cajaComentar">Contactar</a>
-
-  </div>
-
-
-  <div class="row">
-    <div class="col s4 m4 l4 left">
-        <h2 class="fucsia_font"><%= @service.name %></h2>
-        <ul>
-          <li>Idioma:  <%= @service.lenguaje %></li>
-          <li>Horas estimadas:  <%= @service.horas %></li>
-          <li>Comparte: <%= social_share_button_tag(@service.name, :url => service_url(@service), desc: @service.name)%></li>
-
-        </ul>
+    <div class="col s12 m6 l6 left">
+        <h3 class="fucsia_font"><%= @service.name %></h3>
     </div>
-    <div class="col s8 m8 l8 right">
-      <img src="/images/cel.jpg" alt=""  class="cel_show">
+    <div class="col s12 m6 l6 right">
+      <h2 class="morado_font">Información</h2>
+      <%= @service.information %>
     </div>
-
-      <div class="col s12 m12 l12 center">
-          <h2 class="morado_font">Informacion</h2>
-          <%= @service.information %>
-      </div>
-
 
   </div>
 
   <div class="row">
-    <div class="col s12 m12 l12 center">
+    <div class="col s12 m12 l12 left">
         <% @service.skills.each do |skill| %>
             <%  skill.color_tag %>
-          <div class="chip black-text" style=" background: <%=  skill.color_tag %> !important;" >
+          <div class="chip white-text" style=" background: <%=  skill.color_tag %> !important;" >
 
             <%=  skill.name.truncate(20) %>
           </div>
@@ -44,50 +25,61 @@
 
     </div>
   </div>
+  <div class="row ">
+    <div class="col s12 m6 l6">
+    <div class="left">
+      <ul class="imagenes_carta">
+        <li class="morado_font">
+          <% if !@service.valid_until.nil? %>
+              <i class="material-icons">update</i>
+              <%= @service.valid_until.strftime("%d-%b-%Y")  %>
+              <span>vencimiento</span>
+          <% end %>
+        </li>
+        <li class="fucsia_font">
+           <% if !@service.precio.nil? %>
+          <img src="/images/ruta.png" alt=""  class="iconos_market">
+               <%= number_with_delimiter(@service.precio.round, :delimiter => ',') %>
+               RUTA
 
-  <div class="col s12 m12 l12 center">
-    <i class="material-icons">update</i>
-    <%= @service.valid_until.strftime("%d-%m-%Y ")  %>
-    <span>vencimiento</span>
+           <% end %>
+        </li>
+        <li class="morado_font">
+           <% if !@service.exos_amount.nil? %>
+           <img src="/images/exos.png" alt=""  class="iconos_market"> <%= number_with_delimiter(@service.exos_amount.round , :delimiter => ',')%>
+              EXO
+           <% end %>
+        </li>
+      </ul>
+
+      <br>
+
+        <br>
+    </div>
+
   </div>
-  <br>
 
+  <div class="col s12 m6 l6 ">
+   <blockquote>
+    <h2 class="fucsia_font">Restricciones o Condiciones</h2>
+    <p>
+        <%= @service.aditional_info %>
+    </p>
+   </blockquote>
 
-<div class="row">
-  <div class="col s12 m12 l12 center">
-    <img src="/images/ruta.png" alt=""  class="iconos_market"> <%= number_with_delimiter(@service.precio.round, :delimiter => ',') %>
-    <span>Rutas</span> -
-    <% if !@service.exos_amount.nil? %>
-    <img src="/images/exos.png" alt=""  class="iconos_market"> <%= number_with_delimiter(@service.exos_amount.round, :delimiter => ',') %>
-    <span>Exos</span>
-    <% end %> -
-    <% if !@service.currency_sugest.nil? %>
-     <%= @service.currency_sugest %>
-    <span>Otro</span>
-    <% end %>
+  </div>
 
 
   </div>
-</div>
 
 
   <div class="row ">
-    <div>
-      <div class="col s12 m7 l7 ">
-       <blockquote>
-        <h2 class="fucsia_font">Restricciones o Condiciones</h2>
-        <p>
-            <%= @service.aditional_info %>
-        </p>
-       </blockquote>
 
-      </div>
-
-    <div class="col s12 m5 l5">
-      <h2 class="morado_font center">Informacion de Contacto</h2>
+    <div class="col s12 m6 l6">
+      <h2 class="morado_font center">Información de Contacto</h2>
      <ul class="collapsible">
          <li>
-           <div class="collapsible-header"><i class="material-icons morado_font">contact_mail</i>Email</div>
+           <div class="collapsible-header"><i class="material-icons morado_font">contact_mail</i>Email - <%= @service.mail_servicio %></div>
            <div class="collapsible-body">
              <div class="input-field">
                <%= @service.mail_servicio %>
@@ -98,7 +90,7 @@
 
 
          <li>
-           <div class="collapsible-header"><i class="material-icons morado_font">phone</i>Whatsapp</div>
+           <div class="collapsible-header"><i class="material-icons morado_font">phone</i>Whatsapp - <%= @service.wpp %></div>
            <div class="collapsible-body">
              <div class="input-field">
                 <%= @service.wpp %>
@@ -106,7 +98,7 @@
            </div>
          </li>
          <li>
-           <div class="collapsible-header"><i class="material-icons morado_font">router</i>Sitio Web</div>
+           <div class="collapsible-header"><i class="material-icons morado_font">router</i>Sitio Web - <%= @service.web %></div>
            <div class="collapsible-body">
              <div class="input-field">
                   <%= @service.web %>
@@ -119,15 +111,39 @@
       </ul>
 
     </div>
-  </div>
+    <div class="col s12 m6 l6 ">
+        <h2 class="morado_font center">Respuestas a este Servicio</h2>
+      <table class="striped highlight centered responsive-table tableta" >
+        <thead>
+          <tr>
+            <th>Contacto mail</th>
+
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <% @service.requests.paginate(page: params[:page], per_page: 3).each do |request| %>
+            <tr>
+              <td><%= request.contacto_mail %></td>
+              <td>
+                <% if user_signed_in? && current_user == request.user %>
+                <td><%= link_to 'Eliminar', [request.service, request], method: :delete , class:"btn btn-outline-danger morado_ruta", data: { confirm: 'Estas seguro que deseas eliminar?' } %>
+                <% end %>
+              </td>
+
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
 </div>
 
   <!-- Modal Structure -->
   <div id="modalAplicacion" class="modal bottom-sheet">
     <div class="modal-content">
       <ul class="collection">
-
-
           <% @service.requests.each do |request| %>
          <li class="collection-item avatar">
            <span class="title"><%= request.contacto_mail %></span>
@@ -168,6 +184,12 @@
 
 
       </div>
+      <!-- Modal Trigger -->
+      <div class="row center">
+        <a class="waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse" href="#cajaComentar">Contactar</a>
+      </div>
+      <br>
+
 
 
 

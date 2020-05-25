@@ -22,13 +22,17 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 .fucsia_ruta{
-  background: #ff4664 !important;
+  background: #ff4863 !important;
 
 }
 .fucsia_font{
-  color: #ff4664 !important;
+  color: #ff4863!important;
   font-size: 1.9em;
 
+}
+.ddd2{
+  color: #ff4863!important;
+  font-size: 1.9em !important;
 }
 .morado_ruta{
   background: #331138 !important;
@@ -47,6 +51,7 @@ h1,h2,h3,h4{
 }
 body{
   font-family: 'Work Sans', sans-serif;
+  overflow-x: hidden;
 }
 nav{
   background: none !important;
@@ -64,19 +69,20 @@ background: none;
 }
 
 .logo{
-  margin: 2%;
-  width: 200px;
+  margin-top: 10%;
+  margin-left:  -60%;
+  width: 190px;
 }
 .card{
   height: 100% !important;
   overflow: hidden;
 }
 .card-title{
-  color: #ff4664 !important;
+  color: #ff4863!important;
 }
 
 .card-action a:hover{
-  color: #ff4664 !important;
+  color: #ff4863!important;
 }
 .card-content {
   height: 270px !important;
@@ -86,7 +92,7 @@ background: none;
   color: #331138 !important;
 }
 .card-content a:hover{
-  color: #ff4664 !important;
+  color: #ff4863!important;
 }
 .iconos_market{
   height:  25px;
@@ -133,11 +139,15 @@ background: none;
   color: #ff4664;
  }
  .logo_pie{
-   width: 54px;
+   width: 100%;
+ }
+ .logo_pie1{
+   margin-top: 10px;
+   width: 40% !important
  }
 footer{
   position: absolute;
-  margin-top: 15%;
+  margin-top: 2%;
   width: 100%;
 
 }
@@ -191,19 +201,22 @@ textarea {
 
 }
 [type="checkbox"]:checked+span:not(.lever):before {
-    border-right: 2px solid #ff4664 !important;
-    border-bottom: 2px solid #ff4664 !important;
+    border-right: 2px solid #ff4863!important;
+    border-bottom: 2px solid #ff4863!important;
 
 }
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
-    background-color: #ff4664 !important;
+    background-color: #ff4863!important;
 }
 [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
     border: 2px solid #d3a4ff !important;
 }
 .fondo-ruta{
-  width: 100%;
-
+  width: 600px !important;
+  height:  600px !important;
+}
+.fondo-ruta2{
+  width: 90%;
 }
 .cel_show{
   float: right;
@@ -243,7 +256,64 @@ input[type=text]:not(.browser-default),
   margin-left: 20% !important;
 }
 
-
 .dropdown-content li>a {
-    color: #ff4664 !important;
+    color: #ff4863!important;
+}
+.titulo_card{
+  color: #ff4863!important;
+  font-size: 1.2em;
+}
+.titulo_card2{
+  color: #331138 !important;
+  font-size: 1.2em;
+
+}
+.imagenes_carta{
+  display: inline-grid;
+}
+.imagenes_carta li{
+  margin-top: 5px;
+  margin-left: 10px;
+}
+.skills_list{
+  display: inline-flex;
+  max-width: 100%;
+}
+nav ul a{
+  font-size: 14px !important;
+}
+.ssb-whatsapp_web{
+display: inline-block !important;
+
+}
+.ssb-whatsapp_app{
+    display: none !important;
+
+}
+blockquote{
+  border-left: 5px solid #ff4863 !important;
+}
+.segunda_sesion ul li a{
+  text-decoration: none !important;
+  border-bottom: 1px solid white;
+  color: white !important;
+
+}
+.tableta{
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width:700px) {
+  .ssb-whatsapp_web{
+        display: none !important;
+  }
+  .ssb-whatsapp_app{
+      display: inline-block !important;
+
+  }
+
+
+
+
 }
