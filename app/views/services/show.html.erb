@@ -50,6 +50,13 @@
               EXO
            <% end %>
         </li>
+
+        <li class="morado_font">
+           <% if !@service.exos_amount.nil? %>
+            Horas estimadas:  <%= @service.horas %>
+          <% end %>
+        </li>
+
       </ul>
 
       <br>
@@ -165,29 +172,24 @@
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
   </div>
+  <br>
 
-
-
-
-      <div class=" col s12 m12 l12">
-         <br>
-                    <!-- Modal Structure -->
-                    <div id="cajaComentar" class="modal">
-                      <div class="modal-content center">
-                       <%= render "requests/form"%>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat ">Salir</a>
-                      </div>
-                    </div>
-
-
-
-      </div>
-      <!-- Modal Trigger -->
+        <!-- Modal Trigger -->
       <div class="row center">
         <a class="waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse" href="#cajaComentar">Contactar</a>
       </div>
+
+      <div class="row comparte valign-wrapper ">
+        <h2 class="morado_font">Comparte: </h2>
+        <%= social_share_button_tag(@service, :url => service_url(@service), desc: @service)%>
+      </div>
+      <br>
+
+  
+
+
+
+
       <br>
 
 
