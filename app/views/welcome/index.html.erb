@@ -82,8 +82,9 @@
                    <li>
                      <% if !service.valid_until.nil? %>
                          <i class="material-icons">update</i>
+                         <span>vencimiento</span>:
                          <%= service.valid_until.strftime("%d-%b-%Y")  %>
-                         <span>vencimiento</span>
+
                      <% end %>
                    </li>
                    <li>
