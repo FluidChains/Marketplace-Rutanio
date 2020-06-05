@@ -1,13 +1,20 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:destroy, :create, :new,  :update, :edit]
+  before_action :authenticate_admin!, only: [:destroy, :create, :new,  :update,:index, :edit]
 
 
   # GET /categories
   # GET /categories.json
-  def index
-    @categories = Category.all
-  end
+
+    def index
+      @categories = Category.paginate(:page => params[:page], :per_page => 10)
+      if user_signed_in? && current_user.is_admin? && !params.has_key?(:normal)
+      @categories = Category.paginate(:page => params[:page], :per_page => 10)
+        render  :index
+      end
+    end
+
+
 
   # GET /categories/1
   # GET /categories/1.json

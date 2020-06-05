@@ -66,80 +66,91 @@
   </div>
   <br>
 
-  <div class="row">
-    <% @services.each do |service| %>
-      <div class="col s12 m6 l4">
-          <%= link_to service  do  %>
-        <div class="card hoverable carta">
-          <div class="card-content black-text">
-            <% if @category.id == 2 %>
-            <div class="titulo_card">
-              <%= service.name.truncate(60)  %>
-             </div>
-             <% else %>
-             <div class="titulo_card2">
-               <%= service.name.truncate(60)  %>
-             </div>
-             <% end %>
-             <div class="left">
-               <p class="black-text"><%= service.information.truncate(50)  %> </p>
-             </div>
-             <br>
-             <div class="row ">
-               <div class="left">
-                 <ul class="imagenes_carta">
-                   <li>
-                     <% if !service.valid_until.nil? %>
-                         <i class="material-icons">update</i>
-                         <%= service.valid_until.strftime("%d-%b-%Y")  %>
-                         <span>vencimiento</span>
-                     <% end %>
-                   </li>
-                   <li>
-                      <% if !service.precio.nil? %>
-                       <a href="#"><img src="/images/ruta.png" alt=""  class="iconos_market">
-                          <%= number_with_delimiter(service.precio.round, :delimiter => ',') %>
-                          RUTA
-                        </a>
-                      <% end %>
-                   </li>
-                   <li>
-                      <% if !service.exos_amount.nil? %>
-                        <a href="#"><img src="/images/exos.png" alt=""  class="iconos_market"> <%= number_with_delimiter(service.exos_amount.round, :delimiter => ',') %></a>
-                        <span>EXO</span>
-                      <% end %>
-                   </li>
-                 </ul>
-
+    <div class="row">
+      <% @services.each do |service| %>
+        <div class="col s12 m6 l4">
+            <%= link_to service  do  %>
+          <div class="card hoverable carta">
+            <div class="card-content">
+              <div class="titulo_card">
+                <h2><% service.category_ids.to_s  %></h2>
+                <% if service.category_ids == [1] %>
+                <span class="left chip etiqueta2">Que necesito</span>
+                <br>
+                <div class="titulo_card2">
+                  <%= service.name.truncate(60)  %>
+                 </div>
+                 <% else %>
+                 <span class="left chip etiqueta">Que ofrezco</span>
                  <br>
+                 <div class="titulo_card ">
+                   <%= service.name.truncate(60)  %>
+                 </div>
+                 <% end %>
+
+               </div>
+               <div class="left">
+                 <p class="black-text"><%= service.information.truncate(50)  %> </p>
+               </div>
+               <br>
+               <div class="row ">
+                 <div class="left">
+                   <ul class="imagenes_carta">
+                     <li>
+                       <% if !service.valid_until.nil? %>
+                           <i class="material-icons">update</i>
+                           <span>vencimiento</span>:
+                           <%= service.valid_until.strftime("%d-%b-%Y")  %>
+
+                       <% end %>
+                     </li>
+                     <li>
+                        <% if !service.precio.nil? %>
+                         <a href="#"><img src="/images/ruta.png" alt=""  class="iconos_market">
+                            <%= number_with_delimiter(service.precio.round, :delimiter => ',') %>
+                            RUTA
+                          </a>
+                        <% end %>
+                     </li>
+                     <li>
+                        <% if !service.exos_amount.nil? %>
+                          <a href="#"><img src="/images/exos.png" alt=""  class="iconos_market"> <%= number_with_delimiter(service.exos_amount.round, :delimiter => ',') %></a>
+                          <span>EXO</span>
+                        <% end %>
+                     </li>
+                   </ul>
 
                    <br>
+
+                     <br>
+                 </div>
+
                </div>
+            </div>
+            <div class="card-action">
+              <% service.skills.each do |skill| %>
+              <%  skill.color_tag %>
+            <div class="chip white-text chips_texto" style=" background: <%=  skill.color_tag %> !important;" >
 
-             </div>
+              <%=  skill.name.truncate(20) %>
+            </div>
+
+            <% end %>
+
+            </div>
+
+
 
           </div>
-          <div class="card-action">
-            <% service.skills.each do |skill| %>
-            <%  skill.color_tag %>
-          <div class="chip white-text" style=" background: <%=  skill.color_tag %> !important;" >
-
-            <%=  skill.name.truncate(20) %>
-          </div>
-
-          <% end %>
-
-          </div>
-          <br>
+        <% end %>
         </div>
-             <% end %>
-      </div>
 
 
-    <% end %>
+      <% end %>
 
 
-  </div>
+    </div>
+
 
 
 

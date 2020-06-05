@@ -80,15 +80,13 @@ background: none;
 .card-title{
   color: #ff4863!important;
 }
-
 .card-action a:hover{
   color: #ff4863!important;
 }
 .card-content {
-  height: 270px !important;
+  height: 320px !important;
 }
 .card-content a{
-
   color: #331138 !important;
 }
 .card-content a:hover{
@@ -172,7 +170,7 @@ footer{
   margin-left: 15%;
 }
 .carta{
-  height: 405px !important;
+  height: 420px !important;
   border-radius: 10px !important;
 }
 .badge{
@@ -261,11 +259,11 @@ input[type=text]:not(.browser-default),
 }
 .titulo_card{
   color: #ff4863!important;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 .titulo_card2{
   color: #331138 !important;
-  font-size: 1.2em;
+  font-size: 1.1em;
 
 }
 .imagenes_carta{
@@ -306,6 +304,23 @@ blockquote{
 .comparte{
   display: inline-flex;
   margin-left: 10px !important;
+}
+.midiv{
+  margin-right: 2%;
+}
+.etiqueta{
+  margin-top: -10%;
+  background: #f54864 !important;
+  color: white !important;
+}
+.etiqueta2{
+  margin-top: -10%;
+  background: #331038 !important;
+  color: white !important;
+}
+
+.chips_texto{
+  font-size: 0.7em !important;
 }
 
 @media (max-width:700px) {

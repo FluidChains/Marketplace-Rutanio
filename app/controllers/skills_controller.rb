@@ -1,10 +1,15 @@
 class SkillsController < ApplicationController
   before_action :set_skill, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:destroy, :create, :new,  :update,:index, :edit]
 
   # GET /skills
   # GET /skills.json
   def index
-    @skills = Skill.all
+    @skills = Skill.paginate(:page => params[:page], :per_page => 10)
+    if user_signed_in? && current_user.is_admin? && !params.has_key?(:normal)
+    @skills = Skill.paginate(:page => params[:page], :per_page => 10)
+      render  :index
+    end
   end
 
   # GET /skills/1

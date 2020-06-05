@@ -70,10 +70,24 @@
         <div class="card hoverable carta">
           <div class="card-content">
             <div class="titulo_card">
-              <%= service.name.truncate(60)  %>
+              <h2><% service.category_ids.to_s  %></h2>
+              <% if service.category_ids == [1] %>
+              <span class="left chip etiqueta2">Que necesito</span>
+              <br>
+              <div class="titulo_card2">
+                <%= service.name.truncate(60)  %>
+               </div>
+               <% else %>
+               <span class="left chip etiqueta">Que ofrezco</span>
+               <br>
+               <div class="titulo_card ">
+                 <%= service.name.truncate(60)  %>
+               </div>
+               <% end %>
+
              </div>
              <div class="left">
-               <p><%= service.information.truncate(50)  %> </p>
+               <p class="black-text"><%= service.information.truncate(50)  %> </p>
              </div>
              <br>
              <div class="row ">
@@ -113,7 +127,7 @@
           <div class="card-action">
             <% service.skills.each do |skill| %>
             <%  skill.color_tag %>
-          <div class="chip white-text" style=" background: <%=  skill.color_tag %> !important;" >
+          <div class="chip white-text chips_texto" style=" background: <%=  skill.color_tag %> !important;" >
 
             <%=  skill.name.truncate(20) %>
           </div>
