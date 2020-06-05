@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_114711) do
+ActiveRecord::Schema.define(version: 2020_06_05_124644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_114711) do
     t.string "wpp"
     t.text "web"
     t.string "currency_sugest"
+    t.string "state", default: "published"
     t.index ["user_id"], name: "index_services_on_user_id"
   end
 
