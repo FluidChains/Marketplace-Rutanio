@@ -17,4 +17,5 @@ class WelcomeController < ApplicationController
   def postulaciones
     @requests = current_user.requests
   end
+
 end
