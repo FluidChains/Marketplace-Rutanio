@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:show, :edit, :update, :destroy, :unpublish, :publish]
   before_action :authenticate_user!, only:[:edit,:create]
 
   # GET /services
@@ -14,7 +14,6 @@ class ServicesController < ApplicationController
   def show
     @request = Request.new
     @requests = @service.requests.paginate(:page => params[:page], :per_page => 1)
-
     @skills = Skill.all
   end
 
@@ -59,6 +58,17 @@ class ServicesController < ApplicationController
       end
     end
   end
+
+  def publish
+    @service.publish!
+    redirect_to @service
+  end
+
+  def unpublish
+    @service.unpublish!
+    redirect_to @service
+  end
+
 
   # DELETE /services/1
   # DELETE /services/1.json

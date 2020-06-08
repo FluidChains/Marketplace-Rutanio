@@ -28,6 +28,28 @@ class Service < ApplicationRecord
     @skills
   end
 
+  aasm column: "state" do
+
+    state :published, initial: true
+    state :in_draft
+    event :unpublish do
+      transitions from: :published, to: :in_draft
+    end
+    event :publish do
+      transitions from: :in_draft, to: :published
+    end
+
+
+
+  end
+
+  scope :publicados, -> {where(state: "published") }
+  
+  scope :vencidos, -> {where(state: "in_draft") }
+
+
+
+
 
   private
 

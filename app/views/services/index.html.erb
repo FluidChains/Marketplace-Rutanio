@@ -23,6 +23,16 @@
               <td><%= service.precio %></td>
               <td><%= service.valid_until %></td>
               <td><%= service.requests.count %></td>
+              <% if service.may_publish? %>
+                <td>
+                  <%= link_to 'Publicar', "/services/#{service.id}/publish", class:"btn green" , method: :put%>
+                </td>
+                <% else %>
+                <td>
+                  <%= link_to 'Descontinuar', "/services/#{service.id}/unpublish", class:"btn red" , method: :put%>
+                </td>
+              <% end %>
+
               <td><%= link_to 'Mirar', service %></td>
               <td><%= link_to 'Editar', edit_service_path(service) %></td>
               <td><%= link_to 'Eliminar', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
