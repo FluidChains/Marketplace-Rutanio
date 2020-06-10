@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
   end
   def search
     @skills = Skill.all
-    @services = Service.where("name LIKE :query", query: "%#{params[:find]}%")
+    @services = Service.publicados.where("name LIKE :query", query: "%#{params[:find]}%")
 
   end
   def vencido

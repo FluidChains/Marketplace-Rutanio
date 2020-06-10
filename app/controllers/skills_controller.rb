@@ -15,7 +15,7 @@ class SkillsController < ApplicationController
   # GET /skills/1
   # GET /skills/1.json
   def show
-    @services = @skill.services.paginate(:page => params[:page], :per_page => 12)
+    @services = @skill.services.publicados.paginate(:page => params[:page], :per_page => 12)
     @service = Service.new
     @skills = Skill.all
   end
