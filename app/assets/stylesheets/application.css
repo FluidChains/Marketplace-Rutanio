@@ -333,7 +333,7 @@ blockquote{
   -o-transition: all .2s ease;
   transition: all .2s ease
 }
-.filtros{  
+.filtros{
   display: inline-flex;
   padding: 3%;
   border-right: solid 2px #e4e4e4;
@@ -361,6 +361,9 @@ blockquote{
 }
 .bordillo {
      border-bottom: 1px solid #ddd !important;
+}
+.busque{
+  margin-top: -5% !important;
 }
 
 @media (max-width:992px) {
