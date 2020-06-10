@@ -333,6 +333,43 @@ blockquote{
   -o-transition: all .2s ease;
   transition: all .2s ease
 }
+.filtros{  
+  display: inline-flex;
+  padding: 3%;
+  border-right: solid 2px #e4e4e4;
+
+}
+.sub{
+  display: inline-block;
+}
+.tituloFiltros{
+  color: #ff4863 !important;
+  font-size: 1em;
+  -webkit-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+}
+.tituloFiltros:hover{
+  color: #331138 !important;
+  -webkit-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.cuerpo{
+  margin-top: -5% !important;
+}
+.bordillo {
+     border-bottom: 1px solid #ddd !important;
+}
+
+@media (max-width:992px) {
+
+  .filtros{
+    display: none;
+  }
+
+  }
 @media (max-width:700px) {
   .ssb-whatsapp_web{
         display: none !important;
@@ -340,6 +377,9 @@ blockquote{
   .ssb-whatsapp_app{
       display: inline-block !important;
 
+  }
+  .filtros{
+    display: none;
   }
 
 

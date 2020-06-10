@@ -21,6 +21,7 @@ class CategoriesController < ApplicationController
   def show
     @services = @category.services.paginate(:page => params[:page], :per_page => 12)
     @service = Service.new
+    @skills = Skill.all
   end
 
   # GET /categories/new

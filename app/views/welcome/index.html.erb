@@ -1,68 +1,87 @@
-<br><br><br><br>
-<div class="container">
-  <div class="row">
+<br><br><br>
+<div class="filtros">
+  <div class="left ">
+    <p class="center fucsia_font">FILTRO</p>
+      <ul class="collapsible">
+          <li class="active">
+            <div class="collapsible-header"><i class="material-icons">search</i>Habilidades</div>
+            <div class="collapsible-body">
+              <ul>
+                <% @skills.each do |skill| %>
+                 <%= link_to  skill do  %>
+                <li class="bordillo"> <h5 class="tituloFiltros">
+                   <%= skill.name  %>: <%= skill.services.count %>
+                 </h5>
+                </li>
+                <% end %>
+              <% end %>
+              </ul>
 
-    <div class="center">
 
-      <div class="tituloMercado">
-        <h2>Mercado</h2>
-          <h4 class="beta ">beta</h4>
+            </div>
+          </li>
+      </ul>
+  </div>
+</div>
+  <div class="container sub">
+    <div class="row">
+      <div class="center">
+
+        <div class="tituloMercado">
+          <h2>Mercado</h2>
+            <h4 class="beta ">beta</h4>
+        </div>
+         <p class="parrafos_r">Encuentra profesionales en diversas areas o postula tus servicios </p>
+         <br>
+         <% if user_signed_in? %>
+             <a class="waves-effect waves-light  btn modal-trigger white-text fucsia_ruta" href="#renderModal">Crea Nuevo <i class="material-icons right">add_circle_outline</i></a>
+             <% else %>
+             <%= link_to  new_user_session_path,  class:"waves-effect waves-light  btn modal-trigger white-text fucsia_ruta"  do %>
+                Crear nuevo
+               <i class="material-icons right">add_circle_outline</i>
+             <% end %>
+
+         <% end %>
+
+
       </div>
-       <p class="parrafos_r">Encuentra profesionales en diversas areas o postula tus servicios </p>
-       <br>
-       <% if user_signed_in? %>
-           <a class="waves-effect waves-light  btn modal-trigger white-text fucsia_ruta" href="#renderModal">Crea Nuevo <i class="material-icons right">add_circle_outline</i></a>
-           <% else %>
-           <%= link_to  new_user_session_path,  class:"waves-effect waves-light  btn modal-trigger white-text fucsia_ruta"  do %>
-              Crear nuevo
-             <i class="material-icons right">add_circle_outline</i>
-           <% end %>
 
-       <% end %>
+    </div>
+    <div class="row center">
+      <div class="col s12 m12 l12">
+        <ul class="listado_card center">
+          <li><%= link_to "Todos", root_path , class:"fucsia_font" %></li>
+          <% @categories.each do |category| %>
+           <% if category.id == 1 %>
+            <li><%= link_to category.nombre_categoria, category , class:"morado_font"%></li>
+            <% else %>
+            <li><%= link_to category.nombre_categoria, category , class:"fucsia_font"%></li>
+            <% end %>
+          <% end %>
+          <li><%= link_to "Vencidos", welcome_vencido_path , class:"morado_font" %></li>
+
+        </ul>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col s12 m12 l12 center buscador">
+              <%= form_tag welcome_search_path, :method => :get do %>
+                <%= text_field_tag   class:" black-text  input-field inline", placeholder:"Buscar"%>
+                <%= submit_tag 'Buscar' ,class:"btn morado_ruta"%>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
 
 
     </div>
 
-     <br>
-     <div class="container">
-       <div class="row center">
-         <div class="col s12 m12 l12">
-           <ul class="listado_card center">
-             <li class="select_line"><%= link_to "Todos", root_path , class:"fucsia_font" %></li>
-             <% @categories.each do |category| %>
-              <% if category.id == 1 %>
-               <li><%= link_to category.nombre_categoria, category , class:"morado_font"%></li>
-               <% else %>
-               <li><%= link_to category.nombre_categoria, category , class:"fucsia_font"%></li>
-               <% end %>
-             <% end %>
-             <li><%= link_to "Vencidos", welcome_vencido_path , class:"morado_font" %></li>
-           </ul>
-           <br>
-           <div class="container">
-             <div class="row">
-               <div class="col s12 m12 l12 center buscador">
-                 <%= form_tag welcome_search_path, :method => :get do %>
-                   <%= text_field_tag   class:" black-text  input-field inline", placeholder:"Buscar"%>
-                   <%= submit_tag 'Buscar' ,class:"btn morado_ruta"%>
-                 <% end %>
-               </div>
-
-             </div>
-           </div>
-         </div>
-
-       </div>
-
-
-     </div>
-
-
-
-
-
-  </div>
-  <br>
+  <div class="container cuerpo">
 
   <div class="row">
     <% @services.each do |service| %>
