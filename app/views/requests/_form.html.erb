@@ -18,10 +18,28 @@
 
             <label for="textarea2">Maximo 900 caracteres</label>
       </div>
+
+
       <div class="field">
         <h2 class="fucsia_font">Mensaje</h2>
 
       </div>
+
+      <div class="col s12 m12 l12">
+         Ingresa un correo electronico en el que te puedan contactar:
+
+         <div class="input-field inline">
+
+           <%= form.text_field :contacto_mail ,id:"email_inline" ,class:"validate" ,type:"email"%>
+
+           <label for="email_inline">Email</label>
+
+           <span class="helper-text" data-error="wrong" data-success="right">Tu Email Contacto</span>
+
+         </div>
+
+       </div>
+
 
       <div class="field">
 
