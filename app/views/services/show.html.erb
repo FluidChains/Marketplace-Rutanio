@@ -1,7 +1,15 @@
 <br><br>
 
 <div class="container z-depth-2">
+  <% if user_signed_in? && @service.user.email == current_user.email %>
+  <!-- Modal Trigger -->
+      <div class="row center">
+      <a class="waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse" href="#modalAplicacion">Respuestas</a>
+      </div>
+
+  <% end %>
   <div class="row">
+
     <div class="col s12 m6 l6 left">
         <h3 class="fucsia_font"><%= @service.name %></h3>
     </div>
@@ -114,30 +122,15 @@
 
     </div>
     <div class="col s12 m6 l6 ">
-        <h2 class="morado_font center">Respuestas a este Servicio</h2>
-      <table class="striped highlight centered responsive-table tableta" >
-        <thead>
-          <tr>
-            <th>Contacto mail</th>
+      <p>
+        Conoces a alguien que le pueda interesar <%= @service.name   %> ?
+      </p>
+      <br>
+      <div class="row comparte valign-wrapper ">
+        <h2 class="morado_font">Comparte: </h2>
+         <%= social_share_button_tag(@service.name, :url => service_url(@service), desc: @service.name)%>
+      </div>
 
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-            <% @service.requests.paginate(page: params[:page], per_page: 3).each do |request| %>
-            <tr>
-              <td><%= request.contacto_mail %></td>
-              <td>
-                <% if user_signed_in? && current_user == request.user %>
-                <td><%= link_to 'Eliminar', [request.service, request], method: :delete , class:"btn btn-outline-danger morado_ruta", data: { confirm: 'Estas seguro que deseas eliminar?' } %>
-                <% end %>
-              </td>
-
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
     </div>
 
 </div>
@@ -199,6 +192,7 @@
     <div class="row center">
     <a class="waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse" href="#cajaComentar">Contactar</a>
     </div>
+
     <% else %>
     <div class="row center">
     <%= link_to "Contactar" , new_user_session_path,  class:"waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse"   %>
@@ -207,10 +201,6 @@
 <% end %>
 
 
-      <div class="row comparte valign-wrapper ">
-        <h2 class="morado_font">Comparte: </h2>
-         <%= social_share_button_tag(@service.name, :url => service_url(@service), desc: @service.name)%>
-      </div>
       <br>
 
 
