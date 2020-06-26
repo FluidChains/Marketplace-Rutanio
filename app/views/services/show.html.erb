@@ -194,11 +194,18 @@
 
 </div>
 
+<% if user_signed_in? %>
+<!-- Modal Trigger -->
+    <div class="row center">
+    <a class="waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse" href="#cajaComentar">Contactar</a>
+    </div>
+    <% else %>
+    <div class="row center">
+    <%= link_to "Contactar" , new_user_session_path,  class:"waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse"   %>
+    </div>
 
-        <!-- Modal Trigger -->
-      <div class="row center">
-        <a class="waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse" href="#cajaComentar">Contactar</a>
-      </div>
+<% end %>
+
 
       <div class="row comparte valign-wrapper ">
         <h2 class="morado_font">Comparte: </h2>

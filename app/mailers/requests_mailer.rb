@@ -2,7 +2,7 @@ class RequestsMailer < ApplicationMailer
 
   def formulariorequest(contacto)
     @contacto = contacto.mensaje
-    @greeting = "Felicidades  #{contacto.contacto_mail} te postulaste con exito a la publicacion de #{contacto.service.mail_servicio}"
+    @greeting = "Felicidades  #{contacto.user.email} te postulaste con exito a la publicacion de #{contacto.service.mail_servicio}"
 
       @recipients =   contacto.service.mail_servicio
       emails = @recipients
