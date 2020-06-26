@@ -53,6 +53,12 @@ gem 'jquery-datatables'
 
 #materialize
 
+#graficos
+gem 'chartkick', '~> 3.3'
+#agrupacion pro Fecha
+gem 'groupdate', '~> 4.2'
+
+
 #Migracion a postgresql
   gem 'pg', '~> 1.1', '>= 1.1.4'
 

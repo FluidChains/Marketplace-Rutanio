@@ -50,37 +50,60 @@
 
 <br><br><br><br><br>
 
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <div class="center">
+        <h3 class="center">Usuarios registrados en la plataforma</h3 >
+      </div>
+          <br>
+          <table class="striped responsive-table">
+            <thead>
+              <tr>
+                <th>Usuario</th>
+                <th>Fecha registro usuario</th>
+                <th>Cantidad de servicios x usuario</th>
+                <th>Cantidad de postulaciones x usuario</th>
 
-<h1>Requests</h1>
+              </tr>
+            </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Mensaje</th>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.email %></td>
+                  <td><%= user.created_at %></td>
+                  <td><%= user.services.count %></td>
+                  <td><%= user.requests.count %></td>
 
-      <th>User</th>
-      <th>Service</th>
-      <th>Mail del servicio</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @requests.each do |request| %>
-      <tr>
-        <td><%= request.mensaje %></td>
-        <td><%= request.user.email %></td>
-        <td><%= request.service.name %></td>
-          <td><%= request.service.mail_servicio %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <br>
 
 
-        <td><%= link_to 'Show', @service_request %></td>
-        <td><%= link_to 'Destroy Comment', [request.service, request], method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+
+    </div>
+    <div class="col s12 m12 l12">
+      <br>
+        <%= line_chart User.group_by_day(:created_at).count , refresh: 60  %>
+        <br>
+        <div class="center">
+          <span class="center">Usuarios X Fecha de creacion</span >
+        </div>
+    </div>
+    <div class="col s12 m12 l12">
+      <br>
+        <%= column_chart User.group_by_month(:created_at).count , refresh: 60  %>
+        <br>
+        <div class="center">
+          <span class="center">Usuarios X Fecha de creacion</span >
+        </div>
+    </div>
+
+
+
+  </div>
+</div>

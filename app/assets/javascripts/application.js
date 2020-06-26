@@ -16,9 +16,13 @@
 //= require activestorage
 //= require social-share-button
 //= require init
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
 
 
+
+Chartkick.configure({language: "es", mapsApiKey: "..."})
 
 
 
