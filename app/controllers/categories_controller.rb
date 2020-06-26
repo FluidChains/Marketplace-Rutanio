@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @services = @category.services.paginate(:page => params[:page], :per_page => 12)
+    @services = @category.services.publicados.paginate(:page => params[:page], :per_page => 12)
     @service = Service.new
     @skills = Skill.all
   end

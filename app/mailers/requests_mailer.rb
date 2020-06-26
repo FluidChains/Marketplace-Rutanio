@@ -6,7 +6,7 @@ class RequestsMailer < ApplicationMailer
 
       @recipients =   contacto.service.mail_servicio
       emails = @recipients
-      mail(:to => emails, :subject => "A replacement clerk has been requested")
+      mail(:to => emails, :subject => "A replacement clerk has been requested #{@greeting} ")
 
 
   end
