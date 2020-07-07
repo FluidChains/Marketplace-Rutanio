@@ -56,7 +56,7 @@
       </div>
 
 
-      <div class="input-field col s12 m6 l6">
+      <div class="field col s12 m6 l6">
         <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Cantidad de horas estimadas">help_outline</i>
         <%= form.label "Horas" %>
         <%= form.number_field :horas %>
@@ -64,21 +64,21 @@
 
       </div>
 
-      <div class="input-field col s12 m6 l6">
+      <div class="field col s12 m6 l6">
         <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Las RUTAS son el token de la economía de Rutanio.">help_outline</i>
         <%= form.label "Cantidad de Rutas" %>
         <%= form.number_field :precio %>
         <br>
 
       </div>
-      <div class="input-field col s12 m6 l6">
+      <div class="field col s12 m6 l6">
         <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Los Exos son la moneda nativa de la economía OpenExo.">help_outline</i>
         <%= form.label "Cantidad de Exos" %>
         <%= form.number_field :exos_amount %>
         <br>
 
       </div>
-      <div class="input-field col s12 m6 l6">
+      <div class="field col s12 m6 l6">
         <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="  Si requieres pago parcial o total en una moneda como dolares (USD) o tu moneda local,puedes especificarlo ">help_outline</i>
         <%= form.label "Otro medio de pago" %>
         <%= form.text_field :currency_sugest %>
@@ -88,7 +88,7 @@
 
 
 
-      <div class="input-field col s12 m12 l12">
+      <div class="field col s12 m12 l12">
         <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Especifica si deben comunicarce contigo en algun idioma en particular">help_outline</i>
         <%= form.label "Idioma" %>
         <br>
@@ -99,32 +99,32 @@
 
       <div class="col s12 m6 l6">
 
-         <div class="input-field inline col s12 m12 l12">
+         <div class="field inline col s12 m12 l12">
            <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Email publico para que te contacten">help_outline</i>
            <%= form.text_field :mail_servicio ,id:"email_inline" ,class:"validate" ,type:"email"%>
            <label for="email_inline">Mail servicio</label>
          </div>
        </div>
-      <div class="input-field col s12 m6 l6">
+      <div class="field col s12 m6 l6">
         <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Indicador + Numero de Whatsapp del servicio ">help_outline</i>
           <%= form.label "No Whatsapp" %>
         <%= form.text_field :wpp %>
 
       </div>
 
-      <div class="input-field col s12 m12 l12">
+      <div class="field col s12 m12 l12">
         <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Link de pagina web">help_outline</i>
         <%= form.label "Link web" %>
         <%= form.text_field :web %>
 
       </div>
-      <div class="input-field col s12 m12 l12">
+      <div class="field col s12 m12 l12">
         <p>Fecha de vencimiento</p>
 
         <%= form.date_field :valid_until%>
       </div>
 
-      <div class="input-field col s12 m12 l12">
+      <div class="field col s12 m12 l12">
 
               <ul class="collection with-header">
                 <li class="collection-header center">
@@ -156,7 +156,7 @@
     </div>
 
 
-      <div class="input-field col s12 m12 l12">
+      <div class="field col s12 m12 l12">
         <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Restricciones que aplican a tu oferta (p.e: oferta para un país específico, para determinadas fechas, otras restricciones)">help_outline</i>
         <%= form.label "Restricciones o Condiciones" %>
         <%= form.text_area :aditional_info %>

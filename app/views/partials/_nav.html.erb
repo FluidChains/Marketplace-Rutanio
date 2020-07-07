@@ -1,5 +1,31 @@
 
     <nav>
+
+            <div class="right valign-wrapper  black-text hide-on-med-and-down">
+                 <ul style="display: inline-flex;">
+                    <% if user_signed_in? %>
+                          <li> <%= link_to edit_user_registration_path, class:" btn-floating morado_ruta" do  %>
+                            <i class="material-icons tooltipped" data-position="left" data-tooltip="Mi Perfil"">account_circle</i>
+                            <% end %>
+                          </li>
+                          <li><%= current_user.email %></li>
+                            <li> <%= link_to destroy_user_session_path, method: :delete, class:" btn-floating fucsia_ruta" do  %>
+                              <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Cerrar sesion" ">close</i>
+                            <% end %>
+                            </li>
+
+                            <% else %>
+
+                            <li> <h6>Inicia sesión</h6></li>
+
+                            <li> <%= link_to new_user_session_path, class:" btn-floating morado_ruta" do  %>
+                              <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Iniciar sesión">person</i>
+                              <% end %>
+                            </li>
+
+                    <% end %>
+                 </ul>
+            </div>
       <div class="container right">
         <div class="row">
           <div class="nav-wrapper valign-wrapper">
@@ -40,7 +66,10 @@
                   </div>
                 </li>
 
+
             </ul>
+
+
               <div class="right">
                   <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
               </div>
@@ -48,11 +77,14 @@
             </div>
 
 
+
+
           </div>
         </div>
 
 
       </div>
+
 
 
 
@@ -69,11 +101,11 @@
     </ul>
 
 
-<div class="fixed-action-btn  valign-wrapper">
+<div class="fixed-action-btn  valign-wrapper ">
   <% if user_signed_in? %>
 
   <% else %>
-  <div class="midiv">
+  <div class="midiv ">
       <h6 class="morado_font ">Registrate</h6>
   </div>
   <div class="midiv2" style="display:none;">
@@ -83,11 +115,11 @@
   <% end %>
 
   <br>
-  <a class="btn-floating btn-large fucsia_ruta">
+  <a class="btn-floating btn-large fucsia_ruta pulse">
     <img src="/images/rblanco.png" class="logo_c">
 
   </a>
-  <ul>
+  <ul >
 
 
     <li><%= link_to  root_path , class:"btn-floating fucsia_ruta"  do  %>

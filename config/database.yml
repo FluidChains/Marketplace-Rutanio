@@ -15,15 +15,14 @@
 # gem 'pg'
 #
 default: &default
- adapter: postgresql
- encoding: unicode
- # For details on connection pooling, see Rails configuration guide
- # http://guides.rubyonrails.org/configuring.html#database-pooling
- pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
- <<: *default
- database: rutanio_development
+  <<: *default
+  database: db/development.sqlite3
+
 
  # The specified database role being used to connect to postgres.
  # To create additional roles in postgres see `$ createuser --help`.
@@ -85,4 +84,3 @@ production:
   database: rutanio_production
   username: rails
   password: <%= ENV['RUTANIO_DATABASE_PASSWORD'] %>
-

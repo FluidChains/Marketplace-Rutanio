@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_06_05_124644) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "categories", force: :cascade do |t|
     t.string "nombre_categoria"
     t.text "description"
@@ -24,8 +21,8 @@ ActiveRecord::Schema.define(version: 2020_06_05_124644) do
   end
 
   create_table "has_categories", force: :cascade do |t|
-    t.bigint "service_id"
-    t.bigint "category_id"
+    t.integer "service_id"
+    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_has_categories_on_category_id"
@@ -33,8 +30,8 @@ ActiveRecord::Schema.define(version: 2020_06_05_124644) do
   end
 
   create_table "has_skills", force: :cascade do |t|
-    t.bigint "service_id"
-    t.bigint "skill_id"
+    t.integer "service_id"
+    t.integer "skill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["service_id"], name: "index_has_skills_on_service_id"
@@ -44,8 +41,8 @@ ActiveRecord::Schema.define(version: 2020_06_05_124644) do
   create_table "requests", force: :cascade do |t|
     t.text "mensaje"
     t.string "contacto_mail"
-    t.bigint "user_id"
-    t.bigint "service_id", null: false
+    t.integer "user_id"
+    t.integer "service_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["service_id"], name: "index_requests_on_service_id"
@@ -61,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_124644) do
     t.text "aditional_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.text "lenguaje"
     t.integer "exos_amount"
     t.string "mail_servicio"
@@ -113,11 +110,4 @@ ActiveRecord::Schema.define(version: 2020_06_05_124644) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "has_categories", "categories"
-  add_foreign_key "has_categories", "services"
-  add_foreign_key "has_skills", "services"
-  add_foreign_key "has_skills", "skills"
-  add_foreign_key "requests", "services"
-  add_foreign_key "requests", "users"
-  add_foreign_key "services", "users"
 end
