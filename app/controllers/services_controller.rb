@@ -9,7 +9,7 @@ class ServicesController < ApplicationController
     @requests = current_user.requests
     if user_signed_in? && current_user.is_admin? && !params.has_key?(:normal)
     @users = User.all
-      @services = Service.paginate(:page => params[:page], :per_page => 2)
+      @services = Service.paginate(:page => params[:page], :per_page => 12)
       render  :"admin_service"
     end
   end
