@@ -54,9 +54,9 @@ gem 'jquery-datatables'
 #materialize
 
 #mails
-gem 'sparkpost_rails', '~> 1.5', '>= 1.5.2'
 
-gem 'sendgrid-ruby', '~> 6.3', '>= 6.3.1'
+
+
 
 #graficos
 gem 'chartkick', '~> 3.3'

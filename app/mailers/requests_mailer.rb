@@ -1,5 +1,5 @@
 class RequestsMailer < ApplicationMailer
-  default :from => "https://www.rutanio.com"
+  default :from => "rutanio.confirmation@gmail.com"
 
   def formulariorequest(contacto)
     @contacto = contacto.mensaje

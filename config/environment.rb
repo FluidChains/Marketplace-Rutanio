@@ -5,12 +5,14 @@ require_relative 'application'
 Rails.application.initialize!
 
 ActionMailer::Base.smtp_settings = {
-  :user_name => ENV['SENDGRID_USERNAME'],
+  :user_name => 'apikey',
   :password => ENV['SENDGRID_PASSWORD'],
-  :api_key =>   ENV['SENDGRID_API_KEY'] ,
-  :domain => 'http://localhost:4000',
   :address => 'smtp.sendgrid.net',
-  :port => 465,
+  :port => 587,
   :authentication => :plain,
   :enable_starttls_auto => true
 }
+
+ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+  html_tag.html_safe
+end

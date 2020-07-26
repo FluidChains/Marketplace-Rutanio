@@ -30,7 +30,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/secrets.yml
-sendgrid.env
-sendgrid.env
-sendgrid.env
+/config/local_env.yml
+
 sendgrid.env
