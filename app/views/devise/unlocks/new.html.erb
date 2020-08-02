@@ -1,16 +1,40 @@
-<h2>Resend unlock instructions</h2>
+<div class="container">
+  <div class="row ">
+    <div class="col s12 m6 l6">
+      <h2 class="fucsia_font"><h2>Reenviar instrucciones de desbloqueo</h2></h2>
 
-<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Resend unlock instructions",class:"btn fucsia_ruta" %>
+        </div>
+      <% end %>
+
+
+
+          <br>
+
+          <%= render "devise/shared/links" %>
+
+
+
+    </div>
+
+    <div class="col s12 m6 l6 hide-on-med-and-down">
+      <div class="parallax-container">
+        <div class="parallax">
+            <img src="/images/cel.jpg" alt=""  class="center fondo-ruta">
+        </div>
+      </div>
+
+    </div>
+
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

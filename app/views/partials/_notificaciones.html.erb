@@ -1,0 +1,22 @@
+<br>
+<div class="center" > 
+  <% flash.each do |type, message| %>
+     <% if type == "alert" %>
+          <div class="chip chipAlerta fucsia_ruta white-text">
+            <%= message %>
+              <i class="close medium material-icons left">report_problem</i>
+              <i class="close material-icons">close</i>
+          </div>
+        <% end %>
+        <% if type == "notice" %>
+         <div class="chip chipAlerta  morado_ruta white-text chipNotificacion valign-wrapper">
+           <%= message %>
+           <i class="close medium material-icons left">done_all</i>
+             <i class="close material-icons">close</i>
+         </div>
+    <% end %>
+  <% end %>
+
+
+
+</div>

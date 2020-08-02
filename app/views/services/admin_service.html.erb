@@ -4,7 +4,7 @@
     <div class="col s12 m12 l12">
       <p id="notice"><%= notice %></p>
 
-      <h1 class="fucsia_font">Todas las Publicaciones</h1>
+      <h1 class="fucsia_font">Todos los Servicios</h1>
 
       <table class="striped responsive-table">
         <thead>
@@ -93,22 +93,43 @@
 
     </div>
     <div class="col s12 m12 l12">
+      <h3 class="center">Usuarios X Dia de creacion</h3 >
       <br>
         <%= line_chart User.group_by_day(:created_at).count , refresh: 60  %>
         <br>
         <div class="center">
-          <span class="center">Usuarios X Fecha de creacion</span >
+
         </div>
     </div>
     <div class="col s12 m12 l12">
+      <h3 class="center">Usuarios X Mes de creacion</h3 >
       <br>
         <%= column_chart User.group_by_month(:created_at).count , refresh: 60  %>
         <br>
         <div class="center">
-          <span class="center">Usuarios X Fecha de creacion</span >
+
         </div>
     </div>
 
+    <div class="col s12 m12 l12">
+      <h3 class="center">Servicios X Dia de creacion</h3 >
+      <br>
+        <%= line_chart Service.group_by_day(:created_at).count , refresh: 60  %>
+        <br>
+        <div class="center">
+
+        </div>
+    </div>
+
+    <div class="col s12 m12 l12">
+      <h3 class="center">Servicio X Mes de creacion</h3 >
+      <br>
+        <%= column_chart Service.group_by_month(:created_at).count , refresh: 60  %>
+        <br>
+        <div class="center">
+
+        </div>
+    </div>
 
 
   </div>

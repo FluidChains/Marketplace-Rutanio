@@ -369,6 +369,13 @@ blockquote{
 .iniciar{
   margin-right: 10%;
 }
+.chipAlerta{
+  width: 100%;
+}
+
+.chip .close {
+    font-size: 30px !important;
+}
 
 @media (max-width:992px) {
 
