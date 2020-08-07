@@ -7,4 +7,4 @@
 # For example, setting:
 # GMAIL_USERNAME: 'Your_Gmail_Username'
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
-SENDGRID_PASSWORD:  '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'
+# SENDGRID_PASSWORD: 

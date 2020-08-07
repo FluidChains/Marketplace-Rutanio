@@ -85,6 +85,6 @@ test:
 #
 production:
   <<: *default
-  database: rutanio_production
-  username: rails
-  password: <%= ENV['RUTANIO_DATABASE_PASSWORD'] %>
+  database: <%= ENV['POSTGRES_DATABASE'] %>
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
