@@ -41,6 +41,7 @@
 
 
 
+
       <div class="input-field col s12 m12 l12">
         <p>Describe tu servicio </p>
         <%= form.text_area :information %>
@@ -136,7 +137,7 @@
                     <li class="collection-item ">
                       <div>
                         <label>
-                           <%= check_box_tag "skills[]", skill.id , id:"skill_id"%>
+                           <%= radio_button_tag "skills[]", skill.id , id:"skill_id"%>
                              <span>
                                  <%= "#{skill.name.truncate(30)} "%>
                              </span>

@@ -1,6 +1,6 @@
 <br><br><br>
 <div class="row center">
-  <div class="col s12 m12 l9 right">
+  <div class="col s12 m12 l12 right">
     <div class="row">
       <div class="center">
         <div class="tituloMercado">
@@ -20,17 +20,7 @@
       </div>
     </div>
 
-    <ul class="listado_card center">
-      <li><%= link_to "Todos", root_path , class:"fucsia_font" %></li>
-       <% @categories.each do |category| %>
-         <% if category.id == 1 %>
-          <li><%= link_to category.nombre_categoria, category , class:"morado_font"%></li>
-          <% else %>
-          <li><%= link_to category.nombre_categoria, category , class:"fucsia_font"%></li>
-          <% end %>
-      <% end %>
-      <li><%= link_to "Closed", welcome_vencido_path , class:"morado_font" %></li>
-    </ul>
+
     <br>
     <div class="container">
       <div class="row">
@@ -45,40 +35,14 @@
     </div>
 
   </div>
-  <div class="col s12 m3 l3 left">
-    <div class="filtros">
-      <div class="left ">
-        <p class="center fucsia_font">FILTRO</p>
-          <ul class="collapsible">
-              <li class="active">
-                <div class="collapsible-header"><i class="material-icons">search</i>Habilidades</div>
-                <div class="collapsible-body">
-                  <ul>
-                    <% @skills.each do |skill| %>
-                     <%= link_to  skill do  %>
-                    <li class="bordillo"> <h5 class="tituloFiltros">
-                       <%= skill.name  %>: <%= skill.services.publicados.count %>
-                     </h5>
-                    </li>
-                    <% end %>
-                  <% end %>
-                  </ul>
 
-
-                </div>
-              </li>
-          </ul>
-      </div>
-    </div>
-
-  </div>
 
 </div>
 
 <div class="container cuerpo">
 
   <div class="row">
-    <% @services.each do |service| %>
+    <%  @serv.each do |service| %>
       <div class="col s12 m6 l4">
           <%= link_to service  do  %>
         <div class="card hoverable carta">
@@ -169,8 +133,10 @@
      </div>
    </div>
 
+     <div class="row center">
+       <%= will_paginate @services ,class:"flickr_pagination" %>
 
-  <div class="row center">
-    <%= will_paginate @services ,class:"flickr_pagination" %>
-  </div>
+     </div>
+
+
 </div>

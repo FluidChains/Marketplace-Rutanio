@@ -1,5 +1,4 @@
 <br><br>
-
 <div class="container z-depth-2">
   <% if user_signed_in? && @service.user.email == current_user.email %>
   <!-- Modal Trigger -->
@@ -50,9 +49,15 @@
         <li class="morado_font">
            <% if !@service.exos_amount.nil? %>
            <img src="/images/exos.png" alt=""  class="iconos_market"> <%= number_with_delimiter(@service.exos_amount.round , :delimiter => ',')%>
-              EXO
+              EXOS
            <% end %>
         </li>
+        <li class="morado_font">
+           <% if !@service.currency_sugest.nil? %>
+          $ <%= number_with_delimiter(@service.currency_sugest, :delimiter => ',')%>              
+           <% end %>
+        </li>
+
 
         <li class="morado_font">
            <% if !@service.exos_amount.nil? %>

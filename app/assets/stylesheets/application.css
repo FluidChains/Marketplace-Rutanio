@@ -21,6 +21,15 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Spicy+Rice');
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
+header, main, footer {
+  padding-left: 300px !important;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
 .fucsia_ruta{
   background: #ff4863 !important;
 
@@ -361,6 +370,7 @@ blockquote{
 }
 .bordillo {
      border-bottom: 1px solid #ddd !important;
+     padding: 1%;
 }
 .busque{
   margin-top: -5% !important;
