@@ -2,16 +2,14 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="container z-depth-2 ">
+
     <div class="row">
+
       <div class="col s12 m12 l12 valign-wrapper">
+
         <div class="col s12 m4 l4 ">
-          <h2 class="fucsia_font">Informacion Personal</h2>
-          <p>
-            Ingresa tu Informacion personal
-          </p>
-
+          <h2 class="morado_font">Informacion Personal</h2>
         </div>
-
 
           <div class="col s12 m8 l8">
            <ul class="collapsible">
@@ -24,37 +22,25 @@
                    </div>
                  </div>
                </li>
-    
-
-
                <li>
                  <div class="collapsible-header"><i class="material-icons morado_font">assignment_ind</i>Nombres</div>
                  <div class="collapsible-body">
                    <div class="input-field">
                      <%= f.label "Nombres" %><br />
-                     <%= f.text_field :last_name, autofocus: true, autocomplete: "Nombres" %>
-                   </div>
-                 </div>
-               </li>
-               <li>
-                 <div class="collapsible-header"><i class="material-icons morado_font">work</i>Profesión</div>
-                 <div class="collapsible-body">
-                   <div class="input-field">
-                     <%= f.label "Profesión" %><br />
-                     <%= f.text_field :skill, autofocus: true, autocomplete: "Profesión" %>
-                   </div>
-                 </div>
-               </li>
-               <li>
-                 <div class="collapsible-header"><i class="material-icons morado_font">g_translate</i>Lenguaje</div>
-                 <div class="collapsible-body">
-                   <div class="input-field">
-                     <%= f.label "Lenguaje" %><br />
-                     <%= f.text_field :lenguage, autofocus: true, autocomplete: "Lenguaje" %>
+                     <%= f.text_field :name, autofocus: true, autocomplete: "Nombres" %>
                    </div>
                  </div>
                </li>
 
+               <li>
+                 <div class="collapsible-header"><i class="material-icons morado_font">assignment</i>Apellidos</div>
+                 <div class="collapsible-body">
+                   <div class="input-field">
+                     <%= f.label "Apellidos" %><br />
+                     <%= f.text_field :last_name, autofocus: true, autocomplete: "Apellidos" %>
+                   </div>
+                 </div>
+               </li>
 
 
             </ul>
@@ -67,14 +53,32 @@
     <div class="row">
       <div class="col s12 m12 l12 valign-wrapper">
         <div class="col s12 m4 l4 ">
-          <h2 class="morado_font">Informacion Publica</h2>
+          <h2 class=" fucsia_font">Informacion Publica</h2>
           <p>
-            Diligencia la informacion con la cual otras personas podran ponerse en contacto contigo
+            Diligencia la informacion con la cual otras personas podran ponerse en contacto contigo y se reflejara en tu perfil.
           </p>
 
         </div>
           <div class="col s12 m8 l8">
            <ul class="collapsible">
+             <li>
+               <div class="collapsible-header"><i class="material-icons fucsia_font">work</i>Profesión</div>
+               <div class="collapsible-body">
+                 <div class="input-field">
+                   <%= f.label "Profesión" %><br />
+                   <%= f.text_field :skill, autofocus: true, autocomplete: "Profesión" %>
+                 </div>
+               </div>
+             </li>
+             <li>
+               <div class="collapsible-header"><i class="material-icons fucsia_font">g_translate</i>Lenguaje</div>
+               <div class="collapsible-body">
+                 <div class="input-field">
+                   <%= f.label "Lenguaje" %><br />
+                   <%= f.text_field :lenguage, autofocus: true, autocomplete: "Lenguaje" %>
+                 </div>
+               </div>
+             </li>
                <li>
                  <div class="collapsible-header"><i class="material-icons fucsia_font">email</i>Email Publico</div>
                  <div class="collapsible-body">

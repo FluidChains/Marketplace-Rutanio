@@ -1,34 +1,38 @@
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
 <ul id="slide-out" class="sidenav sidenav-fixed">
-  <li><div class="user-view">
-    <div class="background">
-      <img src="/images/fondo_ruta.png">
-    </div>
-    <br><br><br><br><br>
-    <% if user_signed_in? %>
-       <span class="fucsia_font">Bienvenido: </span>
-       <span> <%= current_user.email %></span>
-    <% end %>
-
-  </div></li>
-
+  <li>
+      <div class="user-view">
+      <div class="background">
+        <img src="/images/fondo_ruta.png">
+      </div>
+      <br><br><br><br><br>
+      <% if user_signed_in? %>
+         <span class="fucsia_font">Bienvenido: </span>
+         <span> <%= current_user.email %></span>
+      <% end %>
+      </div>
+  </li>
 
   <% if user_signed_in? %>
-      <li> <%= link_to edit_user_registration_path do  %>
-        <i class="material-icons  morado_font"  ">person</i>
-        Mi Perfil
+
+
+      <li>
+        <%= link_to edit_user_registration_path do  %>
+        <i class="material-icons  fucsia_font"  ">edit</i>
+        Mi Informacion
         <% end %>
       </li>
-      <li><%= link_to  services_path   do  %>
-        <i class="material-icons morado_font" ">insert_chart</i>
+      <li>
+        <%= link_to  services_path   do  %>
+        <i class="material-icons fucsia_font" ">insert_chart</i>
         Mis Servicios
         <% end %>
       </li>
-      <li><%= link_to  welcome_postulaciones_path   do  %>
-      <i class="material-icons  morado_font"  ">mail_outline</i>
-      Mis Postulaciones
-      <% end %>
+      <li>
+        <%= link_to  welcome_postulaciones_path   do  %>
+          <i class="material-icons  fucsia_font"  ">mail_outline</i>
+          Mis Postulaciones
+          <% end %>
       </li>
 
 
@@ -44,7 +48,7 @@
         <% end %>
       </li>
   <% end %>
-  <li><a class=" " href="https://www.rutanio.com/"><i class="morado_font material-icons ">home</i> Home</a></li>
+  <li><a target="_blank" href="https://www.rutanio.com/"><i class="morado_font material-icons ">home</i> Home</a></li>
   <li><a target="_blank" href="https://www.rutanio.com/herramientas"><i class="morado_font material-icons ">import_contacts</i> Herramientas</a></li>
   <li><a target="_blank" href="https://www.rutanio.com/faq"><i class="morado_font material-icons ">question_answer</i>Preguntas</a></li>
   <li> <%= link_to root_path do  %>
@@ -86,3 +90,4 @@
 <% end %>
 
 </ul>
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="large material-icons morado_font">menu</i></a>

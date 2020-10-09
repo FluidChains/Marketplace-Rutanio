@@ -55,7 +55,7 @@ gem 'jquery-datatables'
 
 #mails
 
-
+gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 
 
 #graficos

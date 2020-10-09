@@ -44,7 +44,7 @@ class Service < ApplicationRecord
   end
 
   scope :publicados, -> {where(state: "published") }
-  
+
   scope :vencidos, -> {where(state: "in_draft") }
 
 

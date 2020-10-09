@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  resources :profiles
   get 'main/index'
   get 'search/create'
   resources :skills
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
   put "/services/:id/unpublish", to: "services#unpublish"
   devise_for :users
   get 'welcome/search'
-  get 'welcome/index'
+  get 'welcome/perfil'
   get 'welcome/postulaciones'
   get 'welcome/vencido'
   root 'welcome#index'

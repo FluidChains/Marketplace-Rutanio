@@ -1,0 +1,140 @@
+<% if !current_user.profiles.present? %>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12 l12 valign-wrapper center">
+      <div class="card-panel">
+        <h3>Comparte con la comunidad Rutanio tu información publica</h3>
+        <br>
+        <%= link_to 'Publicar Perfil', new_profile_path ,class:"btn-large fucsia_ruta " %>
+        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Una vez publiques tu perfil los otros usuarios de la comunidad Rutanio podran ver tu informacion publica">help_outline</i>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descripcion</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @profiles.each do |profile| %>
+      <tr>
+        <td><%= profile.descripcion %></td>
+        <td><%= profile.user.email %></td>
+        <td><%= link_to 'Show', profile %></td>
+        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
+<br><br><br>
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a class="active" href="#test1">Mis Servicios <%= @services.count %> </a></li>
+      <li class="tab col s3"><a  href="#test2">Respuestas</a></li>
+      <li class="tab col s3 "><a href="#test3">Solicitudes</a></li>
+    </ul>
+  </div>
+  <div id="test1" class="col s12">
+   <div class="container">
+     <div class="row">
+        <%  @services.each do |service| %>
+          <div class="col s12 m6 l4">
+              <%= link_to service  do  %>
+            <div class="card hoverable carta">
+              <div class="card-content">
+                <div class="titulo_card">
+                  <h2><% service.category_ids.to_s  %></h2>
+                  <% if service.category_ids == [1] %>
+                  <span class="left chip etiqueta2">Que necesito</span>
+                  <br>
+                  <div class="titulo_card2">
+                    <%= service.name.truncate(60)  %>
+                   </div>
+                   <% else %>
+                   <span class="left chip etiqueta">Que ofrezco</span>
+                   <br>
+                   <div class="titulo_card ">
+                     <%= service.name.truncate(60)  %>
+                   </div>
+                   <% end %>
+
+                 </div>
+                 <div class="left">
+                   <p class="black-text"><%= service.information.truncate(50)  %> </p>
+                   <br>
+
+                 </div>
+                 <br>
+                 <div class="row ">
+                   <div class="left">
+                     <ul class="imagenes_carta">
+                       <li class="morado_ruta center">
+                        <span class="fucsia_font center"><%= service.requests.count  %></span>
+                        <span class="center white-text">#Respuestas</span></li>
+                       <li>
+                         <% if !service.valid_until.nil? %>
+                             <i class="material-icons">update</i>
+                             <span>vencimiento</span>:
+                             <%= service.valid_until.strftime("%d-%b-%Y")  %>
+                         <% end %>
+                       </li>
+                       <li>
+                          <% if !service.precio.nil? %>
+                           <a href="#"><img src="/images/ruta.png" alt=""  class="iconos_market">
+                              <%= number_with_delimiter(service.precio.round, :delimiter => ',') %>
+                              RUTA
+                            </a>
+                          <% end %>
+                       </li>
+
+                     </ul>
+
+                     <br>
+
+                       <br>
+                   </div>
+
+                 </div>
+              </div>
+              <div class="card-action">
+                <% service.skills.each do |skill| %>
+                <%  skill.color_tag %>
+              <div class="chip chips_texto" >
+                <%=  skill.name.truncate(20) %>
+              </div>
+              <% end %>
+              </div>
+            </div>
+          <% end %>
+          </div>
+
+
+        <% end %>
+
+
+      </div>
+
+    </div>
+
+  </div>
+  <div id="test2" class="col s12">
+    Test 2
+  </div>
+  <div id="test3" class="col s12">
+    Test 3
+  </div>
+</div>

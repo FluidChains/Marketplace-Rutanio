@@ -7,4 +7,5 @@ class User < ApplicationRecord
 
   has_many :services, dependent: :destroy
   has_many  :requests
+  has_many  :profiles
 end

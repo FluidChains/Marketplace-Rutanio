@@ -1,24 +1,22 @@
+
     <nav>
-            <div class="right valign-wrapper  black-text hide-on-med-and-down">
-                 <ul style="display: inline-flex;">
-                    <% if user_signed_in? %>
-                            <li> <%= link_to destroy_user_session_path, method: :delete, class:" btn-floating fucsia_ruta" do  %>
-                              <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Cerrar sesion" ">close</i>
-                            <% end %>
-                            </li>
+      <div class="right valign-wrapper  black-text hide-on-med-and-down">
+           <ul style="display: inline-flex;">
+              <% if user_signed_in? %>
+                  <li> <%= link_to destroy_user_session_path, method: :delete, class:" btn-floating fucsia_ruta" do  %>
+                    <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Cerrar sesion" ">close</i>
+                  <% end %>
+                  </li>
+                  <% else %>
+                  <li><h6>Inicia sesión</h6></li>
 
-                            <% else %>
-
-                            <li> <h6>Inicia sesión</h6></li>
-
-                            <li> <%= link_to new_user_session_path, class:" btn-floating morado_ruta" do  %>
-                              <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Iniciar sesión">person</i>
-                              <% end %>
-                            </li>
-
+                  <li> <%= link_to new_user_session_path, class:" btn-floating morado_ruta" do  %>
+                    <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Iniciar sesión">person</i>
                     <% end %>
-                 </ul>
-            </div>
+                  </li>
+              <% end %>
+           </ul>
+      </div>
       <div class="container right">
         <div class="row">
           <div class="nav-wrapper valign-wrapper">
@@ -86,8 +84,12 @@
 
 
 
+
+
 <div class="fixed-action-btn  valign-wrapper ">
   <% if user_signed_in? %>
+
+
 
   <% else %>
   <div class="midiv ">
