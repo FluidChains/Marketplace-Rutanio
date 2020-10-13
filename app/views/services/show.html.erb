@@ -1,12 +1,29 @@
-<br><br>
-<div class="container z-depth-2">
-  <% if user_signed_in? && @service.user.email == current_user.email %>
-  <!-- Modal Trigger -->
-      <div class="row center">
-      <a class="waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse" href="#modalAplicacion">Respuestas</a>
-      </div>
+<br>
+<% if user_signed_in? && @service.user.email == current_user.email %>
+<!-- Modal Trigger -->
+    <div class="row center">
+      <h3 class="fucsia_font center"> RESPUESTAS </h3>
+      <ul class="collection">
+          <% @service.requests.each do |request| %>
+         <li class="collection-item avatar">
+           <span class="title left"><%= request.user.email %></span>
+           <p><%= request.mensaje %>
+           </p>
+          <h4 class=" secondary-content ">
+            <% if user_signed_in? && current_user == request.user %>
+              <%= link_to "Eliminar ", [@service, request], data:{confirm: "Estas seguro que deseas eliminar? ", :method => :delete}, class:"btn btn-outline-danger morado_ruta"%>
+            <% end %>
+          </h4>
+         </li>
+      <% end %>
+       </ul>
+    </div>
 
-  <% end %>
+<% end %>
+
+<br><br>
+<div class="container z-depth-2" style="padding:2%;">
+
   <div class="row">
 
     <div class="col s12 m6 l6 left">
@@ -54,7 +71,7 @@
         </li>
         <li class="morado_font">
            <% if !@service.currency_sugest.nil? %>
-          $ <%= number_with_delimiter(@service.currency_sugest, :delimiter => ',')%>              
+          $ <%= number_with_delimiter(@service.currency_sugest, :delimiter => ',')%>
            <% end %>
         </li>
 
@@ -140,32 +157,7 @@
 
 </div>
 
-  <!-- Modal Structure -->
-  <div id="modalAplicacion" class="modal bottom-sheet">
-    <div class="modal-content">
-      <ul class="collection">
-          <% @service.requests.each do |request| %>
-         <li class="collection-item avatar">
-           <span class="title"><%= request.user.email %></span>
-           <p><%= request.mensaje %>
-           </p>
-          <h4 class=" secondary-content ">
-            <% if user_signed_in? && current_user == request.user %>
-              <%= link_to "Eliminar ", [@service, request], data:{confirm: "Estas seguro que deseas eliminar? ", :method => :delete}, class:"btn btn-outline-danger morado_ruta"%>
-            <% end %>
-          </h4>
 
-
-
-         </li>
-      <% end %>
-       </ul>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-  <br>
   <div class=" col s12 m12 l12">
 
    <br>
@@ -205,8 +197,6 @@
 
 <% end %>
 
-
-      <br>
 
 
 

@@ -1,18 +1,21 @@
 <div class="container">
   <div class="row ">
     <div class="col s12 m6 l6">
-      <h2 class="fucsia_font">Registrar nuevo usuario</h2>
-
+       <h2 class="fucsia_font">Registrar nuevo usuario</h2>
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
 
             <div class="field">
+              <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Ingresa tu cuenta de correo electronico lo cual nos permitira autenticar tu identidad">help_outline</i>
               <%= f.label :email %><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
             </div>
 
+
+
             <div class="field">
+              <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Ingresa una contraseña para tu cuenta con minimamente 6 caracteres">help_outline</i>
               <%= f.label :password %>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -21,6 +24,7 @@
             </div>
 
             <div class="field">
+              <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Repite la contraseña que acabas de crear">help_outline</i>
               <%= f.label :password_confirmation %><br />
               <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
             </div>
@@ -28,10 +32,19 @@
             <div class="actions">
               <%= f.submit "Sign up" ,class:"btn fucsia_ruta" %>
             </div>
+
+
           <% end %>
           <br>
 
           <%= render "devise/shared/links" %>
+
+          <div class="center">
+            <p class="enlacePoliticas">
+              Al crear tu cuenta en Marketplace de Rutanio , aceptas las politicas de uso <a target="_blank" href="https://www.rutanio.com/privacy-policy" >politicas</a>
+            </p>
+          </div>
+
 
 
 

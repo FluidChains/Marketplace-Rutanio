@@ -53,6 +53,8 @@ gem 'jquery-datatables'
 
 #materialize
 
+gem 'friendly_id', '~> 5.4.0'
+
 #mails
 
 gem 'rails_admin', '~> 2.0', '>= 2.0.2'

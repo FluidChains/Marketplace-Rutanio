@@ -56,18 +56,9 @@
 
                   </div>
                 </li>
-
-
             </ul>
 
-
-
-
             </div>
-
-
-
-
           </div>
         </div>
 
@@ -89,14 +80,17 @@
 <div class="fixed-action-btn  valign-wrapper ">
   <% if user_signed_in? %>
 
-
-
   <% else %>
   <div class="midiv ">
-      <h6 class="morado_font ">Registrate</h6>
+      <h6 class="morado_font ">
+        <%= link_to "Regístrate", new_user_registration_path %>
+      </h6>
+
+
   </div>
   <div class="midiv2" style="display:none;">
-      <h6 class="morado_font saludo">Registrate</h6>
+
+      <%= link_to "Regístrate", new_user_registration_path , class:"fucsia_font saludo"%>
   </div>
 
   <% end %>

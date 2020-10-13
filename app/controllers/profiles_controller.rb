@@ -7,13 +7,14 @@ class ProfilesController < ApplicationController
   def index
     @profiles = current_user.profiles
     @services = current_user.services
-    @requests = Request.all
+    @requests = current_user.requests
 
   end
 
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+
   end
 
   # GET /profiles/new
@@ -68,11 +69,11 @@ class ProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = Profile.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:descripcion, :user_id)
+      params.require(:profile).permit(:descripcion, :user_id, :titulo)
     end
 end
