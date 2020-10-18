@@ -1,5 +1,10 @@
 <div class="container">
 
+
+
+
+    <br><br>
+
     <% if !current_user.profiles.present? %>
 
         <div class="row">
@@ -14,7 +19,7 @@
           </div>
         </div>
 
-    <% end %>
+    <% else %>
 
     <table class="highlight responsive-table centered  ">
       <thead>
@@ -33,24 +38,23 @@
             <td><%= profile.descripcion %></td>
             <td><%= profile.user.email %></td>
             <td><%= link_to 'Ver como usuario externo', profile %></td>
-            <td><%= link_to 'Editar', edit_profile_path(profile) %></td>
-            <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'create', edit_profile_path(profile) ,class:"material-icons orange-text" %></td>
+            <td><%= link_to 'delete', profile, method: :delete, data: { confirm: 'Are you sure?' } ,class:"material-icons red-text" %></td>
           </tr>
       <% end %>
       </tbody>
     </table>
 
     <br>
+    <% end %>
 
-
-
-    <br><br><br>
+    <br>
     <div class="row">
       <div class="col s12 m12 l12 center">
         <ul class="tabs center">
-          <li class="tab col s3"><a class="active" href="#test1">Mis Servicios </a></li>
-          <li class="tab col s3"><a  href="#test2">Respuestas</a></li>
-          <li class="tab col s3 "><a href="#test3">Solicitudes</a></li>
+          <li class="tab col s3"><a class="active" href="#test1"><i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Recopilación de los servicios que has creado ">help_outline</i> Mis Servicios  </a></li>
+          <li class="tab col s3"><a  href="#test2"><i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Visualiza las respuestas que otros usuarios le han  dado a tus servicios">help_outline</i> Respuestas</a></li>
+          <li class="tab col s3 "><a href="#test3"><i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Recopilacion de las solicitudes que has realizado sobre los servicios de la comunidad">help_outline</i> Solicitudes</a></li>
         </ul>
       </div>
 
@@ -175,12 +179,17 @@
       </div>
 
       <div id="test2" class="col s12">
+
+
         <%  @services.each do |service| %>
           <div class="col s12 m6 l4">
               <%= link_to service  do  %>
                 <div class="card hoverable ">
                   <div class="card-content">
                        <div class="center">
+                         <div class="titulo_card2">
+                           <%= service.name.truncate(40)  %>
+                          </div>
                          <ul class="collection">
                            <li class="morado_ruta center">
                             <span class="fucsia_font center"><%= service.requests.count  %></span>
@@ -188,12 +197,11 @@
                           </li>
                           <br>
                             <% service.requests.each do |request| %>
-                             <li>
-                               <%=  request.mensaje %>
-                             </li>
-                             <li>
-                               <%=  request.user.email %>
-                             </li>
+                            <ul class="center">
+                              <li><%=  request.mensaje.truncate(30) %></li>
+                              <li><%=  request.user.email %></li>
+                            </ul>
+
                            <% end %>
                          </ul>
                        </div>
@@ -205,24 +213,32 @@
       </div>
 
       <div id="test3" class="col s12">
-
-        <!-- Modal Trigger -->
-            <div class="row center">
+            <table class="highlight responsive-table centered  ">
               <h3 class="fucsia_font center"> Respuestas</h3>
-              <ul class="collection">
-                <% @requests.each do |request| %>
-                 <li class="collection-item avatar">
-                   <span class="title left"> Nombre del servicio: <%=   request.service.name %></span>
-                   <p>Mensaje: <%=  request.mensaje %>  </p>
-                  <h4 class=" secondary-content ">
+                <thead>
+                  <tr>
+                    <th>Nombre del servicio</th>
+                    <th>Mensaje</th>
+                    <th>Correo servicio</th>
+                  </tr>
+                </thead>
 
-                  </h4>
-                 </li>
-              <% end %>
-               </ul>
-            </div>
+                <tbody>
+                  <% @requests.each do |request| %>
+                      <tr>
+                        <td> <%=   request.service.name %></td>
+                        <td><%=  request.mensaje %></td>
+                        <td><%=  request.service.mail_servicio %></td>
+                      </tr>
+                  <% end %>
+                </tbody>
+            </table>
+
+
 
       </div>
+
+
     </div>
 
 </div>
