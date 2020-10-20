@@ -14,6 +14,8 @@ class Service < ApplicationRecord
   after_create :save_skills
   validate :valide_skills
   validates :name, :information,  :precio, :mail_servicio,  presence: true, length: {minimum: 1, too_short: "Minimo son %{count} caracteres." }
+  has_one_attached :image_serv
+
 
   def categories=(value)
     @categories = value

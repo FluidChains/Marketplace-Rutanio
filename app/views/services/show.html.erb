@@ -26,9 +26,19 @@
 
   <div class="row">
 
+
     <div class="col s12 m6 l6 left">
-        <h3 class="fucsia_font"><%= @service.name %></h3>
+        <h3 class="fucsia_font center"><%= @service.name %></h3>
+        <% if @service.image_serv.attached? %>
+                <%= cl_image_tag(@service.image_serv.key,  sign_url: true , class:"portadaServicio materialboxed") %>
+        <% else %>
+                <img src="/images/fondo_ruta.png" alt=""  class="center fondo-ruta2">
+        <% end %>
+
     </div>
+
+
+
     <div class="col s12 m6 l6 right">
       <h2 class="morado_font">Información</h2>
       <%= @service.information %>
@@ -109,37 +119,19 @@
 
     <div class="col s12 m6 l6">
       <h2 class="morado_font center">Información de Contacto</h2>
-     <ul class="collapsible">
+     <ul>
          <li>
-           <div class="collapsible-header"><i class="material-icons morado_font">contact_mail</i>Email - <%= @service.mail_servicio %></div>
-           <div class="collapsible-body">
-             <div class="input-field">
-               <%= @service.mail_servicio %>
-
-             </div>
-           </div>
-         </li>
-
-
-         <li>
-           <div class="collapsible-header"><i class="material-icons morado_font">phone</i>Whatsapp - <%= @service.wpp %></div>
-           <div class="collapsible-body">
-             <div class="input-field">
-                <%= @service.wpp %>
-             </div>
-           </div>
+           <div>
+             <i class="material-icons morado_font">contact_mail</i>  Email - <%= @service.mail_servicio %></div>
          </li>
          <li>
-           <div class="collapsible-header"><i class="material-icons morado_font">router</i>Sitio Web - <%= @service.web %></div>
-           <div class="collapsible-body">
-             <div class="input-field">
-                  <%= @service.web %>
-             </div>
-           </div>
+           <div>
+             <i class="material-icons morado_font">phone</i>   Whatsapp - <%= @service.wpp %></div>
          </li>
-
-
-
+         <li>
+           <div>
+             <i class="material-icons morado_font">router</i>   Sitio Web - <%= @service.web %></div>
+         </li>
       </ul>
 
     </div>

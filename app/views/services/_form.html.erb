@@ -88,14 +88,17 @@
       <br>
 
 
-
       <div class="field col s12 m12 l12">
-        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Especifica si deben comunicarce contigo en algun idioma en particular">help_outline</i>
-        <%= form.label "Idioma" %>
+        <label for="">Selecciona el idioma valido para tu servicio</label>
         <br>
-        <%= form.text_field :lenguaje %>
-
+        <% lista_idioma = { 'Español' => 'Español', 'English' => 'English',
+        'Portugués' => 'Portuguese',
+        } %>
+        <% idiom = lista_idioma %>
+        <%= form.select :lenguaje, idiom, selected: "Consulta", id: :lenguaje %>
       </div>
+
+
 
 
       <div class="col s12 m6 l6">
@@ -163,6 +166,20 @@
         <%= form.text_area :aditional_info %>
 
       </div>
+
+      <div class="col s12 m12 l12">
+          <label for="">Cargar Foto de portada  / Las recomendaciones para la medida de la imagen son de 500px de ancho X 450px de largo</label>
+          <div class="file-field field">
+          <div class="btn ">
+            <span>Foto</span>
+            <input type="file">
+                  <%=form.file_field :image_serv , class: 'form-control'%>
+           </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate " type="text">
+             </div>
+            </div>
+       </div>
       <div class="center">
         <div class="actions">
           <%= form.submit "Crear" , class:"btn fucsia_ruta" %>

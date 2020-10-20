@@ -3,4 +3,8 @@ class Profile < ApplicationRecord
   friendly_id :titulo, use: :slugged
   belongs_to :user
   validates :user_id, uniqueness: true
+  #cloudinary
+  has_one_attached :avatar
+
+
 end

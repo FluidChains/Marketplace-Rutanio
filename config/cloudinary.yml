@@ -1,0 +1,18 @@
+development:
+  cloud_name: dklx1vvuh
+  api_key: '877261672476688'
+  api_secret: "ix4N0P0QgI-pIcbNN9kTAGPYvK4"
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dklx1vvuh
+  api_key: '877261672476688'
+  api_secret: "ix4N0P0QgI-pIcbNN9kTAGPYvK4"
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dklx1vvuh
+  api_key: '877261672476688'
+  api_secret: "ix4N0P0QgI-pIcbNN9kTAGPYvK4"
+  enhance_image_tag: true
+  static_file_support: false

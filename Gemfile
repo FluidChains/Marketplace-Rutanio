@@ -59,6 +59,12 @@ gem 'friendly_id', '~> 5.4.0'
 
 gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 
+# almacenamiento imagenes
+
+gem 'carrierwave', '~> 2.1'
+
+gem 'cloudinary', '~> 1.13', '>= 1.13.2'
+
 
 #graficos
 gem 'chartkick', '~> 3.3'

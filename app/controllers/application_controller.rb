@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :panel
 
-  
+
 
 
   def configuraciones
@@ -18,8 +18,6 @@ class ApplicationController < ActionController::Base
   def authenticate_admin!
     redirect_to root_path, notice: "No tienes permiso para esta acción. " unless user_signed_in? && current_user.is_admin?
   end
-
-
 
   protected
 
