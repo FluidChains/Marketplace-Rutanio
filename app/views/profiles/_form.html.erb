@@ -1,4 +1,6 @@
-<%= form_with(model: profile, local: true) do |form| %>
+<div class="container">
+
+  <%= form_with(model: profile, local: true) do |form| %>
   <% if profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -25,4 +27,6 @@
   <div class="actions">
     <%= form.submit %>
   </div>
-<% end %>
+  <% end %>
+
+</div>

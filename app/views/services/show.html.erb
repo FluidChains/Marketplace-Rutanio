@@ -1,6 +1,7 @@
 <br>
 <% if user_signed_in? && @service.user.email == current_user.email %>
-<!-- Modal Trigger -->
+
+<div class="container">
     <div class="row center">
       <h3 class="fucsia_font center"> RESPUESTAS </h3>
       <ul class="collection">
@@ -18,6 +19,9 @@
       <% end %>
        </ul>
     </div>
+
+</div>
+
 <% end %>
 <br>
 <br>
@@ -37,7 +41,7 @@
     </div>
 
   </div>
-  
+
   <div class="row">
     <div class="col s12 m12 l12 left">
         <% @service.skills.each do |skill| %>

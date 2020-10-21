@@ -1,52 +1,51 @@
 <div class="container">
-
-
-
-
     <br><br>
 
-    <% if !current_user.profiles.present? %>
+    <% if current_user.is_admin? %>
 
-        <div class="row">
-          <div class="col s12 m12 l12 center">
-            <div class="card-panel center hoverable">
-              <h3>¡Aun no has creado tu perfil publico!  </h3>
-              <h5>Comparte con la comunidad Rutanio tu información publica, creando de esta manera sinergia y nuevas redes de negocio</h5>
-              <br>
-              <%= link_to 'Publicar Perfil', new_profile_path ,class:"btn-large fucsia_ruta " %>
-              <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Una vez publiques tu perfil los otros usuarios de la comunidad Rutanio podran ver tu informacion publica">help_outline</i>
+        <% if !current_user.profiles.present? %>
+
+            <div class="row">
+              <div class="col s12 m12 l12 center">
+                <div class="card-panel center hoverable">
+                  <h3>¡Aun no has creado tu perfil publico!  </h3>
+                  <h5>Comparte con la comunidad Rutanio tu información publica, creando de esta manera sinergia y nuevas redes de negocio</h5>
+                  <br>
+                  <%= link_to 'Publicar Perfil', new_profile_path ,class:"btn-large fucsia_ruta " %>
+                  <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Una vez publiques tu perfil los otros usuarios de la comunidad Rutanio podran ver tu informacion publica">help_outline</i>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-    <% else %>
+        <% else %>
 
-    <table class="highlight responsive-table centered  ">
-      <thead>
-        <tr>
-          <th>Descripcion</th>
-          <th>User</th>
-          <th>Ver</th>
-          <th>Editar</th>
-          <th>Eliminar</th>
-        </tr>
-      </thead>
+        <table class="highlight responsive-table centered  ">
+          <thead>
+            <tr>
+              <th>Descripcion</th>
+              <th>User</th>
+              <th>Ver</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
 
-      <tbody>
-      <% @profiles.each do |profile| %>
-          <tr>
-            <td><%= profile.descripcion %></td>
-            <td><%= profile.user.email %></td>
-            <td><%= link_to 'Ver como usuario externo', profile %></td>
-            <td><%= link_to 'create', edit_profile_path(profile) ,class:"material-icons orange-text" %></td>
-            <td><%= link_to 'delete', profile, method: :delete, data: { confirm: 'Are you sure?' } ,class:"material-icons red-text" %></td>
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
+          <tbody>
+          <% @profiles.each do |profile| %>
+              <tr>
+                <td><%= profile.descripcion %></td>
+                <td><%= profile.user.email %></td>
+                <td><%= link_to 'Ver como usuario externo', profile %></td>
+                <td><%= link_to 'create', edit_profile_path(profile) ,class:"material-icons orange-text" %></td>
+                <td><%= link_to 'delete', profile, method: :delete, data: { confirm: 'Are you sure?' } ,class:"material-icons red-text" %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
 
-    <br>
-    <% end %>
+        <br>
+        <% end %>
+<% end %>
 
     <br>
     <div class="row">
