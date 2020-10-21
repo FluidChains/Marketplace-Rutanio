@@ -55,9 +55,11 @@ gem 'jquery-datatables'
 
 gem 'friendly_id', '~> 5.4.0'
 
-#mails
+#panel amdmin
 
 gem 'rails_admin', '~> 2.0', '>= 2.0.2'
+
+gem 'sassc', '~> 2.4'
 
 # almacenamiento imagenes
 
