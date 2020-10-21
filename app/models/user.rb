@@ -6,6 +6,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :services, dependent: :destroy
-  has_many  :requests
-  has_many  :profiles
+  has_many  :requests , dependent: :destroy
+  has_many  :profiles, dependent: :destroy
 end
