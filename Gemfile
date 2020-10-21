@@ -59,7 +59,7 @@ gem 'friendly_id', '~> 5.4.0'
 
 gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 
-gem 'sassc', '~> 2.4'
+#gem 'sassc', '~> 2.4'
 
 # almacenamiento imagenes
 
