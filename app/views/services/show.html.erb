@@ -18,32 +18,26 @@
       <% end %>
        </ul>
     </div>
-
 <% end %>
-
-<br><br>
+<br>
+<br>
 <div class="container z-depth-2" style="padding:2%;">
-
   <div class="row">
-
-
     <div class="col s12 m6 l6 left">
         <h3 class="fucsia_font center"><%= @service.name %></h3>
         <% if @service.image_serv.attached? %>
                 <%= cl_image_tag(@service.image_serv.key,  sign_url: true , class:"portadaServicio materialboxed") %>
         <% else %>
-                <img src="/images/fondo_ruta.png" alt=""  class="center fondo-ruta2">
+                <img src="/images/banner.png" alt=""  class="center fondo-ruta2">
         <% end %>
-
     </div>
-
-
-
     <div class="col s12 m6 l6 right">
       <h2 class="morado_font">Información</h2>
       <%= @service.information %>
     </div>
+
   </div>
+  
   <div class="row">
     <div class="col s12 m12 l12 left">
         <% @service.skills.each do |skill| %>
@@ -142,7 +136,7 @@
       <br>
       <div class="row comparte valign-wrapper ">
         <h2 class="morado_font">Comparte: </h2>
-         <%= social_share_button_tag(@service.name, :url => service_url(@service), desc: @service.name)%>
+         <%= social_share_button_tag(@service.name, :url => service_url(@service), :image =>  "http://foo.bar/images/a.jpg", desc: @service.name)%>
       </div>
 
     </div>

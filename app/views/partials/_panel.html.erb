@@ -13,6 +13,16 @@
       </div>
   </li>
 
+  <% if user_signed_in? & current_user.is_admin? %>
+      <li>
+        <%= link_to  "/admin"   do  %>
+        <i class="material-icons fucsia_font" ">settings_applications</i>
+        Dashboard
+        <% end %>
+      </li>
+      <li>
+  <% end %>
+
   <% if user_signed_in? %>
       <li>
         <%= link_to  profiles_path   do  %>
