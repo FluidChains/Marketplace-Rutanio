@@ -89,6 +89,7 @@
 
 
       <div class="field col s12 m12 l12">
+
         <label for="">Selecciona el idioma valido para tu servicio</label>
         <br>
         <% lista_idioma = { 'Español' => 'Español', 'English' => 'English',
@@ -98,16 +99,14 @@
         <%= form.select :lenguaje, idiom, selected: "Consulta", id: :lenguaje %>
       </div>
 
-
-
-
       <div class="col s12 m6 l6">
 
-         <div class="field inline col s12 m12 l12">
-           <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Email publico para que te contacten">help_outline</i>
-           <%= form.text_field :mail_servicio ,id:"email_inline" ,class:"validate" ,type:"email"%>
-           <label for="email_inline">Mail servicio</label>
-         </div>
+        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Link de pagina web">help_outline</i>
+        <%= form.label "Link web" %>
+        <%= form.text_field :web %>
+
+
+
        </div>
       <div class="field col s12 m6 l6">
         <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Indicador + Numero de Whatsapp del servicio ">help_outline</i>
@@ -117,10 +116,12 @@
       </div>
 
       <div class="field col s12 m12 l12">
-        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Link de pagina web">help_outline</i>
-        <%= form.label "Link web" %>
-        <%= form.text_field :web %>
+        <div class="field inline col s12 m12 l12">
+          <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Email publico para que te contacten">help_outline</i>
+          <%= form.label "Mail servicio" %>
+          <%= form.text_field :mail_servicio ,id:"email_inline" ,class:"validate" ,type:"email"%>
 
+        </div>
       </div>
       <div class="field col s12 m12 l12">
         <p>Fecha de vencimiento</p>
@@ -169,6 +170,7 @@
 
       <div class="col s12 m12 l12">
           <label for="">Cargar Foto de portada  / Las recomendaciones para la medida de la imagen son de 500px de ancho X 450px de largo</label>
+          <br>
           <div class="file-field field">
           <div class="btn ">
             <span>Foto</span>
@@ -182,7 +184,7 @@
        </div>
       <div class="center">
         <div class="actions">
-          <%= form.submit "Crear" , class:"btn fucsia_ruta" %>
+          <%= form.submit "Crear" , class:"btn large fucsia_ruta" %>
         </div>
       </div>
     <% end %>

@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  before_action :athenticate_admin!, only:[:administrador]
 
   def index
     @services = Service.publicados.paginate(:page => params[:page], :per_page => 24)
@@ -24,7 +25,6 @@ class WelcomeController < ApplicationController
     @requests = current_user.requests
     @services = current_user.services
   end
-
 
   def postulaciones
     @requests = current_user.requests
