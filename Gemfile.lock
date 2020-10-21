@@ -319,6 +319,7 @@ DEPENDENCIES
   rails (~> 5.2.4, >= 5.2.4.2)
   rails_admin (~> 2.0, >= 2.0.2)
   sass-rails (~> 5.0)
+  sassc (~> 2.4)
   selenium-webdriver
   social-share-button (~> 1.2, >= 1.2.1)
   spring
