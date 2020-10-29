@@ -6,11 +6,10 @@ class ServicesController < ApplicationController
   # GET /services.json
   def index
     @services = current_user.services
-    
+
     if user_signed_in? && current_user.is_admin? && !params.has_key?(:normal)
         @users = User.all
-        @services = current_user.services.paginate(:page => params[:page], :per_page => 12)
-
+        @services = Service.all.paginate(:page => params[:page], :per_page => 12)
         render  :"admin_service"
     end
   end
