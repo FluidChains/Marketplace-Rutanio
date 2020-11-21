@@ -65,7 +65,7 @@ gem 'rails_admin', '~> 2.0', '>= 2.0.2'
 gem 'sassc', '~> 2.4'
 
 #notificaciones
-#gem 'noticed', '~> 1.2', '>= 1.2.19'
+gem 'noticed', '~> 1.2', '>= 1.2.19'
 
 # almacenamiento imagenes
 
