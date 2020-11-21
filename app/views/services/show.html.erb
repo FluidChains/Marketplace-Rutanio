@@ -30,7 +30,7 @@
     <div class="col s12 m6 l6 left">
         <h3 class="fucsia_font center"><%= @service.name %></h3>
         <% if @service.image_serv.attached? %>
-                <%= cl_image_tag(@service.image_serv.key,  sign_url: true , class:"portadaServicio materialboxed") %>
+                <%= image_tag @service.image_serv  , class:"portadaServicio materialboxed" %>
         <% else %>
                 <img src="/images/banner.png" alt=""  class="center fondo-ruta2">
         <% end %>
