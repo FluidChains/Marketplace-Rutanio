@@ -1,10 +1,7 @@
 <div class="container">
     <br><br>
-
     <% if current_user.is_admin? %>
-
         <% if !current_user.profiles.present? %>
-
             <div class="row">
               <div class="col s12 m12 l12 center">
                 <div class="card-panel center hoverable">
@@ -16,9 +13,7 @@
                 </div>
               </div>
             </div>
-
         <% else %>
-
         <table class="highlight responsive-table centered  ">
           <thead>
             <tr>

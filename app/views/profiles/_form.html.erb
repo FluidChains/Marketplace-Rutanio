@@ -23,6 +23,21 @@
     <%= form.text_field :descripcion %>
   </div>
 
+  <div class="col s12 m12 l12">
+      <label for="">Cargar Foto de portada  / Las recomendaciones para la medida de la imagen son de 500px de ancho X 450px de largo</label>
+      <br>
+      <div class="file-field field">
+      <div class="btn ">
+        <span>Foto</span>
+        <input type="file">
+              <%=form.file_field :photo_profile , class: 'form-control'%>
+       </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate " type="text">
+         </div>
+        </div>
+   </div>
+
 
   <div class="actions">
     <%= form.submit %>

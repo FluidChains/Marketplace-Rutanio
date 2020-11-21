@@ -9,6 +9,27 @@
     <strong>User:</strong>
     <%= @profile.user %>
   </p>
+  <p>
+    <strong>Correo de contacto:</strong>
+  <%= @profile.user.email %>
+  </p>
+  <%= @profile.user.skill %>
+  <br>
+  <%= @profile.user.lenguage %>
+  <br>
+  <%= @profile.user.mail %>
+  <br>
+  <%= @profile.user.company %>
+  <br>
+  <%= @profile.user.web_site %>
+  <br>
+  <%= @profile.user.discord_user %>
+
+
+
+
+
+
 
   <%= link_to 'Edit', edit_profile_path(@profile) %> |
   <%= link_to 'Back', profiles_path %>
