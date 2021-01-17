@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_21_073701) do
+ActiveRecord::Schema.define(version: 2020_12_09_155354) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 2020_11_21_073701) do
     t.string "color"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "profile_id", null: false
+    t.integer "calificacion"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["profile_id"], name: "index_comments_on_profile_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "has_categories", force: :cascade do |t|
     t.integer "service_id"
     t.integer "category_id"
@@ -57,6 +67,18 @@ ActiveRecord::Schema.define(version: 2020_11_21_073701) do
     t.datetime "updated_at", null: false
     t.index ["service_id"], name: "index_has_skills_on_service_id"
     t.index ["skill_id"], name: "index_has_skills_on_skill_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.integer "recipient_id", null: false
+    t.string "type", null: false
+    t.json "params"
+    t.datetime "read_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -143,6 +165,8 @@ ActiveRecord::Schema.define(version: 2020_11_21_073701) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "profiles"
+  add_foreign_key "comments", "users"
   add_foreign_key "has_categories", "categories"
   add_foreign_key "has_categories", "services"
   add_foreign_key "has_skills", "services"

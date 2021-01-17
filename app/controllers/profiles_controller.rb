@@ -14,6 +14,10 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @services = Service.all
+    @comment = Comment.new
+    @comments = @profile.comments
+    
 
   end
 
@@ -74,6 +78,6 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:descripcion, :user_id, :titulo)
+      params.require(:profile).permit(:descripcion, :user_id, :titulo, :avatar)
     end
 end

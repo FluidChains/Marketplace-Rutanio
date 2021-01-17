@@ -20,7 +20,7 @@ class ServicesController < ApplicationController
   def show
     @request = Request.new
     @requests = @service.requests.paginate(:page => params[:page], :per_page => 1)
-    @skills = Skill.all
+    @skills = Skill.paginate(:page => params[:page], :per_page => 3)
   end
 
   # GET /services/new

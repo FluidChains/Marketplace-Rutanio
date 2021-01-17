@@ -1,7 +1,7 @@
 class Service < ApplicationRecord
   include AASM
   belongs_to :user
-
+  
   has_many :has_categories, :dependent => :destroy
   has_many :categories, through: :has_categories, :dependent => :destroy
   has_many :has_skills

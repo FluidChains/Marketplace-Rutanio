@@ -1,11 +1,8 @@
 <div class="container">
-
   <%= form_with(model: profile, local: true) do |form| %>
   <% if profile.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
-
-      <ul>
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>      <ul>
       <% profile.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -14,7 +11,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :titulo %>
+    <%= form.label :titulo ,"Titulo de perfil" %>
     <%= form.text_field :titulo %>
   </div>
 
@@ -30,18 +27,21 @@
       <div class="btn ">
         <span>Foto</span>
         <input type="file">
-              <%=form.file_field :photo_profile , class: 'form-control'%>
+              <%=form.file_field :avatar , class: 'form-control ' %>
        </div>
         <div class="file-path-wrapper">
           <input class="file-path validate " type="text">
          </div>
         </div>
    </div>
-
-
-  <div class="actions">
-    <%= form.submit %>
+<br><br>
+<div class="row">
+  <div class="actions center">
+    <%= form.submit class:"fucsia_ruta white-text btn "%>
   </div>
+
+</div>
+
   <% end %>
 
 </div>

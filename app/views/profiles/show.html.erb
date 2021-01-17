@@ -1,41 +1,271 @@
 <div class="container">
+
+    <!-- Modal Structure -->
+    <div id="modalServic" class="modal">
+      <div class="modal-content">
+        <h4>Servicios de <%= @profile.titulo %></h4>
+
+        <%  @services.each do |service| %>
+          <div class="col s12 m6 l4">
+              <%= link_to service  do  %>
+            <div class="card hoverable carta">
+              <div class="card-content">
+                <div class="titulo_card">
+                  <h2><% service.category_ids.to_s  %></h2>
+                  <% if service.category_ids == [1] %>
+                  <span class="left chip etiqueta2">Que necesito</span>
+                  <br>
+                  <div class="titulo_card2">
+                    <%= service.name.truncate(60)  %>
+                   </div>
+                   <% else %>
+                   <span class="left chip etiqueta">Que ofrezco</span>
+                   <br>
+                   <div class="titulo_card ">
+                     <%= service.name.truncate(60)  %>
+                   </div>
+                   <% end %>
+                 </div>
+                 <div class="left">
+                   <p class="black-text"><%= service.information.truncate(50)  %> </p>
+                 </div>
+                 <br>
+                 <div class="row ">
+                   <div class="left">
+                     <ul class="imagenes_carta">
+                       <li>
+                         <% if !service.valid_until.nil? %>
+                             <i class="material-icons">update</i>
+                             <span>vencimiento</span>:
+                             <%= service.valid_until.strftime("%d-%b-%Y")  %>
+                         <% end %>
+                       </li>
+                       <li>
+                          <% if !service.precio.nil? %>
+                           <a href="#"><img src="/images/ruta.png" alt=""  class="iconos_market">
+                              <%= number_with_delimiter(service.precio.round, :delimiter => ',') %>
+                              RUTA
+                            </a>
+                          <% end %>
+                       </li>
+                       <li>
+                          <% if !service.exos_amount.nil? %>
+                            <a href="#"><img src="/images/exos.png" alt=""  class="iconos_market"> <%= number_with_delimiter(service.exos_amount.round, :delimiter => ',') %></a>
+                            <span>EXOS</span>
+                          <% end %>
+                       </li>
+                     </ul>
+                     <br>
+                    <br>
+                   </div>
+
+                 </div>
+              </div>
+              <div class="card-action">
+                <% service.skills.each do |skill| %>
+                <%  skill.color_tag %>
+              <div class="chip chips_texto" >
+                <%=  skill.name.truncate(20) %>
+              </div>
+              <% end %>
+              </div>
+            </div>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir/Esc</a>
+      </div>
+    </div>
+
   <div class="row">
+    <div class="col s6 card carta">
+      <div class="fotoProfile">
+      <div class="user-view">
+      <div class=" center">
+        <% if @profile.avatar.attached? %>
+          <%= image_tag  @profile.avatar  , class:"fotoPerfilAvatar" %>
+        <br>
+        <% else %>
+          <img src="/images/fondo_ruta.png" alt=""  class="center fondo-ruta2">
+        <% end %>
+        <br>
+      <!--
+      <div class="col s12 m12 l12">
+          <% if user_signed_in? %>
+              <%= render "comments/form"%>
+          <% else %>
+              <div class="center">
 
-      <p>
-        <strong>Descripcion:</strong>
-        <%= @profile.descripcion %>
-      </p>
-
-      <p>
-        <strong>User:</strong>
-        <%= @profile.user %>
-      </p>
-      <p>
-        <strong>Correo de contacto:</strong>
-      <%= @profile.user.email %>
-      </p>
-      <%= @profile.user.skill %>
-      <br>
-      <%= @profile.user.lenguage %>
-      <br>
-      <%= @profile.user.mail %>
-      <br>
-      <%= @profile.user.company %>
-      <br>
-      <%= @profile.user.web_site %>
-      <br>
-      <%= @profile.user.discord_user %>
-
+                  <br>
+                  <%= link_to "account_circle" , new_user_session_path, disabled:"true", class:"center material-icons indigo-text "   %>
+                  <%= link_to "Iniciar Sesión", new_user_session_path ,class:"descriptivo  indigo-text  center"%>
+                  <br>
+              </div>
+          <% end %>
 
 
+       </div>
+     -->
+
+      </div>
+      <br><br><br><br>
+
+      </div>
+
+    </div>
+
+    </div>
+    <div class="col s6 carta">
+      <div class="card fucsia_ruta darken-1">
+        <br>
+        <div class="card-content white-text">
+          <span class=" morado_font"><%= @profile.titulo %></span>
+            <br>
+              <div class="desc_font">
+                <strong>Descripcion:</strong>
+                <%= @profile.descripcion %>
+              </div>
+              <div class="desc_fontP">
+                <% if !@profile.user.skill.nil? %>
+                <% else %>
+                <h3>¡Aun no has diligenciado tu infromacion personal!  </h3>
+                <span>Diligencia tu perfil en el siguiente link
+                  <%= link_to  profiles_path   do  %>
+                  <i class="material-icons fucsia_font" ">person</i>
+                  Mi Perfil
+                  <% end %></span>
+                <% end %>
+                <li>
+                  Profesión:
+                <%= @profile.user.skill %>
+                </li>
+
+                <li>
+                  Idiomas:
+                   <%= @profile.user.lenguage %>
+                </li>
+                <li>
+                  Empresa:
+                   <%= @profile.user.company %>
+                </li>
+
+                <li>
+                  Pagina web:
+                    <%= @profile.user.web_site %>
+                </li>
+                <li>
+                  Usuario Discord:
+                      <%= @profile.user.discord_user %>
+                </li>
+          </div>
+      </div>
+<br>
+<br>
+<br>
+      </div>
 
 
 
 
-      <%= link_to 'Edit', edit_profile_path(@profile) %> |
-      <%= link_to 'Back', profiles_path %>
+    </div>
+
+
+
+
 
 
   </div>
 
+
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <img src="/images/embajador.png" alt="" class="sello">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6">
+      <div class="card morado_ruta center hoverable cartaS" >
+        <div class=" text-p center">
+          <br>
+
+  <!-- Modal Trigger -->
+
+
+          <h4 href="#modalServic" class="text-p2 bottom white-text modal-trigger" >
+            Total Servicios   <%= @services.count%>  <i class="large material-icons  white-text">store_mall_directory</i>
+          </h4>
+        </div>
+      </div>
+
+    </div>
+    <div class="col s6">
+      <div class="card fucsia_ruta center hoverable cartaS" >
+
+          <%= line_chart Service.group_by_day(:created_at).count , xtitle: "Mes", ytitle: "# Servicios", colors: ["#fff"], download: "servicio_mes" , height: "150px" , refresh: 60,
+                library: {
+                  vAxis: { baselineColor: "#fff",  gridlines: {Color: "" }, textStyle: { color: "#76BDD1"}, titleTextStyle: {color: "#fff"} },
+                  hAxis: { baselineColor: "#fff" , gridlines: {Color: "" }, textStyle: { color: "#76BDD1"} , titleTextStyle: {color: "#fff"} } }
+          %>
+
+
+      </div>
+
+    </div>
+  </div>
+
+
+      <div class="row">
+
+          <div class="col s12 m12 l12">
+            <h3 class="center">Creacion Servicios</h3 >
+
+            <br>
+            <span>Servicios activos</span>
+
+              <table>
+                  <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Estado</th>
+                        <th>Skills</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                  <%  @services.each do |service| %>
+                      <tr>
+                          <td> <%= service.name.truncate(60)  %></td>
+                            <% if service.may_publish? %>
+                            <td>activo</td>
+                            <% else %>
+                            <td>inactivo</td>
+                            <% end %>
+                          <td>
+                            <% service.skills.each do |skill| %>
+                            <%  skill.color_tag %>
+                          <div class="chip chips_texto" >
+                            <%=  skill.name.truncate(20) %>
+                          </div>
+                          <% end %>
+                          </td>
+                      </tr>
+                  <%  end %>
+                  </tbody>
+                </table>
+
+              <br>
+
+          </div>
+
+
+
+      </div>
+  <div class="row">
+    <h3 class="center">Solicitud de Servicios</h3 >   
+
+  </div>
 </div>
