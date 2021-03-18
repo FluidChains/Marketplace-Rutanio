@@ -12,14 +12,3 @@ development:
   database: rutanio_production
     username: rails
     password: <%= ENV['RUTANIO_DATABASE_PASSWORD'] %>
-
-test:
-  <<: *default
-  database: rutanio_test
-
-
-production:
-  <<: *default
-  database: rutanio_production
-  username: rails
-  password: <%= ENV['RUTANIO_DATABASE_PASSWORD'] %>
