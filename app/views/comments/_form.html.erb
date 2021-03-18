@@ -14,12 +14,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :calificacion %>
-    <%= form.number_field :calificacion %>
-  </div>
+    <div class="contenidMensaje center">
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+        <div class="input-field col s12 m12 l12">
+          <label for="">Recomendar</label>
+          <br>
+          <br>
+          <% lista_calificacion = { '5 Puntos' => '5', '4 Puntos' => '4', '3 Puntos' => '3', '2 Puntos' => '2', '1 Puntos' => '1',
+          } %>
+          <% lista_cal = lista_calificacion %>
+          <%= form.select :calificacion, lista_cal, id: :calificacion %>
+        </div>
+
+          <div class="actions">
+            <%= form.submit "Recomendar",  class:"btn morado_ruta pulse" %>
+          </div>
+          <br>
+
+
+      </div>
+
+
 <% end %>

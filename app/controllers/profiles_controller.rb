@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
     @services = Service.all
     @comment = Comment.new
     @comments = @profile.comments
-    
+
 
   end
 
@@ -78,6 +78,6 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:descripcion, :user_id, :titulo, :avatar)
+      params.require(:profile).permit(:descripcion, :user_id, :titulo, :avatar, :wallet_uno, :empresa)
     end
 end

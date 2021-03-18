@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment.profile, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @comment.profile, notice: 'Se ha registrado de forma correcta tu interacción' }
         format.json { render :show, status: :created, location: @comment.profile }
       else
         format.html { render :new }
@@ -70,7 +70,7 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       @profile = Profile.friendly.find(params[:profile_id])
-       
+
     end
     def set_comment
       @comment = Comment.find(params[:id])

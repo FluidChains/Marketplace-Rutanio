@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_155354) do
+ActiveRecord::Schema.define(version: 2021_03_17_155612) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -88,6 +88,9 @@ ActiveRecord::Schema.define(version: 2020_12_09_155354) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.string "titulo"
+    t.string "empresa"
+    t.text "wallet_uno"
+    t.text "wallet_dos"
     t.index ["slug"], name: "index_profiles_on_slug", unique: true
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
@@ -174,4 +177,5 @@ ActiveRecord::Schema.define(version: 2020_12_09_155354) do
   add_foreign_key "profiles", "users"
   add_foreign_key "requests", "services"
   add_foreign_key "requests", "users"
+  add_foreign_key "services", "users"
 end

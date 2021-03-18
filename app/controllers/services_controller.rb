@@ -18,6 +18,7 @@ class ServicesController < ApplicationController
   # GET /services/1
   # GET /services/1.json
   def show
+    @profiles = Profile.all
     @request = Request.new
     @requests = @service.requests.paginate(:page => params[:page], :per_page => 1)
     @skills = Skill.paginate(:page => params[:page], :per_page => 3)

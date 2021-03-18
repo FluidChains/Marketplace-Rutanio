@@ -1,31 +1,9 @@
 <br>
-<% if user_signed_in? && @service.user.email == current_user.email %>
-
-<div class="container">
-    <div class="row center">
-      <h3 class="fucsia_font center"> RESPUESTAS </h3>
-      <ul class="collection">
-          <% @service.requests.each do |request| %>
-         <li class="collection-item avatar">
-           <span class="title left"><%= request.user.email %></span>
-           <p><%= request.mensaje %>
-           </p>
-          <h4 class=" secondary-content ">
-            <% if user_signed_in? && current_user == request.user %>
-              <%= link_to "Eliminar ", [@service, request], data:{confirm: "Estas seguro que deseas eliminar? ", :method => :delete}, class:"btn btn-outline-danger morado_ruta"%>
-            <% end %>
-          </h4>
-         </li>
-      <% end %>
-       </ul>
-    </div>
-
-</div>
-
-<% end %>
 <br>
-<br>
+
+
 <div class="container z-depth-2" style="padding:2%;">
+
   <div class="row">
     <div class="col s12 m6 l6 left">
         <h3 class="fucsia_font center"><%= @service.name %></h3>
@@ -117,6 +95,7 @@
 
     <div class="col s12 m6 l6">
       <h2 class="morado_font center">Información de Contacto</h2>
+
      <ul>
          <li>
            <div>
@@ -132,11 +111,36 @@
          </li>
       </ul>
 
+      <% Profile.all.each do |profile| %>
+        <% if profile.user.id  ==  @service.user.id %>
+        <div class=" left">
+          <% if profile.avatar.attached? %>
+          <h5 class="center"><%=   profile.titulo   %></h5>
+
+          <br>
+            <%= image_tag  profile.avatar  , class:"fotoPerfilAvatarS" %>
+          <br>
+          <div class="center">
+            <%= link_to 'Visitar Perfil', profile %>
+
+          </div>
+
+          <% else %>
+            <img src="/images/fondo_ruta.png" alt=""  class="center fondo-ruta2">
+          <% end %>
+
+        </div>
+
+        <% end %>
+      <% end %>
+
+    <br>
+
     </div>
     <div class="col s12 m6 l6 ">
-      <p>
+      <h4>
         Conoces a alguien que le pueda interesar <%= @service.name   %> ?
-      </p>
+      </h4>
       <br>
       <div class="row comparte valign-wrapper ">
         <h2 class="morado_font">Comparte: </h2>
@@ -148,37 +152,24 @@
 </div>
 
 
-  <div class=" col s12 m12 l12">
-
+  <div class=" col s12 m12 l12 center">
    <br>
+      <div id="cajaComentar" class="modal center">
+        <div class="modal-content center">
+         <%= render "requests/form"%>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat ">Salir</a>
+        </div>
+      </div>
+  </div>
 
-              <!-- Modal Structure -->
-
-              <div id="cajaComentar" class="modal">
-
-                <div class="modal-content center">
-                 <%= render "requests/form"%>
-
-                </div>
-
-                <div class="modal-footer">
-
-                  <a href="#!" class="modal-close waves-effect waves-green btn-flat ">Salir</a>
-
-                </div>
-
-              </div>
-
-
-
-
-</div>
 <div class="row">
-  <div class="col s12 m6 l6">
+  <div class="col s12 m12 l12">
     <% if user_signed_in? %>
     <!-- Modal Trigger -->
         <div class="row center">
-        <a class="waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse" href="#cajaComentar">Contactar</a>
+          <a class="waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse" href="#cajaComentar">Comentar</a>
         </div>
         <% else %>
         <div class="row center">
@@ -202,5 +193,25 @@
 
 
 
+
+    </div>
+    <div class="container">
+        <div class="row center">
+          <h3 class="fucsia_font center"> Comentarios </h3>
+          <ul class="collection">
+              <% @service.requests.each do |request| %>
+             <li class="collection-item avatar">
+               <span class="title left"><%= request.user.email %></span>
+               <p><%= request.mensaje %>
+               </p>
+              <h4 class=" secondary-content ">
+                <% if user_signed_in? && current_user == request.user %>
+                  <%= link_to "Eliminar ", [@service, request], data:{confirm: "Estas seguro que deseas eliminar? ", :method => :delete}, class:"btn btn-outline-danger morado_ruta"%>
+                <% end %>
+              </h4>
+             </li>
+          <% end %>
+           </ul>
+        </div>
 
     </div>
