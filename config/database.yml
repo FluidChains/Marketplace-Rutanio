@@ -10,8 +10,7 @@ development:
   # entorno desarrllo sqlite3
   # adapter: sqlite3
   # database: example_development
-  #desarrollo:
-  host: 167.71.182.161
+  #desarrollo:  
   database: rutanio_production
   username: rails
   password: <%= ENV['RUTANIO_DATABASE_PASSWORD'] %>
