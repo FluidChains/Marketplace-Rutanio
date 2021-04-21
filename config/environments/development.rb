@@ -1,5 +1,5 @@
 Rails.application.configure do
-  
+
   config.hosts << "marketplace.rutanio.com"
   config.cache_classes = false
   # Do not eager load code on boot.
@@ -59,7 +59,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 4000 }
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'marketplace.rutanio.com' }
 
 end
