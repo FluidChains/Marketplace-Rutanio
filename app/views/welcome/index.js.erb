@@ -1,0 +1,6 @@
+$('#serviciox').append('<%= j render @service %>')
+<% if @service.next_page %>
+ $('.pagination').replaceWith('>');
+  <% else %>
+   $('.pagination').remove();
+  <% end %>
