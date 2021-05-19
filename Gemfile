@@ -80,8 +80,6 @@ gem 'chartkick', '~> 3.3'
 gem 'groupdate', '~> 4.2'
 
 
-
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

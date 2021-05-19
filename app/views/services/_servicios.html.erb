@@ -1,70 +1,8 @@
-<br><br><br>
-<div class="row center">
-  <div class="col s12 m12 l12 right">
-    <div class="row">
-      <div class="center">
-        <div class="tituloMercado">
-          <h2>Mercado</h2>
-          <h4 class="beta ">beta</h4>
-        </div>
-         <p class="parrafos_r">Encuentra profesionales en diversas areas o postula tus servicios </p>
-         <br>
-         <% if user_signed_in? %>
-             <a class="waves-effect waves-light  btn modal-trigger white-text fucsia_ruta" href="#renderModal">Crea Nuevo <i class="material-icons right">add_circle_outline</i></a>
-             <% else %>
-             <%= link_to  new_user_session_path,  class:"waves-effect waves-light  btn modal-trigger white-text fucsia_ruta"  do %>
-                Crear nuevo
-               <i class="material-icons right">add_circle_outline</i>
-             <% end %>
-         <% end %>
-      </div>
-    </div>
-    <div class="row center">
-      <div class="col s12 m12 l12">
-        <ul class="listado_card center">
-          <li><%= link_to "Todos", root_path , class:"fucsia_font" %></li>
-          <% @categories.each do |category| %>
-           <% if category.id == 1 %>
-            <li><%= link_to category.nombre_categoria, category , class:"morado_font"%></li>
-            <% else %>
-            <li><%= link_to category.nombre_categoria, category , class:"fucsia_font"%></li>
-            <% end %>
-          <% end %>
-          <li><%= link_to "Closed", welcome_vencido_path , class:"morado_font" %></li>
-
-        </ul>
-        <br>
-        <div class="container">
-          <div class="row">
-            <div class="col s12 m12 l12 center buscador">
-              <%= form_tag welcome_search_path, :method => :get do %>
-                <%= text_field_tag   class:" black-text  input-field inline", placeholder:"Buscar"%>
-                <%= submit_tag 'Buscar' ,class:"btn morado_ruta"%>
-              <% end %>
-
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-
-
-    <br>
-
-
-  </div>
-
-
-</div>
 
 
 <div class="container cuerpo">
 
-  <div class="row">
+  <div class="row " id="serviciox">
     <%  @serv.each do |service| %>
       <div class="col s12 m6 l4">
           <%= link_to service  do  %>
@@ -156,10 +94,7 @@
      </div>
    </div>
 
-     <div class="row center">
-       <%= will_paginate @services ,class:"flickr_pagination" %>
 
-     </div>
 
 
 </div>

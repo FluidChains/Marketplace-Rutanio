@@ -1,16 +1,21 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy, :unpublish, :publish]
+  before_action :set_service, only: [:index , :show, :edit, :update, :destroy, :unpublish, :publish]
   before_action :authenticate_user!, only:[:edit,:create]
 
   # GET /services
   # GET /services.json
-  def index
-    @services = current_user.services
 
-    if user_signed_in? && current_user.is_admin? && !params.has_key?(:normal)
+
+def index
+  @services = current_user.services
+  if user_signed_in? && current_user.is_admin? && !params.has_key?(:normal)
         @users = User.all
         @services = Service.all.paginate(:page => params[:page], :per_page => 12)
         render  :"admin_service"
+    end
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
@@ -22,6 +27,10 @@ class ServicesController < ApplicationController
     @request = Request.new
     @requests = @service.requests.paginate(:page => params[:page], :per_page => 1)
     @skills = Skill.paginate(:page => params[:page], :per_page => 3)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /services/new

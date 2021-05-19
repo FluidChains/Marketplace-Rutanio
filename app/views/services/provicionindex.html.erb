@@ -1,0 +1,50 @@
+<div class="container z-depth-3 " >
+  <div class="row" style="padding:2%;">
+    <div class="col s12 m12 l12">
+      <p id="notice"><%= notice %></p>
+
+      <h1 class="fucsia_font">Mis Publicaciones</h1>
+
+      <table class="striped responsive-table">
+        <thead>
+          <tr>
+            <th>Titulo</th>
+            <th>Precio Rutas</th>
+            <th>Fecha de vencimiento</th>
+            <th>Cantidad de Respuestas </th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @services.each do |service| %>
+            <tr>
+              <td><%= service.name %></td>
+              <td><%= service.precio %></td>
+              <td><%= service.valid_until %></td>
+              <td><%= service.requests.count %></td>
+              <% if service.may_publish? %>
+                <td>
+                  <%= link_to 'Publicar', "/services/#{service.id}/publish", class:"btn green" , method: :put%>
+                </td>
+                <% else %>
+                <td>
+                  <%= link_to 'Descontinuar', "/services/#{service.id}/unpublish", class:"btn red" , method: :put%>
+                </td>
+              <% end %>
+
+              <td><%= link_to 'Mirar', service %></td>
+              <td><%= link_to 'Editar', edit_service_path(service) %></td>
+              <td><%= link_to 'Eliminar', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>
+
+
+<br><br><br><br>

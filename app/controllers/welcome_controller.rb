@@ -2,11 +2,16 @@ class WelcomeController < ApplicationController
   before_action :athenticate_admin!, only:[:administrador]
 
   def index
-    @services = Service.publicados.paginate(:page => params[:page], :per_page => 1)
+    @services = Service.publicados.paginate(:page => params[:page], :per_page => 3)
     @serv = @services.sort_by { rand }
+    respond_to do |format|
+      format.html
+      format.js
+    end
     @service = Service.new
     @categories = Category.all
     @skills = Skill.all
+
   end
   def search
     @skills = Skill.all
