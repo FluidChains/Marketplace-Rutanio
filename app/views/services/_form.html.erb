@@ -53,8 +53,10 @@
         <div>
           <h3 class="morado_font">Precio de tu oferta/servicio</h3>
              <p>A continuación selecciona el precio de tu servicio y/o producto en RUTAs.
-                Si requieres pago parcial o total en una moneda como dolares (USD) o tu moneda local,
+                Si requieres pago parcial  con otro mecanismo como dolares (USD) o tu moneda local,
                 especificarlo en "Otro medio de pago"
+                <br>
+                La cantidad minima de Rutas son 1.000
              </p>
         </div>
 
@@ -68,9 +70,9 @@
         </div>
 
         <div class="field col s12 m6 l6">
-          <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Las RUTAS son el token de la economía de Rutanio.">help_outline</i>
+          <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Las RUTAS son el mecanismo estandar de intercambio en nuestro marketplace , asegurate de fijar tu tarifa en minimo 1,000 rutas.">help_outline</i>
           <%= form.label "Cantidad de Rutas" %>
-          <%= form.number_field :precio %>
+          <%= form.number_field :precio , min:"1000" ,placeholder:"Min 1.000" %>
           <br>
 
         </div>
@@ -163,12 +165,20 @@
       </div>
 
 
+<div class="col s12 m12 l12">
+  <h4 class="morado_font">Restricciones o condiciones</h4>
+     <p>
+        Asegurate de aclarar las condiciones de tu servicio de forma especifica
+     </p>
+</div>
+
+
         <div class="field col s12 m12 l12">
           <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Restricciones que aplican a tu oferta (p.e: oferta para un país específico, para determinadas fechas, otras restricciones)">help_outline</i>
           <%= form.label "Restricciones o Condiciones" %>
           <%= form.text_area :aditional_info %>
-
         </div>
+
 
         <div class="col s12 m12 l12">
             <label for="">Cargar Foto de portada  / Las recomendaciones para la medida de la imagen son de 500px de ancho X 450px de largo</label>

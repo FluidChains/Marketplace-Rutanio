@@ -16,6 +16,13 @@ class Service < ApplicationRecord
   validates :name, :information,  :precio, :mail_servicio,  presence: true, length: {minimum: 1, too_short: "Minimo son %{count} caracteres." }
   has_one_attached :image_serv
 
+
+
+  validates_numericality_of :precio,
+    greater_than_or_equal_to: 1000,
+    message: "La cantidad de rutas no puede ser inferior a 1,000"
+
+
   def categories=(value)
     @categories = value
   end
