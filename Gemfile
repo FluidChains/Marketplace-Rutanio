@@ -59,7 +59,7 @@ gem 'jquery-datatables'
 
 
 #graficos
-gem 'chartkick', '~> 3.3'
+gem 'chartkick', '~> 3.4'
 #agrupacion pro Fecha
 gem 'groupdate', '~> 4.2'
 
