@@ -1,28 +1,10 @@
 default: &default
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  #postgres
-  adapter: postgresql
-  port: 5432
+ encoding: unicode
+ pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
 
 development:
-  <<: *default
-  # entorno desarrllo sqlite3
-  # adapter: sqlite3
-  # database: example_development
-  #desarrollo:
-  database: rutanio_production
-  username: rails
-  password: <%= ENV['RUTANIO_DATABASE_PASSWORD'] %>
-
-
-test:
-  <<: *default
-  database: rutanio_test
-
-
-production:
-  <<: *default
-  database: rutanio_production
-  username: rails
-  password: <%= ENV['RUTANIO_DATABASE_PASSWORD'] %>
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  database: db/development.sqlite3
