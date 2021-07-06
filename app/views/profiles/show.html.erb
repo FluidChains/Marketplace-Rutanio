@@ -1,0 +1,191 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6 l6 card carta">
+      <div class="fotoProfile">
+      <div class="user-view">
+      <div class=" center">
+        <% if @profile.avatar.attached? %>
+          <%= image_tag  @profile.avatar  , class:"fotoPerfilAvatar" %>
+        <br>
+        <% else %>
+          <img src="/images/fondo_ruta.png" alt=""  class="center fondo-ruta2">
+        <% end %>
+        <br>
+      </div>
+
+      <br>
+      <div class="col s12 m12 l12">
+        <div class="center">
+          <a class="waves-effect center waves-light btn morado_ruta modal-trigger" href="#Recomenda">Recomendaciones</a>
+        </div>
+     </div>
+     <br>
+
+
+      </div>
+
+    </div>
+
+    </div>
+    <div class="col s12 m6 l6 carta">
+      <div class="card  darken-1">
+        <br>
+        <div class="card-content ">
+          <span class=" morado_font"><%= @profile.titulo %></span>
+            <br>
+            <br>
+            <div class="valing-wrapper">
+              public key <img class="comillas2 center" src="/images/ruta.png"/> :
+               <%= @profile.wallet_uno %>
+
+
+            </div>
+
+             <br>
+              <div class="desc_font">
+                <h5>Descripcion:</h5>
+                <p>
+                  <%= @profile.descripcion.truncate(150) %>
+                </p>
+
+              </div>
+              <br>
+              <div class="desc_fontP">
+                <ul>
+
+                <li>
+                  Empresa:
+                   <%= @profile.empresa %>
+                </li>
+
+                </ul>
+
+
+          </div>
+      </div>
+<br>
+
+
+
+    <!-- Modal Structure -->
+    <div id="Recomenda" class="modal bottom-sheet">
+      <div class="container">
+
+
+      <div class="modal-content">
+        <h4>Recomendaciones</h4>
+
+      <table>
+        <thead>
+          <tr>
+              <th>Avatar</th>
+              <th>Usuario</th>
+              <th>Votes</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @profile.comments.each do |comment| %>
+            <% unless @profile.user.id  ==  comment.user.id %>
+                <tr>
+                  <td>
+                     <% if @profile.avatar.attached? %>
+                      <%= image_tag  @profile.avatar  , class:"fotoPerfilAvatar4" %>
+                        <br>
+                    <% else %>
+                       <i class=" material-icons center morado_font">account_circle</i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if !comment.user.nil? %>
+                     <h6><%= comment.user.email %></h6>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% if  comment.calificacion ==  1%>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <% end %>
+                      <% if  comment.calificacion ==  2%>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <% end %>
+                      <% if  comment.calificacion ==  3%>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <% end %>
+                      <% if  comment.calificacion ==  4%>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <% end %>
+                      <% if  comment.calificacion ==  5%>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                      <img class="comillas center" src="/images/ruta.png"/>
+                    <% end %>
+                  <% end %>
+                  </td>
+                </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir/Esc</a>
+      </div>
+    </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="row">
+    <div class="col s12 m6 l6">
+
+      <div class="card morado_ruta center hoverable cartaS" >
+        <div class=" text-p center">
+          <br>
+          <h4 class="text-p2 bottom white-text " >
+            Total Servicios   <%= @profile.user.services.count%>  <i class="large material-icons  white-text">store_mall_directory</i>
+          </h4>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div class="col s12 m6 l6">
+      <div class="card fucsia_ruta center hoverable cartaS" >
+
+          <%= line_chart @profile.user.services.group_by_day(:created_at).count , xtitle: "Mes", ytitle: "# Servicios", colors: ["#fff"], download: "servicio_mes" , height: "150px" , refresh: 60,
+                library: {
+                  vAxis: { baselineColor: "#fff",  gridlines: {Color: "" }, textStyle: { color: "#76BDD1"}, titleTextStyle: {color: "#fff"} },
+                  hAxis: { baselineColor: "#fff" , gridlines: {Color: "" }, textStyle: { color: "#76BDD1"} , titleTextStyle: {color: "#fff"} } }
+          %>
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <% if user_signed_in?  %>
+    <%= render "comments/form"%>
+  <% else %>
+  <div class="center">
+      <h4>Inicia sesión en Rutanio para Interactuar</h4>
+      <br>
+      <%= link_to "Iniciar Sesión", new_user_session_path ,class:"descriptivo  indigo-text  center"%>
+      <br>
+  </div>
+    <% end %>
+
+
+
+</div>

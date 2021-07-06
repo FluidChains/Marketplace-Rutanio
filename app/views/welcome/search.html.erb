@@ -1,35 +1,13 @@
 <br><br><br>
-<div class="filtros">
-  <div class="left ">
-    <p class="center fucsia_font">FILTRO</p>
-      <ul class="collapsible">
-          <li class="active">
-            <div class="collapsible-header"><i class="material-icons">search</i>Habilidades</div>
-            <div class="collapsible-body">
-              <ul>
-                <% @skills.each do |skill| %>
-                 <%= link_to  skill do  %>
-                <li class="bordillo"> <h5 class="tituloFiltros">
-                   <%= skill.name  %>: <%= skill.services.publicados.count %>
-                 </h5>
-                </li>
-                <% end %>
-              <% end %>
-              </ul>
 
-
-            </div>
-          </li>
-      </ul>
-  </div>
-</div>
-
-  <div class="container sub">
+<br><br><br>
+<div class="row center">
+  <div class="col s12 m12 l12 right">
     <div class="row">
       <div class="center">
         <div class="tituloMercado">
           <h2>Mercado</h2>
-            <h4 class="beta ">beta</h4>
+          <h4 class="beta ">beta</h4>
         </div>
          <p class="parrafos_r">Encuentra profesionales en diversas areas o postula tus servicios </p>
          <br>
@@ -44,31 +22,43 @@
       </div>
     </div>
 
-    <div class="row center">
-      <div class="col s12 m12 l12">
-        <ul class="listado_card center">
-          <li><%= link_to "Todos", root_path , class:"fucsia_font" %></li>
-          <% @categories.each do |category| %>
-           <% if category.id == 1 %>
-            <li><%= link_to category.nombre_categoria, category , class:"morado_font"%></li>
-            <% else %>
-            <li><%= link_to category.nombre_categoria, category , class:"fucsia_font"%></li>
-            <% end %>
+
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m12 l12 center buscador">
+          <%= form_tag welcome_search_path, :method => :get do %>
+            <%= text_field_tag   class:" black-text  input-field inline", placeholder:"Buscar"%>
+            <%= submit_tag 'Buscar' ,class:"btn morado_ruta"%>
           <% end %>
-            <li><%= link_to "Closed", welcome_vencido_path , class:"morado_font" %></li>
-        </ul>
-        <br>
-        <div class="container">
-          <div class="row">
-            <%= form_tag welcome_search_path, :method => :get do %>
-              <%= text_field_tag "find", nil , html: {require:true},  class:" black-text  input-field inline", placeholder:"Buscar - Enter"%>
-            <% end %>
-          </div>
         </div>
 
       </div>
     </div>
+
   </div>
+
+  <div class="row center">
+    <div class="col s12 m12 l12">
+      <ul class="listado_card center">
+        <li><%= link_to "Todos", root_path , class:"fucsia_font" %></li>
+        <% @categories.each do |category| %>
+         <% if category.id == 1 %>
+          <li><%= link_to category.nombre_categoria, category , class:"morado_font"%></li>
+          <% else %>
+          <li><%= link_to category.nombre_categoria, category , class:"fucsia_font"%></li>
+          <% end %>
+        <% end %>
+          <li><%= link_to "Closed", welcome_vencido_path , class:"morado_font" %></li>
+      </ul>
+      <br>
+
+
+    </div>
+  </div>
+
+
+</div>
 
 
 <div class="container cuerpo">
@@ -76,9 +66,8 @@
 
 
     <% if !@services.empty? %>
-
-        <% @services.each do |service| %>
-
+    <div class="row">
+      <%  @serv.each do |service| %>
         <div class="col s12 m6 l4">
             <%= link_to service  do  %>
           <div class="card hoverable carta">
@@ -112,7 +101,6 @@
                            <i class="material-icons">update</i>
                            <span>vencimiento</span>:
                            <%= service.valid_until.strftime("%d-%b-%Y")  %>
-
                        <% end %>
                      </li>
                      <li>
@@ -145,17 +133,18 @@
               <%=  skill.name.truncate(20) %>
             </div>
             <% end %>
-
             </div>
-
-
-
           </div>
         <% end %>
         </div>
 
 
-       <% end %>
+      <% end %>
+
+
+    </div>
+
+
 
 
     <% else %>

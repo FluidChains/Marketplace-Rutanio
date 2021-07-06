@@ -1,0 +1,105 @@
+
+<ul id="slide-out" class="sidenav sidenav-fixed">
+  <li>
+      <div class="user-view">
+      <div class="background">
+        <img src="/images/fondo_ruta.png">
+      </div>
+      <br><br><br><br><br>
+      <% if user_signed_in? %>
+         <span class="fucsia_font">Bienvenido: </span>
+         <span> <%= current_user.email %></span>
+      <% end %>
+      </div>
+  </li>
+
+  <% if user_signed_in? & current_user.is_admin? %>
+      <li>
+        <%= link_to  "/admin"   do  %>
+        <i class="material-icons fucsia_font" ">settings_applications</i>
+        Dashboard
+        <% end %>
+      </li>
+      <li>
+  <% end %>
+
+  <% if user_signed_in? %>
+      <li>
+        <%= link_to  profiles_path   do  %>
+        <i class="material-icons fucsia_font" ">person</i>
+        Mi Perfil
+        <% end %>
+      </li>
+      <li>
+
+      <li>
+        <%= link_to edit_user_registration_path do  %>
+        <i class="material-icons  fucsia_font"  ">edit</i>
+        Mi Informacion
+        <% end %>
+      </li>
+      <% if user_signed_in? & current_user.is_admin? %>
+        <li>
+          <%= link_to  services_path   do  %>
+          <i class="material-icons fucsia_font" ">insert_chart</i>
+          Mis Servicios
+          <% end %>
+        </li>
+      <% end %>
+      
+
+  <% else %>
+    <li> <%= link_to new_user_session_path do  %>
+      <i class="material-icons  fucsia_font "  >person_pin</i>
+      Iniciar Sesión
+      <% end %>
+    </li>
+      <li> <%= link_to new_user_registration_path do  %>
+        <i class="material-icons fucsia_font   "  >person_add</i>
+        Registrarse
+        <% end %>
+      </li>
+  <% end %>
+  <li><a target="_blank" href="https://www.rutanio.com/"><i class="morado_font material-icons ">home</i> Home</a></li>
+  <li><a target="_blank" href="https://www.rutanio.com/herramientas"><i class="morado_font material-icons ">import_contacts</i> Herramientas</a></li>
+  <li><a target="_blank" href="https://www.rutanio.com/faq"><i class="morado_font material-icons ">question_answer</i>Preguntas</a></li>
+  <li> <%= link_to root_path do  %>
+    <i class="material-icons morado_font   "  >store</i>
+    Mercado
+    <% end %>
+  </li>
+
+  <li><a class="" href="https://www.rutanio.com/novedades"><i class="morado_font material-icons ">fiber_new</i>  Novedades</a></li>
+  <li> <%= link_to destroy_user_session_path, method: :delete do  %>
+    <i class="material-icons fucsia_font "   ">close</i>
+    Cerrar sesion
+  <% end %>
+  </li>
+  <li>
+
+      <!-- Dropdown Trigger -->
+      <a class='dropdown-trigger menu_inicio valign-wrapper' href='#' data-target='dropdown2'>Nosotros <i class="material-icons ">arrow_drop_down</i></a>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown2' class='dropdown-content'>
+          <li><a  value="1" target="_blank" href="https://www.rutanio.com/nosotros">Nosotros</a></li>
+          <li><a target="_blank" href="https://www.rutanio.com/alianzas">Alianzas</a></li>
+          <li><a target="_blank" href="https://www.rutanio.com/embajadores">Embajadores</a></li>
+          <li><a target="_blank" href="https://www.rutanio.com/nuestro-equipo">Equipo</a></li>
+        </ul>
+
+  </li>
+<br>
+  <li><div class="divider"></div></li>
+  <br>
+  <li class="center tituloFiltros morado_ruta">Filtro</li>
+  <% @skills.each do |skill| %>
+   <%= link_to  skill do  %>
+  <li class="tituloFiltros center morado_ruta">
+     <%= skill.name  %>: <%= skill.services.publicados.count %>
+
+  </li>
+  <% end %>
+<% end %>
+
+</ul>
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="large material-icons morado_font">menu</i></a>

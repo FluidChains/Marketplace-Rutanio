@@ -1,0 +1,38 @@
+
+<%= form_with(model: [@profile, @comment], local: true) do |form| %>
+
+  <% if @comment.errors.any? %>
+
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="contenidMensaje center">
+
+        <div class="input-field col s12 m12 l12">
+          <label for="">Recomendar</label>
+          <br>
+          <br>
+          <% lista_calificacion = { '5 Puntos' => '5', '4 Puntos' => '4', '3 Puntos' => '3', '2 Puntos' => '2', '1 Puntos' => '1',
+          } %>
+          <% lista_cal = lista_calificacion %>
+          <%= form.select :calificacion, lista_cal, id: :calificacion %>
+        </div>
+
+          <div class="actions">
+            <%= form.submit "Recomendar",  class:"btn morado_ruta pulse" %>
+          </div>
+          <br>
+
+
+      </div>
+
+
+<% end %>

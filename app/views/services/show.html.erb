@@ -1,23 +1,25 @@
-<br><br>
+<br>
+<br>
 
-<div class="container z-depth-2">
-  <% if user_signed_in? && @service.user.email == current_user.email %>
-  <!-- Modal Trigger -->
-      <div class="row center">
-      <a class="waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse" href="#modalAplicacion">Respuestas</a>
-      </div>
 
-  <% end %>
+<div class="container z-depth-2" style="padding:2%;">
+
   <div class="row">
-
     <div class="col s12 m6 l6 left">
-        <h3 class="fucsia_font"><%= @service.name %></h3>
+        <h3 class="fucsia_font center"><%= @service.name %></h3>
+        <% if @service.image_serv.attached? %>
+                <%= image_tag @service.image_serv  , class:"portadaServicio materialboxed" %>
+        <% else %>
+                <img src="/images/nn.png" alt=""  class="center fondo-ruta2">
+        <% end %>
     </div>
     <div class="col s12 m6 l6 right">
       <h2 class="morado_font">Información</h2>
       <%= @service.information %>
     </div>
+
   </div>
+
   <div class="row">
     <div class="col s12 m12 l12 left">
         <% @service.skills.each do |skill| %>
@@ -50,9 +52,15 @@
         <li class="morado_font">
            <% if !@service.exos_amount.nil? %>
            <img src="/images/exos.png" alt=""  class="iconos_market"> <%= number_with_delimiter(@service.exos_amount.round , :delimiter => ',')%>
-              EXO
+              EXOS
            <% end %>
         </li>
+        <li class="morado_font">
+           <% if !@service.currency_sugest.nil? %>
+          $ <%= number_with_delimiter(@service.currency_sugest, :delimiter => ',')%>
+           <% end %>
+        </li>
+
 
         <li class="morado_font">
            <% if !@service.exos_amount.nil? %>
@@ -87,121 +95,94 @@
 
     <div class="col s12 m6 l6">
       <h2 class="morado_font center">Información de Contacto</h2>
-     <ul class="collapsible">
+
+     <ul>
          <li>
-           <div class="collapsible-header"><i class="material-icons morado_font">contact_mail</i>Email - <%= @service.mail_servicio %></div>
-           <div class="collapsible-body">
-             <div class="input-field">
-               <%= @service.mail_servicio %>
-
-             </div>
-           </div>
-         </li>
-
-
-         <li>
-           <div class="collapsible-header"><i class="material-icons morado_font">phone</i>Whatsapp - <%= @service.wpp %></div>
-           <div class="collapsible-body">
-             <div class="input-field">
-                <%= @service.wpp %>
-             </div>
-           </div>
+           <div>
+             <i class="material-icons morado_font">contact_mail</i>  Email - <%= @service.mail_servicio %></div>
          </li>
          <li>
-           <div class="collapsible-header"><i class="material-icons morado_font">router</i>Sitio Web - <%= @service.web %></div>
-           <div class="collapsible-body">
-             <div class="input-field">
-                  <%= @service.web %>
-             </div>
-           </div>
+           <div>
+             <i class="material-icons morado_font">phone</i>   Whatsapp - <%= @service.wpp %></div>
          </li>
-
-
-
+         <li>
+           <div>
+             <i class="material-icons morado_font">router</i>   Sitio Web - <%= @service.web %></div>
+         </li>
       </ul>
+
+      <% Profile.all.each do |profile| %>
+        <% if profile.user.id  ==  @service.user.id %>
+        <div class=" left">
+          <% if profile.avatar.attached? %>
+          <h5 class="center"><%=   profile.titulo   %></h5>
+
+          <br>
+            <%= image_tag  profile.avatar  , class:"fotoPerfilAvatarS" %>
+          <br>
+          <div class="center">
+            <%= link_to 'Visitar Perfil', profile %>
+
+          </div>
+
+          <% else %>
+            <img src="/images/fondo_ruta.png" alt=""  class="center fondo-ruta2">
+          <% end %>
+
+        </div>
+
+        <% end %>
+      <% end %>
+
+    <br>
 
     </div>
     <div class="col s12 m6 l6 ">
-      <p>
+      <h4>
         Conoces a alguien que le pueda interesar <%= @service.name   %> ?
-      </p>
+      </h4>
       <br>
       <div class="row comparte valign-wrapper ">
         <h2 class="morado_font">Comparte: </h2>
-         <%= social_share_button_tag(@service.name, :url => service_url(@service), desc: @service.name)%>
+         <%= social_share_button_tag(@service.name, :url => service_url(@service), :image =>  "http://foo.bar/images/a.jpg", desc: @service.name)%>
       </div>
 
     </div>
 
 </div>
 
-  <!-- Modal Structure -->
-  <div id="modalAplicacion" class="modal bottom-sheet">
-    <div class="modal-content">
-      <ul class="collection">
-          <% @service.requests.each do |request| %>
-         <li class="collection-item avatar">
-           <span class="title"><%= request.user.email %></span>
-           <p><%= request.mensaje %>
-           </p>
-          <h4 class=" secondary-content ">
-            <% if user_signed_in? && current_user == request.user %>
-              <%= link_to "Eliminar ", [@service, request], data:{confirm: "Estas seguro que deseas eliminar? ", :method => :delete}, class:"btn btn-outline-danger morado_ruta"%>
-            <% end %>
-          </h4>
 
-
-
-         </li>
-      <% end %>
-       </ul>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-  <br>
-  <div class=" col s12 m12 l12">
-
+  <div class=" col s12 m12 l12 center">
    <br>
+      <div id="cajaComentar" class="modal center">
+        <div class="modal-content center">
+         <%= render "requests/form"%>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat ">Salir</a>
+        </div>
+      </div>
+  </div>
 
-              <!-- Modal Structure -->
-
-              <div id="cajaComentar" class="modal">
-
-                <div class="modal-content center">
-                 <%= render "requests/form"%>
-
-                </div>
-
-                <div class="modal-footer">
-
-                  <a href="#!" class="modal-close waves-effect waves-green btn-flat ">Salir</a>
-
-                </div>
-
-              </div>
+<div class="row">
+  <div class="col s12 m12 l12">
+    <% if user_signed_in? %>
+    <!-- Modal Trigger -->
+        <div class="row center">
+          <a class="waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse" href="#cajaComentar">Comentar</a>
+        </div>
+        <% else %>
+        <div class="row center">
+        <%= link_to "Contactar" , new_user_session_path,  class:"waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse"   %>
+        </div>
+    <% end %>
+  </div>
 
 
 
 
 </div>
 
-<% if user_signed_in? %>
-<!-- Modal Trigger -->
-    <div class="row center">
-    <a class="waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse" href="#cajaComentar">Contactar</a>
-    </div>
-
-    <% else %>
-    <div class="row center">
-    <%= link_to "Contactar" , new_user_session_path,  class:"waves-effect waves-light btn-large  modal-trigger fucsia_ruta pulse"   %>
-    </div>
-
-<% end %>
-
-
-      <br>
 
 
 
@@ -212,5 +193,25 @@
 
 
 
+
+    </div>
+    <div class="container">
+        <div class="row center">
+          <h3 class="fucsia_font center"> Comentarios </h3>
+          <ul class="collection">
+              <% @service.requests.each do |request| %>
+             <li class="collection-item avatar">
+               <span class="title left"><%= request.user.email %></span>
+               <p><%= request.mensaje %>
+               </p>
+              <h4 class=" secondary-content ">
+                <% if user_signed_in? && current_user == request.user %>
+                  <%= link_to "Eliminar ", [@service, request], data:{confirm: "Estas seguro que deseas eliminar? ", :method => :delete}, class:"btn btn-outline-danger morado_ruta"%>
+                <% end %>
+              </h4>
+             </li>
+          <% end %>
+           </ul>
+        </div>
 
     </div>

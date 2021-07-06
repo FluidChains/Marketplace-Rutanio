@@ -1,17 +1,23 @@
 class ApplicationController < ActionController::Base
   before_action :configuraciones
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :panel
+
+
+
 
   def configuraciones
     @categories = Category.all
+  end
+
+  def panel
+    @skills = Skill.all
   end
 
 
   def authenticate_admin!
     redirect_to root_path, notice: "No tienes permiso para esta acción. " unless user_signed_in? && current_user.is_admin?
   end
-
-
 
   protected
 

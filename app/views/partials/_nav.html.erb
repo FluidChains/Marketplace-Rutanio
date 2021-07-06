@@ -1,31 +1,22 @@
 
     <nav>
+      <div class="right valign-wrapper  black-text hide-on-med-and-down">
+           <ul style="display: inline-flex;">
+              <% if user_signed_in? %>
+                  <li> <%= link_to destroy_user_session_path, method: :delete, class:" btn-floating fucsia_ruta" do  %>
+                    <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Cerrar sesion" ">close</i>
+                  <% end %>
+                  </li>
+                  <% else %>
+                  <li><h6>Inicia sesión</h6></li>
 
-            <div class="right valign-wrapper  black-text hide-on-med-and-down">
-                 <ul style="display: inline-flex;">
-                    <% if user_signed_in? %>
-                          <li> <%= link_to edit_user_registration_path, class:" btn-floating morado_ruta" do  %>
-                            <i class="material-icons tooltipped" data-position="left" data-tooltip="Mi Perfil"">account_circle</i>
-                            <% end %>
-                          </li>
-                          <li><%= current_user.email %></li>
-                            <li> <%= link_to destroy_user_session_path, method: :delete, class:" btn-floating fucsia_ruta" do  %>
-                              <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Cerrar sesion" ">close</i>
-                            <% end %>
-                            </li>
-
-                            <% else %>
-
-                            <li> <h6>Inicia sesión</h6></li>
-
-                            <li> <%= link_to new_user_session_path, class:" btn-floating morado_ruta" do  %>
-                              <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Iniciar sesión">person</i>
-                              <% end %>
-                            </li>
-
+                  <li> <%= link_to new_user_session_path, class:" btn-floating morado_ruta" do  %>
+                    <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Iniciar sesión">person</i>
                     <% end %>
-                 </ul>
-            </div>
+                  </li>
+              <% end %>
+           </ul>
+      </div>
       <div class="container right">
         <div class="row">
           <div class="nav-wrapper valign-wrapper">
@@ -65,20 +56,9 @@
 
                   </div>
                 </li>
-
-
             </ul>
 
-
-              <div class="right">
-                  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
-              </div>
-
             </div>
-
-
-
-
           </div>
         </div>
 
@@ -91,14 +71,10 @@
     </nav>
 
 
-    <ul class="sidenav" id="mobile-demo">
-      <li><%= link_to "Home", root_path ,class:"menu_inicio"%></li>
 
-      <li><a class="menu_inicio" href="">Herramientas</a></li>
-      <li><a class="menu_inicio" href="">Mercado</a></li>
-      <li><a class="menu_inicio" href="">Novedades</a></li>
-      <li><a class="menu_inicio" href="">Nosotros</a></li>
-    </ul>
+
+
+
 
 
 <div class="fixed-action-btn  valign-wrapper ">
@@ -106,53 +82,21 @@
 
   <% else %>
   <div class="midiv ">
-      <h6 class="morado_font ">Registrate</h6>
+      <h6 class="morado_font ">
+        <%= link_to "Regístrate", new_user_registration_path %>
+      </h6>
+
+
   </div>
   <div class="midiv2" style="display:none;">
-      <h6 class="morado_font saludo">Registrate</h6>
+
+      <%= link_to "Regístrate", new_user_registration_path , class:"fucsia_font saludo"%>
   </div>
 
   <% end %>
 
   <br>
-  <a class="btn-floating btn-large fucsia_ruta pulse">
-    <img src="/images/rblanco.png" class="logo_c">
-
-  </a>
-  <ul >
 
 
-    <li><%= link_to  root_path , class:"btn-floating fucsia_ruta"  do  %>
-      <i class="material-icons tooltipped" data-position="left" data-tooltip="Mercado">store</i>
-    <% end %>
-
-    </li>
-    <% if user_signed_in? %>
-    <li><%= link_to  services_path , class:"btn-floating morado_ruta"  do  %>
-    <i class="material-icons tooltipped" data-position="left" data-tooltip="Mis Servicios"">insert_chart</i>
-    <% end %>
-    </li>
-    <li><%= link_to  welcome_postulaciones_path , class:"btn-floating fucsia_ruta"  do  %>
-    <i class="material-icons tooltipped" data-position="left" data-tooltip="Mis Postulaciones"">mail_outline</i>
-    <% end %>
-    </li>
-    <li> <%= link_to edit_user_registration_path, class:" btn-floating morado_ruta" do  %>
-      <i class="material-icons tooltipped" data-position="left" data-tooltip="Mi Perfil"">person</i>
-      <% end %>
-    </li>
-    <li> <%= link_to destroy_user_session_path, method: :delete, class:" btn-floating fucsia_ruta" do  %>
-      <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Cerrar sesion" ">close</i>
-    <% end %>
-    </li>
-
-    <% else %>
-    <li> <%= link_to new_user_registration_path, class:" btn-floating morado_ruta" do  %>
-      <i class="material-icons white-text tooltipped" data-position="left" data-tooltip="Registrarse">person_add</i>
-      <% end %>
-    </li>
-    <% end %>
-
-
-  </ul>
 
 </div>

@@ -1,0 +1,86 @@
+<div class="container">
+  <%= form_with(model: profile, local: true) do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>      <ul>
+      <% profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :titulo ,"Nombre publico de perfil" %>
+    <%= form.text_field :titulo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descripcion %>
+    <%= form.text_field :descripcion %>
+  </div>
+
+
+    <div class="field">
+      <%= form.label :empresa  %>
+      <%= form.text_field :empresa %>
+    </div>
+    <h5>Nunca compartas tus contraseñas, semillas o llaves privadas de forma publica</h5>
+
+    <div class="row">
+      <div class="col s12 m6 l6">
+        <div class="field">
+          <%= form.label :wallet_uno, "Dirección publica"  %>
+          <%= form.text_field :wallet_uno %>
+        </div>
+
+
+      </div>
+      <div class="col s12 m6 l6">
+        <p>¿Aun no tienes una billetera de Rutanio? <a href="https://www.rutanio.com/herramientas" target="_blank">Explora nuestras walllets</a></p>
+      </div>
+    </div>
+    <div class="row valing-wrapper">
+      <div class="col s12 m6 l6">
+        <h4>Discord</h4>
+        Tambien puedes usar nuestro canal de discord para enviar y recibir tus token de Rutanio.
+         <a href="https://discord.com/invite/WaxH67G" target="_blank">Registrate</a>  y comparte tu usuario con toda la comunidad.
+      </div>
+      <div class="col s12 m6 l6">
+
+        <iframe width="100%" height="300" src="https://www.youtube.com/embed/8-5ZLG8qqeE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+  <div class="col s12 m12 l12">
+      <label for="">Cargar Foto de portada  / Las recomendaciones para la medida de la imagen son de 500px de ancho X 450px de largo</label>
+      <br>
+      <div class="file-field field">
+      <div class="btn fucsia_ruta">
+        <span>Foto</span>
+        <input type="file">
+              <%=form.file_field :avatar , class: 'form-control ' %>
+       </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate " type="text">
+         </div>
+        </div>
+   </div>
+<br><br><br>
+<div class="row">
+  <br>
+  <div class="actions center">
+    <%= form.submit "Terminar Edición", class:"fucsia_ruta white-text btn-large "%>
+  </div>
+</div>
+<% end %>
+
+</div>

@@ -1,0 +1,128 @@
+<br>
+<br>
+<div class="container">
+<div class="row">
+   <div class="col s6 m6 l4">
+     <div class="card hoverable">
+       <div class="card-image avatarFoto">
+          <img src="/images/login.jpg" class="center">
+         <br>
+         <br>
+         <span class="card-title ">
+           <% if !current_user.name.nil? %>
+             <%= current_user.name %>
+             <% else %>
+             <%= link_to  edit_user_registration_path do %>
+             Diligencia tu perfil
+             <% end %>
+           <% end %>
+         </span>
+         <a class="btn-floating halfway-fab waves-effect waves-light red">
+           <i class="material-icons ">star</i>
+         </a>
+       </div>
+       <div class="card-content">
+
+      <table>
+        <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td><%= current_user.name %></td>
+            <td><%= current_user.last_name %></td>
+          </tr>
+        </tbody>
+      </table>
+      <ul>
+        <li><%= current_user.mail %></li>
+        <li><%= current_user.company %></li>
+        <li><%= current_user.lenguage %></li>
+        <li><%= current_user.wpp %></li>
+        <li><%= current_user.udi %></li>
+      </ul>
+
+
+       </div>
+     </div>
+   </div>
+
+   <div class="col s6 m6 l8">
+     <div class="card hoverable">
+       <br>
+       <div class="card-image">
+         <span class="card-title">Card Title</span>
+       </div>
+       <div class="card-content">
+         <div class="row">
+
+           <% @services.each do |service| %>
+               <%= service.name %>
+               <%= service.precio %>
+               <%= service.valid_until %>
+               <%= service.requests.count %>
+               <% if service.may_publish? %>
+                   <%= link_to 'Publicar', "/services/#{service.id}/publish", class:"btn green" , method: :put%>
+                 <% else %>
+                   <%= link_to 'Descontinuar', "/services/#{service.id}/unpublish", class:"btn red" , method: :put%>
+               <% end %>
+               <%= link_to 'Mirar', service %>
+               <%= link_to 'Editar', edit_service_path(service) %>
+               <%= link_to 'Eliminar', service, method: :delete, data: { confirm: 'Are you sure?' } %>
+           <% end %>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="col s6 m6 l8">
+     <div class="card hoverable">
+       <div class="card-image">
+         <span class="card-title">Card Title</span>
+
+       </div>
+       <div class="card-content">
+
+         <div class="row">
+           <div class="col s12 m12 l12">
+             <h3 class="center fucsia_font">Servicio X Mes de creacion</h3 >
+             <br>
+               <%= column_chart Service.group_by_month(:created_at).count , refresh: 60  %>
+               <br>
+               <div class="center">
+
+               </div>
+           </div>
+
+           <h1 class="fucsia_font">Mis Postulaciones</h1>
+           <ul class="collection">
+               <% @requests.each do |request| %>
+                  <li class="collection-item avatar">
+                      <img src="/images/ruta.png" alt="" class="circulo">
+                      <span class="title"><%= request.service.mail_servicio %></span>
+                      <br>Nombre servicio:
+                      <%= request.service.name %> <br>
+                      <p>Mensaje enviado:<%= request.mensaje %>
+                      </p>
+                     <h4 class=" secondary-content morado_font">
+                       Fecha Postulacion:
+                       <%= request.created_at.strftime("%d-%m-%Y ")  %>
+                     </h4>
+                  </li>
+               <% end %>
+
+            </ul>
+
+         </div>
+
+       </div>
+     </div>
+   </div>
+
+ </div>
+
+ </div>

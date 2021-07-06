@@ -22,6 +22,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link rel="shortcut icon" type="imagen.ico" href="/images/favicon.ico">
     <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -34,17 +35,31 @@
 
   <body>
     <header>
-      <%= render "partials/nav" %>
+
     </header>
     <br>
-      <%= render "partials/notificaciones" %>
 
+    <% if user_signed_in? %>
+      <div class="row">
 
+      <div class="col  m4 l2">
+        <%= render "partials/panel" %>
+      </div>
+        <div class="col  m8 l10">
+          <%= render "partials/nav" %>
+          <%= render "partials/notificaciones" %>
+          <%= yield %>
+        </div>
 
+      <% else %>
+        <%= render "partials/nav" %>
+        <%= render "partials/notificaciones" %>
+        <%= yield %>
+        <%= render "partials/pie" %>
 
-    <%= yield %>
+      </div>
+    <% end %>
 
-    <%= render "partials/pie" %>
 
         <!-- Compiled and minified JavaScript -->
         <script defer  src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

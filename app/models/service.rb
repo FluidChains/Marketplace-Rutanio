@@ -14,6 +14,14 @@ class Service < ApplicationRecord
   after_create :save_skills
   validate :valide_skills
   validates :name, :information,  :precio, :mail_servicio,  presence: true, length: {minimum: 1, too_short: "Minimo son %{count} caracteres." }
+  has_one_attached :image_serv
+
+
+
+  validates_numericality_of :precio,
+    greater_than_or_equal_to: 1000,
+    message: "La cantidad de rutas no puede ser inferior a 1,000"
+
 
   def categories=(value)
     @categories = value
@@ -39,12 +47,10 @@ class Service < ApplicationRecord
       transitions from: :in_draft, to: :published
     end
 
-
-
   end
 
   scope :publicados, -> {where(state: "published") }
-  
+
   scope :vencidos, -> {where(state: "in_draft") }
 
 

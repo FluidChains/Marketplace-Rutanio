@@ -29,6 +29,10 @@ Chartkick.configure({language: "es", mapsApiKey: "..."})
 
 
 // jquery para inicializar funciones de materializae
+$(document).ready(function(){
+  $('.tabs').tabs();
+});
+
   $(document).ready(function(){
     $('.sidenav').sidenav();
   });

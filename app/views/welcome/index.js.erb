@@ -1,0 +1,7 @@
+$('#services').append('<%= j render("service_page_header") %>');
+$('#services').append('<%= j render(@services) %>');
+<% if @services.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@services) %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>

@@ -1,172 +1,206 @@
-  <div class="row">
-    <div class="col s12 m12 l12 center">
-      <img src="/images/fondo_ruta.png" alt=""  class="center fondo-ruta2">
-    </div>
-    <%= form_with(model: @service, local: true) do |form| %>
-      <% if @service.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
-          <ul>
-          <% service.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
+<div class="container">
+
+    <div class="row">
+      <div class="col s12 m12 l12 center">
+        <img src="/images/fondo_ruta.png" alt=""  class="center fondo-ruta2">
+      </div>
+      <%= form_with(model: @service, local: true) do |form| %>
+        <% if @service.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+            <ul>
+            <% service.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+  <br>
+      <div class="row">
+      <div class="input-field col s12 m12 l12 center">
+        <h2 class="morado_font">Titulo del servicio</h2>
+        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="El nombre publico que tendra este servicio">help_outline</i>
+        <%= form.text_field :name %>
+      </div>
+
+  </div>
+
+  <div class="row center card">
+  <h4 class="fucsia_font">Selecciona Categoria</h4>
+    <br>
+    <br>
+    <% Category.all.each  do |category| %>
+             <label class="col s3 m3 l3">
+               <%= radio_button_tag "categories[]", category.id , id:"category_id"%>
+               <span>
+                   <%= "#{category.nombre_categoria.truncate(30)} "%>
+               </span>
+             </label>
+    <% end %>
+  </div>
+
+
+
+
+
+        <div class="input-field col s12 m12 l12">
+          <p>Describe tu servicio </p>
+          <%= form.text_area :information %>
+          <br>
+
+        </div>
+        <div>
+          <h3 class="morado_font">Precio de tu oferta/servicio</h3>
+             <p>A continuación selecciona el precio de tu servicio y/o producto en RUTAs.
+                Si requieres pago parcial  con otro mecanismo como dolares (USD) o tu moneda local,
+                especificarlo en "Otro medio de pago"
+                <br>
+                La cantidad minima de Rutas son 1.000
+             </p>
+        </div>
+
+
+        <div class="field col s12 m6 l6">
+          <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Cantidad de horas estimadas">help_outline</i>
+          <%= form.label "Horas" %>
+          <%= form.number_field :horas %>
+          <br>
+
+        </div>
+
+        <div class="field col s12 m6 l6">
+          <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Las RUTAS son el mecanismo estandar de intercambio en nuestro marketplace , asegurate de fijar tu tarifa en minimo 1,000 rutas.">help_outline</i>
+          <%= form.label "Cantidad de Rutas" %>
+          <%= form.number_field :precio , min:"1000" ,placeholder:"Min 1.000" %>
+          <br>
+
+        </div>
+        <div class="field col s12 m6 l6">
+          <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Los Exos son la moneda nativa de la economía OpenExo.">help_outline</i>
+          <%= form.label "Cantidad de Exos" %>
+          <%= form.number_field :exos_amount %>
+          <br>
+
+        </div>
+        <div class="field col s12 m6 l6">
+          <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="  Si requieres pago parcial o total en una moneda como dolares (USD) o tu moneda local,puedes especificarlo ">help_outline</i>
+          <%= form.label "Otro medio de pago" %>
+          <%= form.text_field :currency_sugest %>
+
+        </div>
+        <br>
+
+
+        <div class="field col s12 m12 l12">
+
+          <label for="">Selecciona el idioma valido para tu servicio</label>
+          <br>
+          <% lista_idioma = { 'Español' => 'Español', 'English' => 'English',
+          'Portugués' => 'Portuguese',
+          } %>
+          <% idiom = lista_idioma %>
+          <%= form.select :lenguaje, idiom, selected: "Consulta", id: :lenguaje %>
+        </div>
+
+        <div class="col s12 m6 l6">
+
+          <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Link de pagina web">help_outline</i>
+          <%= form.label "Link web" %>
+          <%= form.text_field :web %>
+
+
+
+         </div>
+        <div class="field col s12 m6 l6">
+          <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Indicador + Numero de Whatsapp del servicio ">help_outline</i>
+            <%= form.label "No Whatsapp" %>
+          <%= form.text_field :wpp %>
+
+        </div>
+
+        <div class="field col s12 m12 l12">
+          <div class="field inline col s12 m12 l12">
+            <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Email publico para que te contacten">help_outline</i>
+            <%= form.label "Mail servicio" %>
+            <%= form.text_field :mail_servicio ,id:"email_inline" ,class:"validate" ,type:"email"%>
+
+          </div>
+        </div>
+        <div class="field col s12 m12 l12">
+          <p>Fecha de vencimiento</p>
+
+          <%= form.date_field :valid_until%>
+        </div>
+
+        <div class="field col s12 m12 l12">
+
+                <ul class="collection with-header">
+                  <li class="collection-header center">
+
+                    <h4 class="fucsia_font">Selecciona Skills</h4>
+                  </li>
+                    <% Skill.all.each  do |skill| %>
+                    <div class="col s6 m4 l4">
+                      <li class="collection-item ">
+                        <div>
+                          <label>
+                             <%= radio_button_tag "skills[]", skill.id , id:"skill_id"%>
+                               <span>
+                                   <%= "#{skill.name.truncate(30)} "%>
+                               </span>
+                           </label>
+
+                        </div>
+
+                      </li>
+
+                    </div>
+
+                   <% end %>
+
+                </ul>
+
+
+      </div>
+
+
+<div class="col s12 m12 l12">
+  <h4 class="morado_font">Restricciones o condiciones</h4>
+     <p>
+        Asegurate de aclarar las condiciones de tu servicio de forma especifica
+     </p>
+</div>
+
+
+        <div class="field col s12 m12 l12">
+          <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Restricciones que aplican a tu oferta (p.e: oferta para un país específico, para determinadas fechas, otras restricciones)">help_outline</i>
+          <%= form.label "Restricciones o Condiciones" %>
+          <%= form.text_area :aditional_info %>
+        </div>
+
+
+        <div class="col s12 m12 l12">
+            <label for="">Cargar Foto de portada  / Las recomendaciones para la medida de la imagen son de 500px de ancho X 450px de largo</label>
+            <br>
+            <div class="file-field field">
+            <div class="btn ">
+              <span>Foto</span>
+              <input type="file">
+                    <%=form.file_field :image_serv , class: 'form-control'%>
+             </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate " type="text">
+               </div>
+              </div>
+         </div>
+        <div class="center">
+          <div class="actions">
+            <%= form.submit "Crear" , class:"btn large fucsia_ruta" %>
+          </div>
         </div>
       <% end %>
 
-<br>
-    <div class="row">
-    <div class="input-field col s12 m12 l12 center">
-      <h2 class="morado_font">Titulo del servicio</h2>
-      <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="El nombre publico que tendra este servicio">help_outline</i>
-      <%= form.text_field :name %>
     </div>
 
 </div>
-
-<div class="row center card">
-<h4 class="fucsia_font">Selecciona Categoria</h4>
-  <br>
-  <br>
-  <% Category.all.each  do |category| %>
-           <label class="col s3 m3 l3">
-             <%= radio_button_tag "categories[]", category.id , id:"category_id"%>
-             <span>
-                 <%= "#{category.nombre_categoria.truncate(30)} "%>
-             </span>
-           </label>
-  <% end %>
-</div>
-
-
-
-
-      <div class="input-field col s12 m12 l12">
-        <p>Describe tu servicio </p>
-        <%= form.text_area :information %>
-        <br>
-
-      </div>
-      <div>
-        <h3 class="morado_font">Precio de tu oferta/servicio</h3>
-           <p>A continuación selecciona el precio de tu servicio y/o producto en RUTAs.
-              Si requieres pago parcial o total en una moneda como dolares (USD) o tu moneda local,
-              especificarlo en "Otro medio de pago"
-           </p>
-      </div>
-
-
-      <div class="field col s12 m6 l6">
-        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Cantidad de horas estimadas">help_outline</i>
-        <%= form.label "Horas" %>
-        <%= form.number_field :horas %>
-        <br>
-
-      </div>
-
-      <div class="field col s12 m6 l6">
-        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Las RUTAS son el token de la economía de Rutanio.">help_outline</i>
-        <%= form.label "Cantidad de Rutas" %>
-        <%= form.number_field :precio %>
-        <br>
-
-      </div>
-      <div class="field col s12 m6 l6">
-        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Los Exos son la moneda nativa de la economía OpenExo.">help_outline</i>
-        <%= form.label "Cantidad de Exos" %>
-        <%= form.number_field :exos_amount %>
-        <br>
-
-      </div>
-      <div class="field col s12 m6 l6">
-        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="  Si requieres pago parcial o total en una moneda como dolares (USD) o tu moneda local,puedes especificarlo ">help_outline</i>
-        <%= form.label "Otro medio de pago" %>
-        <%= form.text_field :currency_sugest %>
-
-      </div>
-      <br>
-
-
-
-      <div class="field col s12 m12 l12">
-        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Especifica si deben comunicarce contigo en algun idioma en particular">help_outline</i>
-        <%= form.label "Idioma" %>
-        <br>
-        <%= form.text_field :lenguaje %>
-
-      </div>
-
-
-      <div class="col s12 m6 l6">
-
-         <div class="field inline col s12 m12 l12">
-           <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Email publico para que te contacten">help_outline</i>
-           <%= form.text_field :mail_servicio ,id:"email_inline" ,class:"validate" ,type:"email"%>
-           <label for="email_inline">Mail servicio</label>
-         </div>
-       </div>
-      <div class="field col s12 m6 l6">
-        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Indicador + Numero de Whatsapp del servicio ">help_outline</i>
-          <%= form.label "No Whatsapp" %>
-        <%= form.text_field :wpp %>
-
-      </div>
-
-      <div class="field col s12 m12 l12">
-        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Link de pagina web">help_outline</i>
-        <%= form.label "Link web" %>
-        <%= form.text_field :web %>
-
-      </div>
-      <div class="field col s12 m12 l12">
-        <p>Fecha de vencimiento</p>
-
-        <%= form.date_field :valid_until%>
-      </div>
-
-      <div class="field col s12 m12 l12">
-
-              <ul class="collection with-header">
-                <li class="collection-header center">
-
-                  <h4 class="fucsia_font">Selecciona Skills</h4>
-                </li>
-                  <% Skill.all.each  do |skill| %>
-                  <div class="col s6 m4 l4">
-                    <li class="collection-item ">
-                      <div>
-                        <label>
-                           <%= check_box_tag "skills[]", skill.id , id:"skill_id"%>
-                             <span>
-                                 <%= "#{skill.name.truncate(30)} "%>
-                             </span>
-                         </label>
-
-                      </div>
-
-                    </li>
-
-                  </div>
-
-                 <% end %>
-
-              </ul>
-
-
-    </div>
-
-
-      <div class="field col s12 m12 l12">
-        <i class="material-icons prefix tooltipped" data-position="bottom" data-tooltip="Restricciones que aplican a tu oferta (p.e: oferta para un país específico, para determinadas fechas, otras restricciones)">help_outline</i>
-        <%= form.label "Restricciones o Condiciones" %>
-        <%= form.text_area :aditional_info %>
-
-      </div>
-      <div class="center">
-        <div class="actions">
-          <%= form.submit "Crear" , class:"btn fucsia_ruta" %>
-        </div>
-      </div>
-    <% end %>
-
-  </div>

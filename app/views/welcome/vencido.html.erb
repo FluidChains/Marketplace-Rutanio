@@ -1,29 +1,5 @@
 <br><br><br>
-<div class="filtros">
-  <div class="left ">
-    <p class="center fucsia_font">FILTRO</p>
-      <ul class="collapsible">
-          <li class="active">
-            <div class="collapsible-header"><i class="material-icons">search</i>Habilidades</div>
-            <div class="collapsible-body">
-              <ul>
-                <% @skills.each do |skill| %>
-                 <%= link_to  skill do  %>
-                <li class="bordillo"> <h5 class="tituloFiltros">
-                   <%= skill.name  %>: <%= skill.services.publicados.count %>
-                 </h5>
-                </li>
-                <% end %>
-              <% end %>
-              </ul>
 
-
-            </div>
-          </li>
-      </ul>
-  </div>
-</div>
-<div class="container sub">
   <div class="row">
     <div class="center">
 
@@ -79,7 +55,7 @@
   </div>
 
 
-  </div>
+
 
 <div class="container cuerpo">
 
