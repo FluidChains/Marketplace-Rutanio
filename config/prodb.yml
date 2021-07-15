@@ -17,6 +17,6 @@ test:
 
 production:
   <<: *default
-  database: rutanio_production
+  database:  <%= ENV['RUTANIO_DATABASE_NAME'] %>
   username: rails
   password: <%= ENV['RUTANIO_DATABASE_PASSWORD'] %>
