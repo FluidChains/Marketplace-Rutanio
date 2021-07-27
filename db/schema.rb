@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2021_03_17_155612) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "profile_id", null: false
+    t.integer "user_id", null: false
+    t.integer "profile_id", null: false
     t.integer "calificacion"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
