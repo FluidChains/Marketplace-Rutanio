@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+    nginx:
+        image: nginx:1.10.3
+        network_mode: host
+        restart: always 
+        ports:
+            - "80:80"
+        volumes:
+            - "./Nginx/marketplace.template:/etc/nginx/conf.d/marketplace.template"
+            - "marketplace_storage:/var/www/html"
+        environment:
+            - NGINX_HOST=${serverName}
+        command: /bin/bash -c "cat /etc/nginx/conf.d/marketplace.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    nginxSSL:
+        image: nginx:1.10.3
+        ports:
+            - "443:443"
+        volumes:
+            - "./Nginx/marketplaceSSL.template:/etc/nginx/conf.d/marketplaceSSL.template"
+            - "./Nginx/entrypoint.sh:/app/entrypoint.sh"
+            - "/var/log/nginx/:/var/log/nginx/"
+            - "certbot-etc:/etc/letsencrypt"
+            - "certbot-var:/var/lib/letsencrypt"
+            - marketplace_storage:/var/www/html
+        environment:
+            - NGINX_HOST=${serverName}
+        restart: always
+        networks: 
+            - marketplace
+        depends_on:
+            - certbot
+        command: /bin/sh -c "/app/entrypoint.sh"
+    certbot:
+        image: certbot/certbot
+        volumes:
+            - "./Certbot/entrypoint.sh:/app/entrypoint.sh"
+            - "certbot-etc:/etc/letsencrypt"
+            - "certbot-var:/var/lib/letsencrypt"
+            - "marketplace_storage:/var/www/html"
+        environment:
+            - CONTACT_EMAIL=${contactEmail}
+            - CERT_DOMAINS=${certDomains}
+        depends_on:
+            - nginx
+        entrypoint: /bin/sh -c /app/entrypoint.sh
+volumes:
+        heatmap_db:
+        certbot-etc:
+        certbot-var:
+        marketplace_storage:
+networks: 
+    marketplace:

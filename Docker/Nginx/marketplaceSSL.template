@@ -1,0 +1,16 @@
+upstream marketplace {
+    server marketplace:3000;
+}
+
+server {
+	listen 443 ssl http2;
+	server_name "${NGINX_HOST}";
+
+        ssl_certificate /etc/letsencrypt/live/marketplace/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/marketplace/privkey.pem;
+
+    location / {
+        proxy_pass http://marketplace;
+    }
+
+}

@@ -1,0 +1,50 @@
+version: "3.9"
+services:
+  db_marketplace:
+    image: postgres:11.4
+    volumes:
+      - marketplace_db:/var/lib/postgresql/data
+      - database_run:/var/run/postgresql
+      - ./db_backups:/opt/db_backups
+    environment:
+      - "POSTGRES_USER:${postgresUser}"
+      - "POSTGRES_PASSWORD:${postgresPassword}"
+      - "POSTGRES_DB:${postgresDatabase}"
+    restart: "always"
+    expose:
+      - "5432"
+    networks: 
+      - marketplace
+  marketplace:
+    build: 
+      context: ../
+      dockerfile: .
+      args:
+        - railsEnv
+        - rackEnv
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - database_run:/var/run/postgresql
+      - ..:/app
+    environment:
+      - "HOST=${serverName}"
+      - "SMTP_DOMAIN=${smtpDomain}"
+      - "SENDGRID_PASSWORD=${sendGridPassword}"
+      - "RUTANIO_DATABASE_NAME=${postgresDatabase}"
+      - "POSTGRES_USERNAME=rails"
+      - "RUTANIO_DATABASE_PASSWORD=${postgresPassword}"
+      - "RAILS_ENV=${railsEnv}"
+      - "RACK_ENV=${rackEnv}"
+    expose:
+      - "3000"
+    depends_on:
+      - db_marketplace
+    networks:
+      - marketplace
+volumes:
+  marketplace_db:
+  database_run:
+  certbot-etc:
+  certbot-var:
+networks: 
+  marketplace:

@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+    nginx:
+        image: nginx:1.10.3
+        restart: "always"
+        ports:
+            - "80:80"
+        volumes:
+            - "./Nginx/marketplace.dev.template:/etc/nginx/conf.d/marketplace.dev.template"
+        environment:
+            - NGNIX_HOST=${serverName}
+        command: /bin/bash -c "cat /etc/nginx/conf.d/marketplace.dev.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+        networks: 
+            - marketplace
+        depends_on: 
+            - marketplace
+volumes:
+  marketplace_storage:
+networks:
+    marketplace:
