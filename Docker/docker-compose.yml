@@ -18,7 +18,7 @@ services:
   marketplace:
     build: 
       context: ../
-      dockerfile: .
+      dockerfile: Dockerfile
       args:
         - railsEnv
         - rackEnv
