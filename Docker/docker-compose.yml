@@ -1,15 +1,14 @@
 version: "3.9"
 services:
   db_marketplace:
-    image: postgres:11.4
+    image: postgres
     volumes:
       - marketplace_db:/var/lib/postgresql/data
       - database_run:/var/run/postgresql
       - ./db_backups:/opt/db_backups
     environment:
-      - "POSTGRES_USER:${postgresUser}"
-      - "POSTGRES_PASSWORD:${postgresPassword}"
-      - "POSTGRES_DB:${postgresDatabase}"
+      - "POSTGRES_USER=${postgresUser}"
+      - "POSTGRES_PASSWORD=${postgresPassword}"      
     restart: "always"
     expose:
       - "5432"
@@ -25,13 +24,13 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - database_run:/var/run/postgresql
-      - ..:/app
+      - ..:/myapp
     environment:
       - "HOST=${serverName}"
       - "SMTP_DOMAIN=${smtpDomain}"
       - "SENDGRID_PASSWORD=${sendGridPassword}"
       - "RUTANIO_DATABASE_NAME=${postgresDatabase}"
-      - "POSTGRES_USERNAME=rails"
+      - "POSTGRES_USERNAME=${postgresUser}"
       - "RUTANIO_DATABASE_PASSWORD=${postgresPassword}"
       - "RAILS_ENV=${railsEnv}"
       - "RACK_ENV=${rackEnv}"

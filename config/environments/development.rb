@@ -1,6 +1,7 @@
 Rails.application.configure do
 
   config.hosts << ENV['HOST']
+  config.hosts << "marketplace"
   config.cache_classes = false
   # Do not eager load code on boot.
   config.eager_load = false
@@ -24,6 +25,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.action_controller.forgery_protection_origin_check = false
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary_development
 
@@ -46,6 +49,7 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.force_ssl = false
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 

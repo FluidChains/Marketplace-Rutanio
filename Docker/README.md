@@ -56,11 +56,11 @@ docker-compose down
 - If is the first run you must recreate the database using:
 
 ```bash
-docker-compose run -d marketplace rake db:setup
+docker-compose run -d --rm marketplace rake db:setup
 ```
 
 ```bash
-docker-compose run -d web rake db:migrate
+docker-compose run -d --rm marketplace rake db:migrate
 ```
 
 Continue with your environment instructions
