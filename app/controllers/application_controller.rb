@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :panel
 
 
-
-
   def configuraciones
     @categories = Category.all
   end
